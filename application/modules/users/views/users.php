@@ -64,7 +64,7 @@
                                    </select>
                               </div>
                               <div class="form-floating mb-3">
-                                   <label for="example-select-floating">Program Studi</label><br />
+                                   <label for="example-select-floating">Program Studi / Bidang</label><br />
                                    <select class="form-control" name="user_prodi"
                                         aria-label="Floating label select example" required>
                                         <option value="">Pilih Prodi</option>
@@ -83,10 +83,18 @@
                                              <?php if (uri(2) == 'edit') echo $edit->user_prodi == "FARM" ? "selected" : ""; ?>>
                                              Farmasi
                                         </option>
+                                        <option value="TIK"
+                                             <?php if (uri(2) == 'edit') echo $edit->user_prodi == "TIK" ? "selected" : ""; ?>>
+                                             Bidang TIK
+                                        </option>
+                                        <option value="SPMI"
+                                             <?php if (uri(2) == 'edit') echo $edit->user_prodi == "SPMI" ? "selected" : ""; ?>>
+                                             Bidang SPMI
+                                        </option>
                                    </select>
                               </div>
                               <div class="form-floating mb-3">
-                                   <label for="example-select-floating">Program Studi</label><br />
+                                   <label for="example-select-floating">Pilih Gender</label><br />
                                    <select class="form-control" name="user_gender"
                                         aria-label="Floating label select example" required>
                                         <option value="">Pilih Gender</option>

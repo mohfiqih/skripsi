@@ -121,7 +121,7 @@
           </div>
 
      </div>
-     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
+     <!-- <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
           <div class="card">
                <div class="card-body">
                     <h4 class="header-title mt-0 mb-3">
@@ -134,7 +134,7 @@
                     </div>
                </div>
           </div>
-     </div>
+     </div> -->
 </div><br />
 <?php elseif ($this->user_level == "Dosen" or $this->user_level == "Mahasiswa"):?>
 <div class="container-fluid">

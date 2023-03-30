@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2023 at 04:06 PM
+-- Generation Time: Mar 31, 2023 at 12:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -75,7 +75,7 @@ CREATE TABLE `klasifikasi` (
   `id` int(11) NOT NULL,
   `id_identitas` varchar(100) NOT NULL,
   `nama_lengkap` varchar(200) NOT NULL,
-  `prodi` enum('TI','TKOM','AK','FARM') NOT NULL,
+  `prodi` enum('TI','TKOM','AK','FARM','SPMI','TIK') NOT NULL,
   `sebagai` enum('Super Admin','Pengevaluasi','Dosen','Mahasiswa') NOT NULL,
   `gender` enum('L','P') NOT NULL,
   `id_paket_jawaban` int(11) NOT NULL,
@@ -88,8 +88,8 @@ CREATE TABLE `klasifikasi` (
 --
 
 INSERT INTO `klasifikasi` (`id`, `id_identitas`, `nama_lengkap`, `prodi`, `sebagai`, `gender`, `id_paket_jawaban`, `jawaban`, `klasifikasi`) VALUES
-(41, '230319073905', 'Moh. Fiqih Erinsyah', 'TKOM', 'Mahasiswa', 'L', 31, 'Bagus bangett syncnauu memudahkan user dalam proses belajar', '[\'Baik\']'),
-(42, '230319073905', 'Moh. Fiqih Erinsyah', 'TKOM', 'Mahasiswa', 'L', 31, 'syncnau baguss banget', '[\'Baik\']');
+(43, '220603173621', 'Moh. Fiqih Erinsyah', 'TI', 'Super Admin', 'L', 31, 'Syncnau memuaskan, memudahkan untuk belajar', '[\'Baik\']'),
+(44, '230331004608', 'Bidang SPMI', '', 'Pengevaluasi', 'L', 31, 'Bagus bangetttt', '[\'Baik\']');
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE `kuesioner` (
   `id` int(11) NOT NULL,
   `id_identitas` varchar(100) NOT NULL,
   `nama_lengkap` varchar(200) NOT NULL,
-  `prodi` enum('TI','TKOM','AK','FARM') NOT NULL,
+  `prodi` enum('TI','TKOM','AK','FARM','SPMI','TIK') NOT NULL,
   `sebagai` enum('Super Admin','Pengevaluasi','Dosen','Mahasiswa') NOT NULL,
   `gender` enum('L','P') NOT NULL,
   `id_paket_jawaban` int(11) NOT NULL,
@@ -116,8 +116,8 @@ CREATE TABLE `kuesioner` (
 --
 
 INSERT INTO `kuesioner` (`id`, `id_identitas`, `nama_lengkap`, `prodi`, `sebagai`, `gender`, `id_paket_jawaban`, `id_soal_kuesioner`, `type_soal`, `jawaban`, `datecreated`) VALUES
-(111, '230319073905', 'Moh. Fiqih Erinsyah', 'TKOM', 'Mahasiswa', 'L', 31, 120, 'Skala Likert', '2', '2023-03-30 14:01:35'),
-(112, '230319073905', 'Moh. Fiqih Erinsyah', 'TKOM', 'Mahasiswa', 'L', 31, 120, 'Skala Likert', '5', '2023-03-30 14:04:40');
+(114, '220603173621', 'Moh. Fiqih Erinsyah', 'TI', 'Super Admin', 'L', 31, 120, 'Skala Likert', '3', '2023-03-30 22:35:54'),
+(115, '230331004608', 'Bidang SPMI', '', 'Pengevaluasi', 'L', 31, 120, 'Skala Likert', '1', '2023-03-30 22:51:47');
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,7 @@ CREATE TABLE `user` (
   `user_namalengkap` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `user_foto` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `user_level` enum('Super Admin','Pengevaluasi','Dosen','Mahasiswa') COLLATE utf8_unicode_ci NOT NULL,
-  `user_prodi` enum('TI','TKOM','AK','FARM') COLLATE utf8_unicode_ci NOT NULL,
+  `user_prodi` enum('TI','TKOM','AK','FARM','TIK','SPMI') COLLATE utf8_unicode_ci NOT NULL,
   `user_gender` enum('L','P') COLLATE utf8_unicode_ci NOT NULL,
   `user_created` datetime NOT NULL DEFAULT current_timestamp(),
   `user_edited` datetime DEFAULT NULL,
@@ -191,11 +191,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_nama`, `user_password`, `user_namalengkap`, `user_foto`, `user_level`, `user_prodi`, `user_gender`, `user_created`, `user_edited`, `user_status`) VALUES
-('220603173621', 'Sp.fiqih', '$2y$10$V7.HNasteYxkDiQfBVVj2OD3oNDoy05XXiX2RkKLWQXYgiIukJ4Cm', 'Moh. Fiqih Erinsyah', 'ff98dbb841d7b1c437557afce13104d4.jpg', 'Super Admin', 'TI', 'L', '2022-06-03 22:36:21', NULL, '1'),
-('230318023841', 'Ev.12.02', '$2y$10$Xs2Sn2OKNUosprM5Q2lpu.ankNoDayJxDXHC8kM.IJqefBU7rMQ/.', 'Evaluator', '', 'Pengevaluasi', 'TKOM', 'L', '2023-03-18 08:38:41', NULL, '1'),
-('230318024647', 'Ds.12.09.123', '$2y$10$yb/0UFTF7.OIvoqCYxbc/.P.HWvvoDqT9J4RFrH9pof7nrDCirwiO', 'Dosen', '', 'Dosen', 'TI', 'L', '2023-03-18 08:46:47', NULL, '1'),
-('230318024811', 'Sp.123.45', '$2y$10$mR2eUzh10QeFglE8PndW/eraMc4lh66CJNFm/o.cYTEQunVuu4FnO', 'super', '', 'Super Admin', 'TKOM', 'L', '2023-03-18 08:48:11', NULL, '1'),
-('230319073905', 'Mhs.22092002', '$2y$10$kT7xblMCJ20cr91YZyvYC.SA6T02XprdjJeLlwLrTPA0za8C1oMY2', 'Moh. Fiqih Erinsyah', '', 'Mahasiswa', 'TKOM', 'L', '2023-03-19 13:39:05', NULL, '1');
+('220603173621', 'Sp.fiqih', '$2y$10$4RtMQOx1OyH4x73rVX4agOZHLjgGGnT8.Mm850lQK9X10KYgEgyOS', 'Moh. Fiqih Erinsyah', 'ff98dbb841d7b1c437557afce13104d4.jpg', 'Super Admin', 'TIK', 'L', '2022-06-03 22:36:21', NULL, '1'),
+('230318024647', 'Ds.dosen', '$2y$10$3gTHIipHwMsHdGYBJdpbu./oCJAQAIME5ytPAMmIMdFqygwu7Hp3C', 'Dosen', '', 'Dosen', 'TI', 'L', '2023-03-18 08:46:47', NULL, '1'),
+('230319073905', 'Mhs.22092002', '$2y$10$kT7xblMCJ20cr91YZyvYC.SA6T02XprdjJeLlwLrTPA0za8C1oMY2', 'Moh. Fiqih Erinsyah', '', 'Mahasiswa', 'TKOM', 'L', '2023-03-19 13:39:05', NULL, '1'),
+('230331004608', 'Spmi.fiqih', '$2y$10$dtNH6BTYt1zlzHSkbP7eAeo7j9hsM9vTFutaNAoLZG/sOzn2y/4WC', 'Bidang SPMI', '', 'Pengevaluasi', 'SPMI', 'L', '2023-03-31 05:46:08', NULL, '1');
 
 --
 -- Indexes for dumped tables
@@ -269,13 +268,13 @@ ALTER TABLE `daftar_soal`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `kuesioner`
 --
 ALTER TABLE `kuesioner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `manajerial`

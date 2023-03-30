@@ -72,7 +72,7 @@
                                                        <div class="form-floating mb-3">
                                                             <label>Versi Sistem</label>
                                                             <input type="text" class="form-control"
-                                                                 name="versi_apl_paket" placeholder="Versi Aplikasi"
+                                                                 name="versi_apl_paket" placeholder="Versi Sistem"
                                                                  autocomplete="off" required>
 
                                                        </div>

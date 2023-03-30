@@ -10,7 +10,7 @@ class Kuesioner extends MY_Controller
 		$this->cek_login();
 	}
 
-	public function meta()
+	public function skala()
 	{
 	   $data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
         $data = array(
@@ -22,13 +22,14 @@ class Kuesioner extends MY_Controller
 			"data_paket"	=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
 			"user"		=> $data_user,
 	   );
-		return $data;
+	   
+	   $this->load->view('template', $data);
 	}
 
-	public function index()
-	{
-		$this->load->view('template', $this->meta());
-	}
+	// public function skala()
+	// {
+	// 	$this->load->view('template', $this->meta());
+	// }
 	
 	# New Coding
 	public function tambah_soal()
@@ -59,13 +60,13 @@ class Kuesioner extends MY_Controller
 		$tambah = $this->db->insert_batch('kuesioner', $data);
 
 		if ($tambah) {
-			notifikasi_redirect("success", "Data berhasil", redirect(base_url('kuesioner/klasifikasi/' . uri(3))));
+			notifikasi_redirect("success", "Data berhasil", redirect(base_url('kuesioner/komentar/' . uri(3))));
 		} else {
 			notifikasi_redirect("error", "Data sudah ada", redirect('kuesioner/index/' . uri(3)));
 		};
 	}
 
-	public function klasifikasi()
+	public function komentar()
 	{
 		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 		$data = array(

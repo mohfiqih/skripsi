@@ -73,7 +73,7 @@
                                                   </td>
                                                   <td class="align-middle">
                                                        <a
-                                                            href="<?php echo base_url('kuesioner/index/') . enkrip($d->id_paket); ?>">Klik
+                                                            href="<?php echo base_url('kuesioner/skala/') . enkrip($d->id_paket); ?>">Klik
                                                             Link
                                                        </a>
                                                   </td>

@@ -395,7 +395,8 @@
                               <div class="collapse" id="charts">
                                    <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('report') ?>">Data Responden</a></li>
+                                                  href="<?php echo base_url('report') ?>">Hasil Skala Likert</a>
+                                        </li>
                                         <li class="nav-item"> <a class="nav-link"
                                                   href="<?php echo base_url('report/komentar') ?>">Hasil
                                                   Komentar</a></li>
@@ -1019,7 +1020,7 @@
                               <div class="collapse" id="ui-basic">
                                    <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('bankpertanyaan') ?>">Paket
+                                                  href="<?php echo base_url('paket') ?>">Paket
                                                   Kuesioner</a>
                                         </li>
                                         <li class="nav-item"> <a class="nav-link"
@@ -1041,9 +1042,10 @@
                               <div class="collapse" id="charts">
                                    <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('report') ?>">Data Responden</a></li>
+                                                  href="<?php echo base_url('report') ?>">Hasil Skala Likert</a>
+                                        </li>
                                         <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('report/all') ?>">Result
+                                                  href="<?php echo base_url('report/komentar') ?>">Hasil
                                                   Komentar</a></li>
                                         <!-- <li class="nav-item"> <a class="nav-link" href="#">Chart Kuesioner</a></li> -->
                                    </ul>
