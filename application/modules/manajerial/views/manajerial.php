@@ -92,6 +92,7 @@
                                                             <div class="form-floating mb-2">
                                                                  <label>Versi Sistem</label>
                                                                  <input type="text" name="versi_apl_paket"
+                                                                      placeholder="Versi Sistem"
                                                                       class="form-control flatpickr-input active"
                                                                       autocomplete="off" required>
                                                             </div>

@@ -397,7 +397,7 @@
                                         <li class="nav-item"> <a class="nav-link"
                                                   href="<?php echo base_url('report') ?>">Data Responden</a></li>
                                         <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('report/all') ?>">Hasil
+                                                  href="<?php echo base_url('report/komentar') ?>">Hasil
                                                   Komentar</a></li>
                                    </ul>
                               </div>

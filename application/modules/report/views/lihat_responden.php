@@ -115,7 +115,7 @@
                                                        <th class="align-middle" scope="col" style="width: 5px;">No
                                                        </th>
                                                        <th class="align-middle" scope="col">ID Paket</th>
-                                                       <th class="align-middle" scope="col">ID Soal
+                                                       <th class="align-middle" scope="col">Pertanyaan
                                                        </th>
                                                        <th class="align-middle" scope="col">Jawaban</th>
                                                   </tr>

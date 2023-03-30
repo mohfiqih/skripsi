@@ -7,7 +7,7 @@
           <ol class="breadcrumb bg-primary">
                <li class="breadcrumb-item"><a href="<?php echo base_url('dasbor'); ?>">Home</a>
                </li>
-               <li class="breadcrumb-item active" aria-current="page">Data Kuesioner
+               <li class="breadcrumb-item active" aria-current="page">Data Skala Likert
                </li>
           </ol>
      </nav>

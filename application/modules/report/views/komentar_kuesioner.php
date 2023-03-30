@@ -7,7 +7,7 @@
           <ol class="breadcrumb bg-primary">
                <li class="breadcrumb-item"><a href="<?php echo base_url('dasbor'); ?>">Home</a>
                </li>
-               <li class="breadcrumb-item active" aria-current="page">Data Jawaban
+               <li class="breadcrumb-item active" aria-current="page">Data Klasifikasi
                </li>
           </ol>
      </nav>
@@ -26,8 +26,9 @@
                                         <tr>
                                              <th class="align-middle" scope="col" style="width: 5px;">No
                                              </th>
-                                             <th class="align-middle" scope="col">Jawaban</th>
-                                             <th class="align-middle" scope="col">Klasifikasi
+                                             <th class="align-middle" scope="col">Nama Paket
+                                                  Soal</th>
+                                             <th class="align-middle" scope="col">Aplikasi
                                              </th>
                                              <th class="align-middle" scope="col" style="width: 5px;">
                                                   Action
@@ -37,22 +38,24 @@
                                    <tbody>
                                         <?php
                                              $no=0+1;
-									if ($data_klasifikasi){
-									foreach ($data_klasifikasi as $d){ 
+									if ($data_paket){
+									foreach ($data_paket as $d){ 
 									?>
                                         <tr class="fw-normal">
                                              <th class="align-middle">
                                                   <?php echo $no++; ?>
                                              </th>
+                                             <th class="align-middle">
+                                                  <?php echo $d->nama_paket; ?>
+                                                  v<?php echo $d->versi_apl_paket; ?>
+                                             </th>
                                              <td class="align-middle">
-                                                  <?php echo $d->jawaban; ?>
+                                                  <?php echo $d->aplikasi; ?>
                                              </td>
-                                             <td class="align-middle">
-                                                  <?php echo $d->klasifikasi; ?>
-                                             </td>
+
                                              <td class="align-middle">
                                                   <a style="margin-left: 10px;text-decoration: none;"
-                                                       href="<?php echo url(1) .'/jawaban_id/'. enkrip($d->id_paket); ?>"
+                                                       href="<?php echo url(1) .'/data_komentar/'. enkrip($d->id_paket); ?>"
                                                        data-mdb-toggle="tooltip" class="fas fa-eye text-success me-3"
                                                        title="Soal">
                                                   </a>
@@ -60,7 +63,7 @@
 
                                         </tr>
                                         <?php }} else { ?>
-                                        <td class="text-center" colspan="4">Tidak ada data</td>
+                                        <td class="text-center" colspan="8">Tidak ada data</td>
                                         <?php } ?>
                                    </tbody>
                               </table>

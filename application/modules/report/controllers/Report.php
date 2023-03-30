@@ -11,14 +11,15 @@ class Report extends MY_Controller
 		// $this->load->library('session');
 		// $this->load->helper('url');
 	}
-
+	
+	# ------------------------ Data Kuesioner Skala Likert ---------------------------- #
      public function meta()
 	{
 		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 		$data = array(
 			"judul"			=> "Hasil Kuesioner",
-			"halaman"			=> "folder_hasil_kuesioner/hasil_kuesioner",
-			"view"			=> "folder_hasil_kuesioner/hasil_kuesioner",
+			"halaman"			=> "hasil_kuesioner",
+			"view"			=> "hasil_kuesioner",
 			"data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
 			"user"			=> $data_user
 		);
@@ -41,8 +42,8 @@ class Report extends MY_Controller
 
 		$data = array(
 			"judul"			=> "Data Kuesioner",
-			"halaman"			=> "folder_hasil_kuesioner/data_responden",
-			"view"			=> "folder_hasil_kuesioner/data_responden",
+			"halaman"			=> "data_responden",
+			"view"			=> "data_responden",
 			// Menarik Data paket berdasarkan id_paket
 			"data_paket"		=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
 			// Menarik Data identitas responden berdasarkan id_paket 
@@ -78,8 +79,8 @@ class Report extends MY_Controller
 		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 		$data = array(
 			"judul"					=> "Detail Data",
-			"halaman"					=> "folder_hasil_kuesioner/lihat_responden",
-			"view"					=> "folder_hasil_kuesioner/lihat_responden",
+			"halaman"					=> "lihat_responden",
+			"view"					=> "lihat_responden",
 			"data_identitas"			=> $this->report->getMulti_jawaban(["id_identitas" => dekrip(uri(3))], "kuesioner"),
 			"data_kuesioner"			=> $this->report->get_soal_jawaban([
 				"kuesioner.id_identitas" => dekrip(uri(3)),
@@ -95,74 +96,51 @@ class Report extends MY_Controller
 		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 		$data = array(
 			"judul"			=> "Hasil Kuesioner",
-			"halaman"			=> "folder_hasil_kuesioner/hasil_kuesioner",
-			"view"			=> "folder_hasil_kuesioner/hasil_kuesioner",
+			"halaman"			=> "hasil_kuesioner",
+			"view"			=> "hasil_kuesioner",
 			"data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
-			"user"				=> $data_user
+			"user"			=> $data_user
 		);
 		$this->load->view('template', $data);
 	}
 
-	public function all()
+
+	# ------------------------ Data Komentar Klasifikasi ---------------------------- #
+	public function komentar()
 	{
-		$total_soal			= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
-		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
+		// $total_soal			= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		$data_user			= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 		$data = array(
 			"judul"			=> "Hasil Kuesioner",
-			"halaman"			=> "folder_hasil_kuesioner/all_kuesioner",
-			"view"			=> "folder_hasil_kuesioner/all_kuesioner",
-			// "data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
-			// "data_jawaban"		=> $this->M_Universal->getMulti(NULL, "jawaban"),
-			"data_klasifikasi"	=> $this->M_Universal->getMulti(NULL, "klasifikasi"),
+			"halaman"			=> "komentar_kuesioner",
+			"view"			=> "komentar_kuesioner",
+			"data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
 			// "total_soal"		=> $this->report->total_soal($total_soal),
 			"user"			=> $data_user
 		);
 		$this->load->view('template', $data);
 	}
 
-	public function jawaban_id()
+	public function data_komentar()
 	{
-		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
+		// $total_soal			= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		$data_user			= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 		$data = array(
 			"judul"			=> "Hasil Kuesioner",
-			"halaman"			=> "folder_hasil_kuesioner/jawaban_id",
-			"view"			=> "folder_hasil_kuesioner/jawaban_id",
-			"data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
-			"data_jawaban"		=>  $this->report->get_kuesioner(["kuesioner.id_paket_jawaban" => dekrip(uri(3))]),
-			// "data_jawaban"		=> $this->M_Universal->getMulti(NULL, "kuesioner"),
+			"halaman"			=> "data_komentar",
+			"view"			=> "data_komentar",
+			"data_klasifikasi"	=> $this->M_Universal->getMulti(NULL, "klasifikasi"),
 			"user"			=> $data_user
 		);
 		$this->load->view('template', $data);
 	}
 
+	# ------------------------ EXPORT ---------------------------- #
 	public function hasil_kuesioner_pdf()
-	{
-		$total_responden		= "paket_id_responden='" . dekrip(uri(3)) . "' ";
-		$total_soal				= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
-		// Menarik id paket
-		$total_id				= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
-
-		$data = array(
-			"judul"				=> "Data Kuesioner",
-			"halaman"			=> "data_responden",
-			"view"				=> "data_responden",
-			// Menarik Data paket berdasarkan id_paket
-			"data_paket"		=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
-			// Menarik Data identitas responden berdasarkan id_paket 
-			"data_kuesioner"	=> $this->M_Universal->getMulti(["id_identitas" => dekrip(uri(3))], "jawaban"),
-			"data_identitas"	=> $this->report->get_jawaban(["responden.paket_id_responden" => dekrip(uri(3))]),
-
-			// Menghitung total Responden yg Menjawab berdasarkan id_paket
-			"total_responden"	=> $this->report->total_responden($total_responden),
-
-			// Menghitung total Jumlah Jawaban dari responden berdasarkkan id_paket
-			"total_soal"		=> $this->report->total_soal($total_soal),
-		);
-	  
+	{	  
 		 $this->load->library('pdf');
 		 $this->pdf->setPaper('A4', 'potrait');
 		 $this->pdf->filename = "laporan-hasil-kuesioner.pdf";
-		 $this->pdf->load_view('folder_hasil_kuesioner/export_hasil_kuesioner', $data);
+		 $this->pdf->load_view('export_hasil_kuesioner', $data);
 	}	
-
 }
