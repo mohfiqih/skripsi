@@ -35,11 +35,9 @@
                style="box-shadow: 0px 5px 21px -5px #grey!important;">
                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                     <a class="navbar-brand brand-logo mr-5" href="#"><img
-                              src="<?php echo base_url('assets/auth/images/bg-repo.jpg') ?>"
-                              style="width: 120px;height: 50px; margin-left: 50px;" /></a>
-                    <!-- <a class="navbar-brand brand-logo-mini" href="#"><img
-                              src="assets/template_sky/template/images/logo-mini.svg" /></a> -->
-
+                              src="<?php echo base_url('assets/auth/images/logo-long.png') ?>"
+                              style="width: 150px;height: 50px;margin-left: 40px;" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="#"><img src="assets/auth/images/logo-short.png" /></a>
                </div>
                <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button"
@@ -357,13 +355,13 @@
                          <li class="nav-item">
                               <a class="nav-link" href="<?php echo base_url('manajerial'); ?>">
                                    <i class="fas fa-list menu-icon"></i>
-                                   <span class="menu-title">Manajerial Sistem</span>
+                                   <span class="menu-title">Data Manajerial</span>
                               </a>
                          </li>
                          <li class="nav-item">
                               <a class="nav-link" href="<?php echo base_url('bankberkas'); ?>">
                                    <i class="fa-solid fa-file menu-icon"></i>
-                                   <span class="menu-title">Berkas Sistem</span>
+                                   <span class="menu-title">Data Berkas</span>
                               </a>
                          </li>
 
@@ -371,7 +369,7 @@
                               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                                    aria-controls="ui-basic">
                                    <i class="fas fa-book menu-icon"></i>
-                                   <span class="menu-title">Bank Pertanyaan</span>
+                                   <span class="menu-title">Data Paket</span>
                                    <i class="menu-arrow"></i>
                               </a>
                               <div class="collapse" id="ui-basic">
@@ -389,16 +387,16 @@
                               <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                                    aria-controls="charts">
                                    <i class="fas fa-calendar menu-icon"></i>
-                                   <span class="menu-title">Report Kuesioner</span>
+                                   <span class="menu-title">Hasil Kuesioner</span>
                                    <i class="menu-arrow"></i>
                               </a>
                               <div class="collapse" id="charts">
                                    <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('report') ?>">Hasil Skala Likert</a>
+                                                  href="<?php echo base_url('report') ?>">Skala Likert</a>
                                         </li>
                                         <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('report/komentar') ?>">Hasil
+                                                  href="<?php echo base_url('report/komentar') ?>">
                                                   Komentar</a></li>
                                    </ul>
                               </div>
@@ -461,10 +459,9 @@
                style="box-shadow: 0px 5px 21px -5px #grey!important;">
                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                     <a class="navbar-brand brand-logo mr-5" href="#"><img
-                              src="<?php echo base_url('assets/auth/images/bg-repo.jpg') ?>"
-                              style="width: 120px;height: 50px; margin-left: 50px;" /></a>
-                    <!-- <a class="navbar-brand brand-logo-mini" href="#"><img
-                              src="assets/template_sky/template/images/logo-mini.svg" /></a> -->
+                              src="<?php echo base_url('assets/auth/images/logo-long.png') ?>"
+                              style="width: 150px;height: 50px;margin-left: 40px;" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="#"><img src="assets/auth/images/logo-short.png" /></a>
 
                </div>
                <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -600,8 +597,8 @@
                <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav">
 
-                         <li class="nav-item">
-                              <a class="nav-link" href="<?php echo base_url('dasbor'); ?>">
+                         <li class="nav-item active">
+                              <a class="nav-link active" href="<?php echo base_url('dasbor'); ?>">
                                    <i class="fas fa-home menu-icon"></i>
                                    <span class="menu-title">Dashboard</span>
                               </a>
@@ -657,10 +654,9 @@
                style="box-shadow: 0px 5px 21px -5px #grey!important;">
                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                     <a class="navbar-brand brand-logo mr-5" href="#"><img
-                              src="<?php echo base_url('assets/auth/images/bg-repo.jpg') ?>"
-                              style="width: 120px;height: 50px; margin-left: 50px;" /></a>
-                    <!-- <a class="navbar-brand brand-logo-mini" href="#"><img
-                              src="assets/template_sky/template/images/logo-mini.svg" /></a> -->
+                              src="<?php echo base_url('assets/auth/images/logo-long.png') ?>"
+                              style="width: 150px;height: 50px;margin-left: 40px;" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="#"><img src="assets/auth/images/logo-short.png" /></a>
 
                </div>
                <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">

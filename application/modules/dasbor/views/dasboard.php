@@ -180,7 +180,7 @@
                          <div class="weather-info">
                          </div>
                     </div> -->
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-dark" role="alert">
                          <h4 class="alert-heading">Informasi Sistem!</h4>
                          <hr>
                          <p>Dalam rangka untuk pengembangan sistem kedepannya, mohon untuk
@@ -191,7 +191,7 @@
                          <hr>
                          <p class="mb-0">Link Kuesioner :<br />
                               <a style="text-align: justify;text-decoration: none;"
-                                   href="https://localhost/web_skripsi/kuesioner/index/VUpCaWQvTEdhWGNWRGh6YUxWdUlIZw">https://localhost/web_skripsi/kuesioner/index/VUpCaWQvTEdhWGNWRGh6YUxWdUlIZw</a>
+                                   href="https://localhost/web_skripsi/kuesioner/skala/VUpCaWQvTEdhWGNWRGh6YUxWdUlIZw">https://localhost/web_skripsi/kuesioner/skala/VUpCaWQvTEdhWGNWRGh6YUxWdUlIZw</a>
                          </p>
                     </div>
                </div>

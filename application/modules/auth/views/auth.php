@@ -43,8 +43,8 @@
           <div class="container">
                <div class="row">
                     <div class="col-md-6">
-                         <img src="<?php echo base_url('assets/auth/images/login.png') ?>" alt="Image" class="img-fluid"
-                              style="width: 450px;margin-top: 50px;">
+                         <img src="<?php echo base_url('assets/auth/images/login_new.png') ?>" alt="Image"
+                              class="img-fluid" style="width: 500px;margin-top: 50px;">
                     </div>
                     <div class="col-md-6 contents" style="margin-top: 50px;">
                          <div class="row justify-content-center">
@@ -65,15 +65,6 @@
                                                   <span aria-hidden="true">&times;</span>
                                              </button>
                                         </div>
-                                        <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                             <strong>Holy guacamole!</strong> You should check in on some of those
-                                             fields below.
-                                             <button type="button" class="close" data-dismiss="alert"
-                                                  aria-label="Close">
-                                                  <span
-                                                       aria-hidden="true">&times;</span><?php echo $this->session->flashdata('notifikasi'); ?>
-                                             </button>
-                                        </div> -->
                                         <?php } ?>
                                         <input type="hidden"
                                              name="<?php echo $this->security->get_csrf_token_name(); ?>"
