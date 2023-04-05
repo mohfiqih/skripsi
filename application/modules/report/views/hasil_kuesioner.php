@@ -27,8 +27,12 @@
                                              <th class="align-middle" scope="col" style="width: 5px;">No
                                              </th>
                                              <th class="align-middle" scope="col">Nama Paket
-                                                  Soal</th>
-                                             <th class="align-middle" scope="col">Aplikasi
+                                             </th>
+                                             <th class="align-middle" scope="col">Sistem
+                                             </th>
+                                             <th class="align-middle" scope="col">Responden
+                                             </th>
+                                             <th class="align-middle" scope="col">Persentase
                                              </th>
                                              <th class="align-middle" scope="col" style="width: 5px;">
                                                   Action
@@ -37,10 +41,11 @@
                                    </thead>
                                    <tbody>
                                         <?php
-                                             $no=0+1;
-									if ($data_paket){
-									foreach ($data_paket as $d){ 
-									?>
+                                             $no = 0 + 1;
+                                             $this->load->model('M_report');
+                                             if ($data_paket) {
+                                                  foreach ($data_paket as $d) {
+                                        ?>
                                         <tr class="fw-normal">
                                              <th class="align-middle">
                                                   <?php echo $no++; ?>
@@ -52,7 +57,45 @@
                                              <td class="align-middle">
                                                   <?php echo $d->aplikasi; ?>
                                              </td>
+                                             <td class="align-middle">
+                                                  <?php echo $d->responden; ?>
+                                             </td>
+                                             <td class="align-middle">
+                                                  <?php
 
+                                                $total_id	  = "id_paket_jawaban='" . $d->id_paket . "' ";
+                                                $tertinggi    = $this->M_report->total_soal($total_id)*5;
+                                                $terendah     = $this->M_report->total_soal($total_id)*1;
+ 
+                                                $total = (($this->M_report->total_ss_p($total_id))*4)+
+                                                (($this->M_report->total_s_p($total_id))*3)+
+                                                (($this->M_report->total_ts_p($total_id))*2)+
+                                                (($this->M_report->total_sts_p($total_id))*1);
+                                                       
+                                                $nilai = substr(($total / $tertinggi) * (100), 0, 5);
+                                                                      
+                                          if ($nilai <= 100 && $nilai >= 80) { ?>
+                                                  <span class="badge bg-success text-white">
+                                                       <?php echo $nilai ?>%
+                                                  </span>
+                                                  <?php } else if ($nilai <= 79.9 && $nilai >= 60) { ?>
+                                                  <span class="badge bg-success text-white">
+                                                       <?php echo $nilai ?>%
+                                                  </span>
+                                                  <?php } else if ($nilai <= 59.9 && $nilai >= 40) { ?>
+                                                  <span class="badge bg-warning text-white">
+                                                       <?php echo $nilai ?>%
+                                                  </span>
+                                                  <?php } else if ($nilai <= 39.9 && $nilai >= 20) { ?>
+                                                  <span class="badge bg-danger text-white">
+                                                       <?php echo $nilai ?>%
+                                                  </span>
+                                                  <?php } else if ($nilai <= 19.9) { ?>
+                                                  <span class="badge bg-danger text-white">
+                                                       <?php echo $nilai ?>%
+                                                  </span>
+                                                  <?php } ?>
+                                             </td>
                                              <td class="align-middle">
                                                   <a style="margin-left: 10px;text-decoration: none;"
                                                        href="<?php echo url(1) .'/data_responden/'. enkrip($d->id_paket); ?>"

@@ -27,8 +27,10 @@
                                              <th class="align-middle" scope="col" style="width: 5px;">No
                                              </th>
                                              <th class="align-middle" scope="col">Nama Paket
-                                                  Soal</th>
-                                             <th class="align-middle" scope="col">Aplikasi
+                                             </th>
+                                             <th class="align-middle" scope="col">Sistem
+                                             </th>
+                                             <th class="align-middle" scope="col">Responden
                                              </th>
                                              <th class="align-middle" scope="col" style="width: 5px;">
                                                   Action
@@ -52,7 +54,9 @@
                                              <td class="align-middle">
                                                   <?php echo $d->aplikasi; ?>
                                              </td>
-
+                                             <td class="align-middle">
+                                                  <?php echo $d->responden; ?>
+                                             </td>
                                              <td class="align-middle">
                                                   <a style="margin-left: 10px;text-decoration: none;"
                                                        href="<?php echo url(1) .'/data_komentar/'. enkrip($d->id_paket); ?>"

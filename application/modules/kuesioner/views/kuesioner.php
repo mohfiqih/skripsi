@@ -182,42 +182,8 @@
                                         <table>
                                              <tbody>
                                                   <tr>
-                                                       <td class="align-middle"
-                                                            style="width: 70px; text-align: center;">
-                                                            <div
-                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                 <center>
-                                                                      <input class="radio the_input_element"
-                                                                           name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                           value="<?php echo $d->sangat_setuju; ?>"
-                                                                           style="display: block !important; color: rgb(50, 55, 60);"
-                                                                           autocomplete="off" type="radio" required />
-                                                                 </center>
-                                                            </div>
-                                                            <div
-                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                 <h5 style="margin-top: 5px;">5</h5>
-                                                            </div>
-                                                       </td>
-                                                       <td class="align-middle"
-                                                            style="width: 70px; text-align: center;">
-                                                            <div
-                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                 <center>
-                                                                      <input class="radio the_input_element"
-                                                                           name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                           id="radio2" for="radio2"
-                                                                           value="<?php echo $d->setuju; ?>"
-                                                                           style="display: block !important; color: rgb(50, 55, 60);"
-                                                                           autocomplete="off" type="radio" required />
-                                                                 </center>
-                                                            </div>
-                                                            <div
-                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                 <h5 style="margin-top: 5px;">4</h5>
-                                                            </div>
-                                                       </td>
-                                                       <td class="align-middle"
+
+                                                       <!-- <td class="align-middle"
                                                             style="width: 70px; text-align: center;">
                                                             <div
                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
@@ -234,7 +200,27 @@
                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
                                                                  <h5 style="margin-top: 5px;">3</h5>
                                                             </div>
+                                                       </td> -->
+                                                       <td class="align-middle"
+                                                            style="width: 70px; text-align: center;">
+                                                            <div
+                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                 <center>
+                                                                      <input class="radio5 the_input_element"
+                                                                           name="<?php echo "jawaban" . $d->id_soal; ?>"
+                                                                           id="concern"
+                                                                           value="<?php echo $d->sangat_tidak_setuju; ?>"
+                                                                           style="display: block !important; color: rgb(50, 55, 60);"
+                                                                           autocomplete="off" type="radio" required />
+                                                                 </center>
+                                                            </div>
+                                                            <div
+                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                 <h5 style="margin-top: 5px;">1
+                                                                 </h5>
+                                                            </div>
                                                        </td>
+
                                                        <td class="align-middle"
                                                             style="width: 70px; text-align: center;">
                                                             <div
@@ -253,23 +239,41 @@
                                                                  <h5 style="margin-top: 5px;">2</h5>
                                                             </div>
                                                        </td>
+
                                                        <td class="align-middle"
                                                             style="width: 70px; text-align: center;">
                                                             <div
                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
                                                                  <center>
-                                                                      <input class="radio5 the_input_element"
+                                                                      <input class="radio the_input_element"
                                                                            name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                           id="concern"
-                                                                           value="<?php echo $d->sangat_tidak_setuju; ?>"
+                                                                           id="radio2" for="radio2"
+                                                                           value="<?php echo $d->setuju; ?>"
                                                                            style="display: block !important; color: rgb(50, 55, 60);"
                                                                            autocomplete="off" type="radio" required />
                                                                  </center>
                                                             </div>
                                                             <div
                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                 <h5 style="margin-top: 5px;">1
-                                                                 </h5>
+                                                                 <h5 style="margin-top: 5px;">3</h5>
+                                                            </div>
+                                                       </td>
+
+                                                       <td class="align-middle"
+                                                            style="width: 70px; text-align: center;">
+                                                            <div
+                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                 <center>
+                                                                      <input class="radio the_input_element"
+                                                                           name="<?php echo "jawaban" . $d->id_soal; ?>"
+                                                                           value="<?php echo $d->sangat_setuju; ?>"
+                                                                           style="display: block !important; color: rgb(50, 55, 60);"
+                                                                           autocomplete="off" type="radio" required />
+                                                                 </center>
+                                                            </div>
+                                                            <div
+                                                                 class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                 <h5 style="margin-top: 5px;">4</h5>
                                                             </div>
                                                        </td>
                                                   </tr>

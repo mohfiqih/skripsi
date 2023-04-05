@@ -2,22 +2,6 @@
      <title>Kuesioner | Repository & Kuesioner Online</title>
 </head>
 
-<!-- <div class="card">
-     <div class="container-fluid">
-          <div class="card">
-               <div class="card-body">
-                    <div class="row">
-                         <form role="form">
-                              <input type="text" class="form-control" id="inputJawaban" name="jawaban"
-                                   placeholder="Ketik Jawaban Anda" required autofocus />
-                              <button id="submitBtn" type="submit" class="btn btn-success">Kirim</button>
-                         </form>
-                    </div>
-               </div>
-          </div>
-     </div>
-</div> -->
-
 <div class="card">
      <div class="container-fluid">
           <div class="card">
@@ -29,51 +13,47 @@
                                    <div class="col-md-6" style="overflow: auto;">
                                         <table class="table table-hover mb-0">
                                              <tbody>
-                                                  <!-- <?php if ($this->user_level == "Super Admin"):?>
-                                                       <tr style="overflow-x: auto;">
-                                                            <th width="150">ID</th>
-                                                            <th width="20">:</th>
-                                                            <td value="<?php echo $user->user_id; ?>"
-                                                                 name="id_identitas">
-                                                                 <?php echo $user->user_id; ?>
-                                                            </td>
-                                                       </tr>
-                                                       <?php elseif ($this->user_level == "Dosen"):?>
-                                                       <tr style="overflow-x: auto;">
-                                                            <th width="150">NIPY</th>
-                                                            <th width="20">:</th>
-                                                            <td value="<?php echo $user->user_nama; ?>"
-                                                                 name="id_identitas">
-                                                                 <?php echo $user->user_nama; ?>
-                                                            </td>
-                                                       </tr>
-                                                       <?php elseif ($this->user_level == "Mahasiswa"):?>
-                                                       <tr style="overflow-x: auto;">
-                                                            <th width="150">NIM</th>
-                                                            <th width="20">:</th>
-                                                            <td value="<?php echo $user->user_nama; ?>"
-                                                                 name="id_identitas">
-                                                                 <?php echo $user->user_nama; ?>
-                                                            </td>
-                                                       </tr>
-                                                       <?php else: ?>
-                                                       <tr style="overflow-x: auto;">
-                                                            <th width="150">ID Evaluator</th>
-                                                            <th width="20">:</th>
-                                                            <td value="<?php echo $user->user_id; ?>"
-                                                                 name="id_identitas">
-                                                                 <?php echo $user->user_id; ?>
-                                                            </td>
-                                                       </tr>
-                                                       <?php endif; ?> -->
-
+                                                  <?php if ($this->user_level == "Super Admin"):?>
                                                   <tr style="overflow-x: auto;">
-                                                       <th width="150">ID</th>
+                                                       <th width="150">ID Admin</th>
                                                        <th width="20">:</th>
                                                        <td value="<?php echo $user->user_id; ?>" name="id_identitas">
                                                             <?php echo $user->user_id; ?>
                                                        </td>
                                                   </tr>
+                                                  <?php elseif ($this->user_level == "Dosen"):?>
+                                                  <tr style="overflow-x: auto;">
+                                                       <th width="150">NIPY</th>
+                                                       <th width="20">:</th>
+                                                       <td value="<?php echo $user->user_nama; ?>" name="id_identitas">
+                                                            <?php echo $user->user_nama; ?>
+                                                       </td>
+                                                  </tr>
+                                                  <?php elseif ($this->user_level == "Mahasiswa"):?>
+                                                  <tr style="overflow-x: auto;">
+                                                       <th width="150">NIM</th>
+                                                       <th width="20">:</th>
+                                                       <td value="<?php echo $user->user_nama; ?>" name="id_identitas">
+                                                            <?php echo $user->user_nama; ?>
+                                                       </td>
+                                                  </tr>
+                                                  <?php else: ?>
+                                                  <tr style="overflow-x: auto;">
+                                                       <th width="150">ID Evaluator</th>
+                                                       <th width="20">:</th>
+                                                       <td value="<?php echo $user->user_id; ?>" name="id_identitas">
+                                                            <?php echo $user->user_id; ?>
+                                                       </td>
+                                                  </tr>
+                                                  <?php endif; ?>
+
+                                                  <!-- <tr style="overflow-x: auto;">
+                                                       <th width="150">ID</th>
+                                                       <th width="20">:</th>
+                                                       <td value="<?php echo $user->user_id; ?>" name="id_identitas">
+                                                            <?php echo $user->user_id; ?>
+                                                       </td>
+                                                  </tr> -->
                                                   <tr style="overflow-x: auto;">
                                                        <th width="150">Nama Lengkap</th>
                                                        <th width="20">:</th>
@@ -97,7 +77,7 @@
                                                        </td>
                                                   </tr>
                                                   <tr style="overflow-x: auto;">
-                                                       <th width="150">Responden</th>
+                                                       <th width="150">Sebagai</th>
                                                        <th width="20">:</th>
                                                        <td value="<?php echo $user->user_level; ?>" name="sebagai">
                                                             <?php echo $user->user_level; ?>
@@ -174,11 +154,16 @@
                                                   <p>Berikan ulasan tentang syncnau</p>
                                              </td>
                                         </div>
-                                        <textarea type="text" class="form-control" id="inputJawaban" name="jawaban"
+                                        <!-- <textarea type="text" class="form-control" id="inputJawaban" name="jawaban"
                                              placeholder="Ketik Jawaban Anda" required>
-                                        </textarea>
-                                        <br />
-                                        <button id="submitBtn" type="submit" class="btn btn-success">Kirim</button>
+                                        </textarea> -->
+                                        <div class="form-floating mb-3">
+                                             <textarea style="height: 150px;" class="form-control" id="inputJawaban"
+                                                  name="jawaban" placeholder="Ketik Jawaban Anda" rows="15"
+                                                  required></textarea>
+                                        </div>
+                                        <button id="submitBtn" type="submit" class="btn btn-success">Kirim
+                                             Jawaban <span class="btn-label"> <i class="fa fa-back"></i></span></button>
                                    </form>
                                    <?php }
                                         } else { ?>
@@ -187,9 +172,6 @@
                                    </div>
                                    <?php } ?>
                               </div>
-                              <!-- <div class="row">
-
-                              </div> -->
                          </div>
                     </div>
                </div>

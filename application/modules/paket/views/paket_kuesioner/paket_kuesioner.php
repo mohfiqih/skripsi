@@ -86,10 +86,9 @@
                                                        </div>
                                                        <div class="form-floating mb-3">
                                                             <label>Tanggal Kuesioner</label>
-                                                            <input type="datetime" id="datepicker"
-                                                                 class="form-control flatpickr-input active"
-                                                                 name="tgl_kuesioner" placeholder="Tanggal"
-                                                                 autocomplete="off" required>
+                                                            <input type="datetime-local" class="form-control"
+                                                                 name="tgl_kuesioner" placeholder="Tanggal Kuesioner"
+                                                                 required>
                                                        </div>
                                                        <div class="card" style="border: 1px solid #CED4DA;">
                                                             <div class="card-body" required>
@@ -131,7 +130,7 @@
 
                          <!-- Tabel Data -->
                          <div class="card-body" data-mdb-perfect-scrollbar="true" style="overflow-x: auto;">
-                              <table id="cari" class="table table-hover mb-0">
+                              <table id="myTable" class="table table-hover mb-0">
                                    <thead>
                                         <tr>
                                              <th class="align-middle" scope="col" style="width: 5px;">No
@@ -139,8 +138,10 @@
                                              <th class="align-middle" scope="col">Kode Paket
                                              </th>
                                              <th class="align-middle" scope="col">Nama Paket
-                                                  Pertanyaan</th>
+                                             </th>
                                              <th class="align-middle" scope="col">Sistem
+                                             </th>
+                                             <th class="align-middle" scope="col">Versi
                                              </th>
                                              <th class="align-middle" scope="col" style="width: 100px;">
                                                   Action</th>
@@ -166,6 +167,9 @@
                                              </td>
                                              <td class="align-middle">
                                                   <?php echo $d->aplikasi; ?>
+                                             </td>
+                                             <td class="align-middle">
+                                                  <?php echo $d->versi_apl_paket; ?>
                                              </td>
                                              <td class="align-middle">
                                                   <a style="margin-left: 10px;text-decoration: none;"

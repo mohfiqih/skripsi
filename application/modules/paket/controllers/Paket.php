@@ -54,22 +54,30 @@ class Paket extends MY_Controller {
 	}
 
      // # Load View
-     // public function edit_paket()
+	// public function edit_paket()
 	// {
-	// 	$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
-	// 	$data = array(
-	// 		"judul"		=> "Edit Paket",
-	// 		// "halaman"		=> "paket_kuesioner/edit_paket",
-	// 		// "view"		=> "paket_kuesioner/edit_paket",
-	// 		"edit_paket"	=>  $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
-	// 		"user"		=> $data_user
-	// 	);
-
+	// 	$data			= $this->meta();
+	// 	$data["edit_paket"]	= $this->M_Universal->getOne(["id_paket" => dekrip(uri(3))], "paket_soal");
+		
 	// 	$this->load->view('template', $data);
 	// }
 
+     public function edit_paket()
+	{
+		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
+		$data = array(
+			"judul"		=> "Edit Paket",
+			"halaman"		=> "paket_kuesioner/edit_paket",
+			"view"		=> "paket_kuesioner/edit_paket",
+			"edit_paket"	=>  $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
+			"user"		=> $data_user
+		);
+
+		$this->load->view('template', $data);
+	}
+
      # Fungsi Update Paket
-     public function update_soal()
+     public function update()
 	{
 		$id_paket	= dekrip($this->input->post("id_paket"));
 		$data     = array(
@@ -148,7 +156,7 @@ class Paket extends MY_Controller {
 			"type_soal"			=> $this->input->post("type_soal"),
 			"sangat_setuju"		=> $this->input->post("sangat_setuju"),
 			"setuju"				=> $this->input->post("setuju"),
-			"cukup"				=> $this->input->post("cukup"),
+			// "cukup"				=> $this->input->post("cukup"),
 			"tidak_setuju"			=> $this->input->post("tidak_setuju"),
 			"sangat_tidak_setuju"	=> $this->input->post("sangat_tidak_setuju"),
 		);

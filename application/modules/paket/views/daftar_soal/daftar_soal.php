@@ -201,7 +201,7 @@
                                                             <label for="kets" class="control-label col-sm-6">Sangat
                                                                  Setuju</label>
                                                             <div class="col-sm-12">
-                                                                 <input type="text" value="5" class="form-control"
+                                                                 <input type="text" value="4" class="form-control"
                                                                       name="sangat_setuju" placeholder="Pekerjaan"
                                                                       autocomplete="off" readonly hidden>
                                                             </div>
@@ -211,13 +211,13 @@
                                                             <label for="kets"
                                                                  class="control-label col-sm-6">Setuju</label>
                                                             <div class="col-sm-12">
-                                                                 <input type="text" value="4" class="form-control"
+                                                                 <input type="text" value="3" class="form-control"
                                                                       name="setuju" placeholder="Pekerjaan"
                                                                       autocomplete="off" readonly hidden>
                                                             </div>
                                                        </div>
                                                        <!-- C -->
-                                                       <div class="form-group" hidden>
+                                                       <!-- <div class="form-group" hidden>
                                                             <label for="kets"
                                                                  class="control-label col-sm-6">Cukup</label>
                                                             <div class="col-sm-12">
@@ -225,7 +225,7 @@
                                                                       name="cukup" placeholder="Pekerjaan"
                                                                       autocomplete="off" readonly hidden>
                                                             </div>
-                                                       </div>
+                                                       </div> -->
                                                        <!-- TS -->
                                                        <div class="form-group" hidden>
                                                             <label for="kets" class="control-label col-sm-6">Tidak
@@ -406,8 +406,8 @@
                                                   </th>
                                                   <th class="align-middle" scope="col">S
                                                   </th>
-                                                  <th class="align-middle" scope="col">C
-                                                  </th>
+                                                  <!-- <th class="align-middle" scope="col">C
+                                                  </th> -->
                                                   <th class="align-middle" scope="col">TS
                                                   </th>
                                                   <th class="align-middle" scope="col">STS
@@ -439,9 +439,9 @@
                                                   <td class="align-middle">
                                                        <?php echo $d->setuju; ?>
                                                   </td>
-                                                  <td class="align-middle">
+                                                  <!-- <td class="align-middle">
                                                        <?php echo $d->cukup; ?>
-                                                  </td>
+                                                  </td> -->
                                                   <td class="align-middle">
                                                        <?php echo $d->tidak_setuju; ?>
                                                   </td>

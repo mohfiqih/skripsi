@@ -20,7 +20,8 @@ class Report extends MY_Controller
 			"judul"			=> "Hasil Kuesioner",
 			"halaman"			=> "hasil_kuesioner",
 			"view"			=> "hasil_kuesioner",
-			"data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
+			// "data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
+			"data_paket"		=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
 			"user"			=> $data_user
 		);
 

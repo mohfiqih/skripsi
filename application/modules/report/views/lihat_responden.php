@@ -109,7 +109,7 @@
                                    style="position: relative; overflow-x: auto;">
                                    <div class="col-md-12">
                                         <h4 style="margin-left: 15px;">Data Jawaban</h4>
-                                        <table id="example" class="table table-hover mb-0">
+                                        <table id="myTable" class="table table-hover mb-0">
                                              <thead>
                                                   <tr>
                                                        <th class="align-middle" scope="col" style="width: 5px;">No

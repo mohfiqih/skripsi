@@ -1,6 +1,52 @@
 <head>
      <title>Manajerial | Repository & Kuesioner Online</title>
 </head>
+<!-- Berhasil Tambah -->
+<?php if ($this->session->flashdata('notifikasi_tambah')){ ?>
+<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notifikasi_tambah'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+<!-- Gagal Tambah -->
+<?php if ($this->session->flashdata('notifikasi_gagal_tambah')){ ?>
+<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notifikasi_gagal_tambah'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+<!-- Berhasil Hapus -->
+<?php if ($this->session->flashdata('notifikasi_hapus')){ ?>
+<div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notifikasi_hapus'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+<!-- Berhasil Update -->
+<?php if ($this->session->flashdata('notifikasi_berhasil_update')){ ?>
+<div class="alert alert-warning alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notifikasi_berhasil_update'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+<!-- Gagal Update -->
+<?php if ($this->session->flashdata('notifikasi_gagal_update')){ ?>
+<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notifikasi_gagal_update'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
      <strong>Informasi!</strong> Kapasitas upload data maksimal 10 MB hanya untuk data berukuran teks, untuk data besar
      sertakan link pada tambah data!<br />
@@ -31,9 +77,9 @@
                               <div class="col-md-6">
                                    <button style="height: 43px;" type="button"
                                         class=" btn btn-success waves-effect waves-light" data-toggle="modal"
-                                        data-target="#addModal">
-                                        <span class="btn-label"><i class="fa fa-plus"></i></span> Tambah
-                                   </button>
+                                        data-target="#addModal"><span class="btn-label"><i
+                                                  class="fa fa-plus"></i></span>
+                                        <?php echo (uri(2) == 'edit') ? 'Edit Data' : 'Tambah'; ?></button>
                                    <button style="height: 43px;margin-left: 5px;"
                                         class="btn btn-danger dropdown-toggle aves-effect waves-light" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -57,7 +103,9 @@
                                    <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                              <div class="modal-header">
-                                                  <h5 class="modal-title" id="exampleModalLabel">Tambah Paket</h5>
+                                                  <h5 class="modal-title" id="exampleModalLabel">
+                                                       <?php echo (uri(2) == 'edit_paket') ? 'Edit Data' : 'Tambah Data'; ?>
+                                                  </h5>
                                                   <button type="button" class="close" data-dismiss="modal"
                                                        aria-label="Close">
                                                        <span aria-hidden="true">&times;</span>
@@ -67,69 +115,97 @@
                                                   <div class="row">
                                                        <div class="col-md-6">
                                                             <div class="form-floating mb-2">
-                                                                 <label>Nama Paket</label>
-                                                                 <input type="text" class="form-control"
-                                                                      name="nama_paket" placeholder="Nama Paket"
-                                                                      autocomplete="off" required>
-
-                                                            </div>
-                                                            <div class="form-floating mb-2">
                                                                  <label for="example-select-floating">Nama
                                                                       Sistem</label>
-                                                                 <select class="form-control" name="aplikasi"
+                                                                 <select class="form-control" name="nama_apl"
                                                                       aria-label="Floating label select example"
                                                                       required>
                                                                       <option value="">Pilih Sistem
                                                                       </option>
                                                                       <option value="Oase"
+                                                                           <?php if (uri(2) == 'edit') echo $edit->nama_apl == "Oase" ? "selected" : ""; ?>
                                                                            <?php if (uri(1) == "tambah") ?>>
                                                                            Oase</option>
                                                                       <option value="Syncnau"
+                                                                           <?php if (uri(2) == 'edit') echo $edit->nama_apl == "Syncnau" ? "selected" : ""; ?>
                                                                            <?php if (uri(1) == "tambah"); ?>>
                                                                            Syncnau</option>
                                                                  </select>
                                                             </div>
                                                             <div class="form-floating mb-2">
                                                                  <label>Versi Sistem</label>
-                                                                 <input type="text" name="versi_apl_paket"
+                                                                 <input type="text" name="versi_apl"
                                                                       placeholder="Versi Sistem"
                                                                       class="form-control flatpickr-input active"
-                                                                      autocomplete="off" required>
+                                                                      autocomplete="off"
+                                                                      value="<?php echo uri(2) == "edit" ? $edit->versi_apl : ""; ?>"
+                                                                      required>
+                                                            </div>
+                                                            <div class="form-floating mb-2">
+                                                                 <label for="example-select-floating">Penyedia
+                                                                      Sistem</label>
+                                                                 <select class="form-control" name="penyedia_apl"
+                                                                      aria-label="Floating label select example"
+                                                                      required>
+                                                                      <option value="">Pilih Penyedia
+                                                                      </option>
+                                                                      <option value="TIK"
+                                                                           <?php if (uri(2) == 'edit') echo $edit->penyedia_apl == "TIK" ? "selected" : ""; ?>
+                                                                           <?php if (uri(1) == "tambah") ?>>
+                                                                           TIK</option>
+                                                                      <option value="Vendor"
+                                                                           <?php if (uri(2) == 'edit') echo $edit->penyedia_apl == "Vendor" ? "selected" : ""; ?>
+                                                                           <?php if (uri(1) == "tambah"); ?>>
+                                                                           Vendor</option>
+                                                                 </select>
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                 <label>Tanggal Publish</label>
+                                                                 <input
+                                                                      value="<?php echo uri(2) == "edit" ? $edit->tgl_publish : ""; ?>"
+                                                                      type="datetime-local" class="form-control"
+                                                                      name="tgl_publish" placeholder="Tanggal Publish"
+                                                                      required>
                                                             </div>
                                                        </div>
                                                        <div class="col-md-6">
-
                                                             <div class="form-floating mb-2">
                                                                  <label>Link Berkas</label>
-                                                                 <input type="text"
+                                                                 <input
+                                                                      value="<?php echo uri(2) == "edit" ? $edit->link_berkas : ""; ?>"
+                                                                      type="text"
                                                                       class="form-control flatpickr-input active"
-                                                                      name="link_berkas" placeholder="Link Berkas"
-                                                                      autocomplete="off" required>
+                                                                      name="link_berkas"
+                                                                      placeholder="Berkas berukuran besar"
+                                                                      autocomplete="off">
                                                             </div>
-                                                            <label for="example-select-floating">File Berkas</label>
-                                                            <div class="form-control" style="height: 200px;">
+                                                            <label for="example-select-floating">Berkas Kecil</label>
+                                                            <input class="form-control flatpickr-input active"
+                                                                 value="<?php echo uri(2) == "edit" ? $edit->judul : ""; ?>"
+                                                                 type="text" name="file_foto" placeholder="Edit File"
+                                                                 readonly><br />
+                                                            <div class="form-control" style="height: 150px;">
+
                                                                  <input type="file" name="file_foto">
-                                                                 <center>
-                                                                      <div class="dz-message needsclick">
-                                                                           <i
-                                                                                class="h1 text-muted dripicons-cloud-upload"></i><br />
-                                                                           <h5>Max. kapasitas upload
-                                                                                10 MB.</h5>
-                                                                           <span class="text-muted font-13">(Type
-                                                                                berkas jpg, png,
-                                                                                pdf,
-                                                                                doc,
-                                                                                docx,
-                                                                                xlsx)
-                                                                      </div>
-                                                                 </center>
+                                                                 <div class="dz-message needsclick">
+                                                                      <i
+                                                                           class="h1 text-muted dripicons-cloud-upload"></i><br />
+                                                                      <h5>Max. kapasitas upload
+                                                                           10 MB.</h5>
+                                                                      <span class="text-muted font-13">(Type
+                                                                           berkas jpg, png,
+                                                                           pdf,
+                                                                           doc,
+                                                                           docx,
+                                                                           xlsx)
+                                                                 </div>
                                                             </div>
                                                        </div>
                                                   </div>
                                              </div>
                                              <div class="modal-footer">
-                                                  <button type="submit" class="btn btn-success"
-                                                       style="height: 43px;">Tambah</button>
+                                                  <button type=" submit" class="btn btn-success">
+                                                       <?php echo (uri(2) == 'edit') ? 'Update' : 'Tambah'; ?></button>
                                              </div>
                                         </div>
                                    </div>
@@ -184,7 +260,6 @@
                                                             data-mdb-toggle="tooltip"
                                                             class="fas fa-pen text-warning me-3" title="Edit">
                                                        </a>
-
                                                        <a href="<?php echo url(1) .'/hapus/'. enkrip($d->id_m); ?>"
                                                             data-mdb-toggle="tooltip" title="Remove"
                                                             onclick="return confirm('Yakin hapus data <?php echo $d->nama_apl; ?> v<?php echo $d->versi_apl; ?>?')"><i

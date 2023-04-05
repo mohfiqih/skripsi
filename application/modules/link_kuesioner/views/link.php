@@ -12,7 +12,7 @@
           </ol>
      </nav>
 </div>
-<div class="card"><br />
+<div class="card">
      <div class="content">
           <div class="container-fluid">
 
@@ -44,6 +44,7 @@
                                                        Kode
                                                        Sistem</th>
                                                   <th class="align-middle" scope="col">Nama Kuesioner</th>
+                                                  <th class="align-middle" scope="col">Sistem</th>
                                                   <th class="align-middle" scope="col">Versi Sistem</th>
                                                   <th class="align-middle" scope="col" style="width: 10px;">
                                                        Link Kuesioner
@@ -67,6 +68,9 @@
                                                   </th>
                                                   <td class="align-middle">
                                                        <?php echo $d->nama_paket; ?>
+                                                  </td>
+                                                  <td class="align-middle">
+                                                       <?php echo $d->aplikasi; ?>
                                                   </td>
                                                   <td class="align-middle">
                                                        <?php echo $d->versi_apl_paket; ?>

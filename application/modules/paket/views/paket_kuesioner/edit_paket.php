@@ -83,9 +83,8 @@
                                    <div class="form-floating mb-3">
                                         <label>Tanggal Kuesioner</label>
                                         <input value="<?php echo uri(2) == "edit_paket" ? ($d->tgl_kuesioner) : ""; ?>"
-                                             type="datetime" id="basic-datepicker"
-                                             class="form-control flatpickr-input active" name="tgl_kuesioner"
-                                             placeholder="Tanggal" autocomplete="off" required>
+                                             type="datetime-local" class="form-control flatpickr-input active"
+                                             name="tgl_kuesioner" placeholder="Tanggal" autocomplete="off" required>
 
                                    </div>
                                    <div class="card" style="border: 1px solid #CED4DA;">

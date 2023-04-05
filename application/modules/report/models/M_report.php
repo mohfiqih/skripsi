@@ -100,136 +100,63 @@ class M_report extends CI_Model
         return $query;
     }
 
-    function total_soal($where)
+   function total_soal($where)
     {
         $this->db->select('*');
-        $this->db->from('jawaban');
-        $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
+        $this->db->from('kuesioner');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = kuesioner.id_paket_jawaban');
         $this->db->where($where);
         $this->db->order_by('id_paket', 'asc');
         $query = $this->db->get()->num_rows();
         return $query;
     }
+    
+    // Skor Positif
+    function total_ss_p($where)
+    {
+        $this->db->select('*');
+        $this->db->from('kuesioner');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = kuesioner.id_paket_jawaban');
+        $this->db->where($where);
+        $this->db->where('jawaban = "4"');
+        $this->db->order_by('id_paket', 'asc');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
 
-    // // Skor Positif
-    // function total_ss_p($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Positif" and jawaban = "5"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
+    function total_s_p($where)
+    {
+        $this->db->select('*');
+        $this->db->from('kuesioner');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = kuesioner.id_paket_jawaban');
+        $this->db->where($where);
+        $this->db->where('jawaban = "3"');
+        $this->db->order_by('id_paket', 'asc');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
+    
+    function total_ts_p($where)
+    {
+        $this->db->select('*');
+        $this->db->from('kuesioner');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = kuesioner.id_paket_jawaban');
+        $this->db->where($where);
+        $this->db->where('jawaban = "2"');
+        $this->db->order_by('id_paket', 'asc');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
 
-    // function total_s_p($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Positif" and jawaban = "4"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // function total_c_p($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Positif" and jawaban = "3"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // function total_ts_p($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Positif" and jawaban = "2"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // function total_sts_p($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Positif" and jawaban = "1"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // // Skor Negatif
-    // function total_ss_n($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Negatif" and jawaban = "1"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // function total_s_n($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Negatif" and jawaban = "2"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // function total_c_n($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Negatif" and jawaban = "3"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // function total_ts_n($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Negatif" and jawaban = "4"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
-
-    // function total_sts_n($where)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('jawaban');
-    //     $this->db->join('paket_soal', 'paket_soal.id_paket = jawaban.id_paket_jawaban');
-    //     $this->db->where($where);
-    //     $this->db->where('kategori_soal= "Negatif" and jawaban = "5"');
-    //     $this->db->order_by('id_paket', 'asc');
-    //     $query = $this->db->get()->num_rows();
-    //     return $query;
-    // }
+    function total_sts_p($where)
+    {
+        $this->db->select('*');
+        $this->db->from('kuesioner');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = kuesioner.id_paket_jawaban');
+        $this->db->where($where);
+        $this->db->where('jawaban = "1"');
+        $this->db->order_by('id_paket', 'asc');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
 }

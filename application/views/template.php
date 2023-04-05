@@ -3,7 +3,7 @@
 
 <head>
      <meta charset="utf-8">
-     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <title>Kuesioner Evaluasi Sistem - Admin</title>
      <link rel="stylesheet"
           href="<?php echo base_url('assets/template_sky/template/vendors/feather/feather.css'); ?>" />
@@ -11,21 +11,26 @@
           href="<?php echo base_url('assets/template_sky/template/vendors/ti-icons/css/themify-icons.css'); ?>" />
      <link rel="stylesheet"
           href="<?php echo base_url('assets/template_sky/template/vendors/css/vendor.bundle.base.css'); ?>" />
-     <link rel="stylesheet"
-          href="<?php echo base_url('assets/template_sky/template/vendors/datatables.net-bs4/dataTables.bootstrap4.css'); ?>" />
+
      <link rel="stylesheet"
           href="<?php echo base_url('assets/template_sky/template/vendors/ti-icons/css/themify-icons.css'); ?>" />
      <!-- Font Awesome -->
      <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/fontawesome.min.css'); ?>" />
      <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.min.css'); ?>">
 
-     <link rel="stylesheet" type="text/css"
-          href="<?php echo base_url('assets/template_sky/template/js/select.dataTables.min.css'); ?>" />
      <link rel="stylesheet"
           href="<?php echo base_url('assets/template_sky/template/css/vertical-layout-light/style.css'); ?>" />
 
-     <link rel="stylesheet" href="<?php echo base_url('assets/popup/style.css'); ?>" />
+     <!-- <link rel="stylesheet" href="<?php echo base_url('assets/popup/style.css'); ?>" /> -->
      <link rel="shortcut icon" href="<?php echo base_url('assets/backend'); ?>/images/phb.png" />
+
+     <!-- Data Table -->
+     <link rel="stylesheet"
+          href="<?php echo base_url('assets/template_sky/template/vendors/datatables.net-bs4/dataTables.bootstrap4.css'); ?>" />
+     <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+     <link rel="stylesheet" src="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css" />
+
+
 </head>
 
 <body>
@@ -51,7 +56,7 @@
                                    <i class="icon-bell mx-0"></i>
                                    <span class="count"></span>
                               </a>
-                              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                              <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                                    aria-labelledby="notificationDropdown">
                                    <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                                    <a class="dropdown-item preview-item">
@@ -93,7 +98,7 @@
                                              </p>
                                         </div>
                                    </a>
-                              </div>
+                              </div> -->
                          </li>
                          <li class="nav-item nav-profile dropdown">
                               <div class="u-text">
@@ -139,10 +144,8 @@
                     </button>
                </div>
           </nav>
-          <!-- partial -->
           <div class="container-fluid page-body-wrapper">
-               <!-- partial:partials/_settings-panel.html -->
-               <div class="theme-setting-wrapper">
+               <!-- <div class="theme-setting-wrapper">
                     <div id="settings-trigger"><i class="ti-settings"></i></div>
                     <div id="theme-settings" class="settings-panel">
                          <i class="settings-close ti-close"></i>
@@ -174,11 +177,10 @@
                               <div class="tiles dark"></div>
                               <div class="tiles default"></div>
                               <div class="tiles secondary"></div>
-                              <!-- <div class="tiles default"></div> -->
                          </div>
                     </div>
-               </div>
-               <div id="right-sidebar" class="settings-panel">
+               </div> -->
+               <!-- <div id="right-sidebar" class="settings-panel">
                     <i class="settings-close ti-close"></i>
                     <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
                          <li class="nav-item">
@@ -270,7 +272,6 @@
                                    <p class="text-gray mb-0 ">Call Sarah Graves</p>
                               </div>
                          </div>
-                         <!-- To do section tab ends -->
                          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
                               <div class="d-flex align-items-center justify-content-between border-bottom">
                                    <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends
@@ -333,12 +334,8 @@
                                    </li>
                               </ul>
                          </div>
-                         <!-- chat tab ends -->
                     </div>
-               </div>
-               <!-- partial -->
-               <!-- partial:partials/_sidebar.html -->
-
+               </div> -->
                <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav">
 
@@ -406,6 +403,33 @@
                                    <i class="fas fa-chart-line menu-icon"></i>
                                    <span class="menu-title">Chart</span>
                               </a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" data-toggle="collapse" href="#export" aria-expanded="false"
+                                   aria-controls="export">
+                                   <i class="fa-solid fa-file-export menu-icon"></i>
+                                   <span class="menu-title">Export Data</span>
+                                   <i class="menu-arrow"></i>
+                              </a>
+                              <div class="collapse" id="export">
+                                   <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"> <a class="nav-link"
+                                                  href="<?php echo base_url('#') ?>">Export Manajerial</a>
+                                        </li>
+                                        <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
+                                                  Export Berkas</a></li> -->
+                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
+                                                  Export Paket</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
+                                                  Export Pertanyaan</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
+                                                  Export Skala Likert</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
+                                                  Export Komentar</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
+                                                  Export Link</a></li>
+                                   </ul>
+                              </div>
                          </li>
                          <li class="nav-item" style="margin-left: 17px;margin-top: 20px;">
                               <span class="menu-title" style="color: grey;">Master Data</span>
@@ -476,7 +500,7 @@
                                    <i class="icon-bell mx-0"></i>
                                    <span class="count"></span>
                               </a>
-                              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                              <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                                    aria-labelledby="notificationDropdown">
                                    <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                                    <a class="dropdown-item preview-item">
@@ -519,7 +543,7 @@
                                              </p>
                                         </div>
                                    </a>
-                              </div>
+                              </div> -->
                          </li>
                          <li class="nav-item nav-profile dropdown">
                               <div class="u-text">
@@ -671,7 +695,7 @@
                                    <i class="icon-bell mx-0"></i>
                                    <span class="count"></span>
                               </a>
-                              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                              <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                                    aria-labelledby="notificationDropdown">
                                    <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                                    <a class="dropdown-item preview-item">
@@ -714,7 +738,7 @@
                                              </p>
                                         </div>
                                    </a>
-                              </div>
+                              </div> -->
                          </li>
                          <li class="nav-item nav-profile dropdown">
                               <div class="u-text">
@@ -788,7 +812,7 @@
           <!-- partial -->
           <div class="container-fluid page-body-wrapper">
                <!-- partial:partials/_settings-panel.html -->
-               <div class="theme-setting-wrapper">
+               <!-- <div class="theme-setting-wrapper">
                     <div id="settings-trigger"><i class="ti-settings"></i></div>
                     <div id="theme-settings" class="settings-panel">
                          <i class="settings-close ti-close"></i>
@@ -820,11 +844,10 @@
                               <div class="tiles dark"></div>
                               <div class="tiles default"></div>
                               <div class="tiles secondary"></div>
-                              <!-- <div class="tiles default"></div> -->
                          </div>
                     </div>
-               </div>
-               <div id="right-sidebar" class="settings-panel">
+               </div> -->
+               <!-- <div id="right-sidebar" class="settings-panel">
                     <i class="settings-close ti-close"></i>
                     <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
                          <li class="nav-item">
@@ -917,7 +940,6 @@
                                    <p class="text-gray mb-0 ">Call Sarah Graves</p>
                               </div>
                          </div>
-                         <!-- To do section tab ends -->
                          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
                               <div class="d-flex align-items-center justify-content-between border-bottom">
                                    <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">
@@ -987,9 +1009,8 @@
                                    </li>
                               </ul>
                          </div>
-                         <!-- chat tab ends -->
                     </div>
-               </div>
+               </div> -->
                <!-- partial -->
                <!-- partial:partials/_sidebar.html -->
 
@@ -1094,16 +1115,6 @@
      <!-- plugins:js -->
      <script src="<?php echo base_url('assets/template_sky/template/vendors/js/vendor.bundle.base.js'); ?>">
      </script>
-     <!-- endinject -->
-     <!-- Plugin js for this page -->
-     <script src="<?php echo base_url('assets/template_sky/template/vendors/chart.js/Chart.min.js'); ?>"></script>
-     <script src="<?php echo base_url('assets/template_sky/template/vendors/datatables.net/jquery.dataTables.js'); ?>">
-     </script>
-     <script
-          src="<?php echo base_url('assets/template_sky/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js'); ?>">
-     </script>
-     <script src="<?php echo base_url('assets/template_sky/template/js/dataTables.select.min.js'); ?>"></script>
-
      <!-- End plugin js for this page -->
      <!-- inject:js -->
      <script src="<?php echo base_url('assets/template_sky/template/js/off-canvas.js'); ?>"></script>
@@ -1117,42 +1128,53 @@
      <script src="<?php echo base_url('assets/template_sky/template/js/Chart.roundedBarCharts.js'); ?>"></script>
      <!-- End custom js for this page-->
      <!-- Datatables -->
-     <script src="assets/template_new/assets/js/plugin/datatables/datatables.min.js"></script>
+     <!-- <script src="assets/template_new/assets/js/plugin/datatables/datatables.min.js"></script> -->
 
-     <script src="https://cdn.tiny.cloud/1/po9r5rtyigi9k6233qld3yekxkqfn2haky39k30gv8chhdma/tinymce/5/tinymce.min.js"
+     <!-- tinyMCE 6 -->
+     <!-- TinyMCE Textarea -->
+     <script src="https://cdn.tiny.cloud/1/yhd64lts0infdae4tlek33kemrzm6zgj59efv818k4r2oy2o/tinymce/6/tinymce.min.js"
           referrerpolicy="origin"></script>
      <script>
      tinymce.init({
           selector: 'textarea',
-          plugins: 'advlist autolink lists link image charmap preview anchor pagebreak',
-          toolbar_mode: 'floating',
-          forced_root_block: false,
-          forced_p_block: false,
+          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+          tinycomments_mode: 'embedded',
+          tinycomments_author: 'Author name',
+          mergetags_list: [{
+                    value: 'First.Name',
+                    title: 'First Name'
+               },
+               {
+                    value: 'Email',
+                    title: 'Email'
+               },
+          ]
      });
      </script>
 
-     <!-- <script type="text/javascript">
-     $('.clockpicker').clockpicker();
-     </script> -->
-
+     <!-- Datepicker -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
      <script>
-     $(document).ready(function() {
-          $('#myTable').DataTable();
-     });
+     config = {
+          enableTime = true,
+          dateFormat: "Y-m-d H:i",
+     }
+     flatpickr("input[type=datetime-local]", {});
      </script>
 
-     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> -->
-     <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="/resources/demos/style.css">
      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-     <!-- <script>
+     <script>
      $(function() {
           $("#datepicker").datepicker();
      });
      </script> -->
 
-
+     <!-- Jam dan Tanggal Dashboard -->
      <script>
      var dt = new Date();
      document.getElementById("tanggal").innerHTML = dt.toLocaleDateString();
@@ -1182,6 +1204,16 @@
      }
      </script>
 
+     <!-- Data Tabel -->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+     <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+     <script>
+     $(document).ready(function() {
+          $('#myTable').DataTable();
+     });
+     </script>
+
      <script>
      $(document).ready(function() {
           $('#cari').DataTable({
@@ -1192,59 +1224,11 @@
           });
      });
      </script>
-     <!-- Sweet Alert -->
-     <script type="text/javascript">
-     function tambah() {
-          swal({
-               title: "Berhasil!",
-               text: "Data berhasil ditambahkan!",
-               icon: "success",
-               button: true,
-               timer: 5000
-          });
-     }
-     </script>
 
-     <script type="text/javascript">
-     function hapus() {
-          swal({
-               title: "Berhasil!",
-               text: "Data berhasil dihapus!",
-               icon: "success",
-               button: true,
-               timer: 5000
-          });
-     }
-     </script>
-
-     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-     <!-- End Sweet Alert -->
-
-     <!-- Data Tabel -->
-     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
      <script src="https://code.highcharts.com/highcharts.js"></script>
-
-     <!-- jquery -->
-     <script src="https://code.jquery.com/jquery-3.6.4.js"
-          integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap4.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
-
-
+     <!-- Diagram Analisis -->
      <script type="text/javascript">
-     Highcharts.chart('pie', {
+     Highcharts.chart('total_responden', {
           chart: {
                plotBackgroundColor: null,
                plotBorderWidth: null,
@@ -1252,7 +1236,14 @@
                type: 'pie'
           },
           title: {
-               text: ''
+               text: 'Grafik Total Responden',
+               align: 'left'
+          },
+          subtitle: {
+               text: 'Source: <a ' +
+                    'href="https://www.highcharts.com/"' +
+                    'target="_blank">Highchart.com</a>',
+               align: 'left'
           },
           tooltip: {
                pointFormat: '{series.name}: <b>{point.y:1f} Responden</b>'
@@ -1267,9 +1258,9 @@
                     allowPointSelect: true,
                     cursor: 'pointer',
                     dataLabels: {
-                         enabled: true,
-                         format: '<b>{point.name}</b>: {point.y:1f} '
-                    }
+                         enabled: false
+                    },
+                    showInLegend: true
                }
           },
           series: [{
@@ -1291,236 +1282,140 @@
      </script>
      <!-- End Pie Responden -->
 
+     <!-- Grafik Manajerial -->
      <script type="text/javascript">
      Highcharts.chart('manajerial', {
           chart: {
-               plotBackgroundColor: null,
-               plotBorderWidth: null,
-               plotShadow: false,
-               type: 'pie'
+               type: 'bar'
           },
           title: {
-               text: ''
+               text: 'Grafik Total Manajerial Data',
+               align: 'left'
           },
-          tooltip: {
-               pointFormat: '{series.name}: <b>{point.y:1f} Data Manajerial</b>'
+          subtitle: {
+               text: 'Source: <a ' +
+                    'href="https://www.highcharts.com/"' +
+                    'target="_blank">Highchart.com</a>',
+               align: 'left'
           },
-          accessibility: {
-               point: {
-                    valueSuffix: '%'
+          xAxis: {
+               categories: ['Oase', 'Syncnau'],
+               title: {
+                    text: null
                }
           },
+          yAxis: {
+               min: 0,
+               title: {
+                    text: 'Total Data',
+                    align: 'high'
+               },
+               labels: {
+                    overflow: 'justify'
+               }
+          },
+          tooltip: {
+               valueSuffix: ' Data'
+          },
           plotOptions: {
-               pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
+               bar: {
                     dataLabels: {
-                         enabled: true,
-                         format: '<b>{point.name}</b>: {point.y:1f} '
+                         enabled: true
                     }
                }
           },
+          legend: {
+               layout: 'vertical',
+               align: 'right',
+               verticalAlign: 'top',
+               x: -40,
+               y: 80,
+               floating: true,
+               borderWidth: 1,
+               backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+               shadow: true
+          },
+          credits: {
+               enabled: false
+          },
           series: [{
-               name: 'Total',
-               colorByPoint: true,
+               name: 'Total Data',
                data: [
                     <?php
                          if(is_array($data_manajerial)){
                          foreach ($data_manajerial as $d) {
-                              $seb = $d->nama_apl;
+                              $nama = $d->nama_apl;
                               $jml = $d->Jumlah;
-                              echo "{name: '$seb',y: $jml},";
+                              echo "{name: '$nama',y: $jml},";
                          }
                     }  
-                    ?>
+               ?>
                ]
           }]
      });
      </script>
-     <!-- End Pie Responden -->
 
-
-     <!-- Bawah Skipp  -->
-
-     <!-- Kesimpulan -->
-     <!-- <script type="text/javascript">
-     // Create the chart
-     Highcharts.chart('kesimpulan', {
-          chart: {
-               type: 'column'
-          },
-          title: {
-               align: 'center',
-               text: ''
-          },
-          subtitle: {
-               align: 'left',
-               text: ''
-          },
-          accessibility: {
-               announceNewData: {
-                    enabled: true
-               }
-          },
-          xAxis: {
-               type: 'category'
-          },
-          yAxis: {
-               title: {
-                    text: 'Persentase'
-               }
-
-          },
-          legend: {
-               enabled: false
-          },
-          plotOptions: {
-               series: {
-                    borderWidth: 0,
-                    dataLabels: {
-                         enabled: true,
-                         format: '{point.y:1f} %'
-                    }
-               }
-          },
-
-          tooltip: {
-               headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-               pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:2f} Persen</b><br/>'
-          },
-
-          series: [{
-               name: "Persentase",
-               colorByPoint: true,
-               data: [
-                    <?php
-                         if(is_array($data_paket)){
-                         foreach ($data_paket as $d) {
-                              $id = $d->nama_paket;
-                              
-                              $total_id		= "id_paket_jawaban='" . $d->id_paket . "' ";
-                              $tertinggi    = $this->M_dasbor->total_soal($total_id)*5;
-                              $terendah     = $this->M_dasbor->total_soal($total_id)*1;
-
-                              $jml = (($this->M_dasbor->total_ss_p($total_id) + $this->M_dasbor->total_ss_n($total_id))*5)+(($this->M_dasbor->total_s_p($total_id) + $this->M_dasbor->total_s_n($total_id))*4)+(($this->M_dasbor->total_c_p($total_id) + $this->M_dasbor->total_c_n($total_id))*3)+(($this->M_dasbor->total_ts_p($total_id) + $this->M_dasbor->total_ts_n($total_id))*2)+(($this->M_dasbor->total_sts_p($total_id) + $this->M_dasbor->total_sts_n($total_id))*1);
-
-                              // $tertinggi = $this->M_dasbor->total_soal($total_soal)*5;
-                              
-                              $nilai = substr(($jml / $tertinggi) * (100), 0, 5);
-                              
-                              echo "{name: '$id',y: $nilai},";
-                         }
-                    }  
-                    ?>
-               ]
-          }],
-          drilldown: {
-               breadcrumbs: {
-                    position: {
-                         align: 'right'
-                    }
-               },
-               series: [{
-                    name: "Chrome",
-                    id: "Chrome",
-                    data: [
-                         [
-                              "v65.0",
-                              0.1
-                         ]
-                    ]
-               }, ]
-          }
-     });
-     </script> -->
-     <!-- End Kesimpulan -->
-
-     <!-- Total Responden -->
      <script type="text/javascript">
-     // Create the chart
-     Highcharts.chart('responden', {
-          chart: {
-               type: 'column'
-          },
+     Highcharts.chart('grafik_aplikasi', {
+
           title: {
-               align: 'center',
-               text: ''
+               text: 'Grafik Kualitas Sistem',
+               align: 'left'
           },
+
           subtitle: {
-               align: 'left',
-               text: ''
+               text: 'Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>',
+               align: 'left'
           },
-          accessibility: {
-               announceNewData: {
-                    enabled: true
-               }
-          },
-          xAxis: {
-               type: 'category'
-          },
+
           yAxis: {
                title: {
-                    text: 'Total Responden'
+                    text: 'Number of Employees'
                }
+          },
 
-          },
           legend: {
-               enabled: false
+               layout: 'vertical',
+               align: 'right',
+               verticalAlign: 'middle'
           },
+
           plotOptions: {
                series: {
-                    borderWidth: 0,
-                    dataLabels: {
-                         enabled: true,
-                         format: '{point.y:1f}'
-                    }
+                    label: {
+                         connectorAllowed: false
+                    },
+                    pointStart: 2010
                }
-          },
-
-          tooltip: {
-               headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-               pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:2f} Responden</b><br/>'
           },
 
           series: [{
-               name: "Persentase",
-               colorByPoint: true,
-               data: [
-                    <?php
-                         if(is_array($data_responden)){
-                         foreach ($data_responden as $d) {
-                              $id = $d->nama_paket;
-                              
-                              $total_id		= "id_paket='" . $d->id_paket . "' ";
-                              $total_responden = $this->M_dasbor->total_responden($total_id);
+               name: 'Installation & Developers',
+               data: [10, 80, 30, 40, 100]
+          }, {
+               name: 'Manufacturing',
+               data: [20, 40, 70, 100, 110]
+          }, ],
 
-                              echo "{name: '$id',y: $total_responden},";
+          responsive: {
+               rules: [{
+                    condition: {
+                         maxWidth: 500
+                    },
+                    chartOptions: {
+                         legend: {
+                              layout: 'horizontal',
+                              align: 'center',
+                              verticalAlign: 'bottom'
                          }
-                    }  
-                    ?>
-               ]
-          }],
-          drilldown: {
-               breadcrumbs: {
-                    position: {
-                         align: 'right'
                     }
-               },
-               series: [{
-                    name: "Chrome",
-                    id: "Chrome",
-                    data: [
-                         [
-                              "v65.0",
-                              0.1
-                         ]
-                    ]
-               }, ]
+               }]
           }
+
      });
      </script>
 
-     <script>
+     <!-- <script>
      const popup = document.querySelector('.popup');
      const x = document.querySelector('.popup-content h3')
 
@@ -1532,24 +1427,10 @@
           popup.classList.remove('showPopup');
           popup.childNodes[1].classList.remove('showPopup');
      })
-     </script>
-     <!-- End Total Responden -->
+     </script> -->
 
-     <script>
-     $(document).ready(function() {
-          var table = $('#example').DataTable({
-               lengthChange: false,
-               buttons: ['copy', 'excel', 'pdf', 'colvis']
-          });
 
-          table.buttons().container()
-               .appendTo('#example_wrapper .col-md-6:eq(0)');
-     });
-     </script>
-
-     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+     <!-- AJAX JQUERY API CLASSIFICATION -->
      <script type="text/javascript">
      $(function() {
           $('button').click(function() {
@@ -1560,7 +1441,7 @@
                var prodi = $('#inputProdi').val();
                var sebagai = $('#inputSebagai').val();
                var gender = $('#inputGender').val();
-               // var pass = $('#inputPassword').val();
+
                $.ajax({
                     url: 'http://127.0.0.1:5000/testApi',
                     data: $('form').serialize(),
@@ -1576,54 +1457,6 @@
      });
      </script>
 
-     <!-- <script type="text/javascript">
-     $(document).ready(function(e) {
-          $('button').on('click', function() {
-               var form_data = new FormData();
-               var jawaban = form_data["jawaban"];
-
-               form_data.append(
-                    'jawaban': $('#inputJawaban').prop('json')[0]
-               );
-
-               // $('#loading').html(
-               //      '<div style="color: blue;">Sedang memproses...</div>');
-
-               $.ajax({
-                    type: 'POST',
-                    url: 'http://127.0.0.1:5000/testApi', // point to server-side URL
-                    data: $('form_data').serialize(),
-                    // dataType: 'json', // what to expect back from server
-                    // cache: false,
-                    // contentType: false,
-                    // processData: false,
-
-
-                    success: function(response) {
-                         console.log(response);
-                    },
-                    error: function(error) {
-                         console.log(error);
-                    }
-
-                    // success: function(response) { // display success response
-                    //      $('#loading').hide();
-                    //      $('#jawaban').html(response["Data Jawaban"]);
-                    //      $('#klasifikasi').html(response["Hasil Klasifikasi"]);
-                    //      $('#berhasil').html(
-                    //           '<div style="color: green;">Data jawaban berhasil masuk!</div>'
-                    //      );
-                    // },
-                    // error: function(response) {
-                    //      $('#loading').hide();
-                    //      $('#msg').html(
-                    //           '<div style="color: red;">Gambar gagal diproses, cek kembali!</div>'
-                    //      ); // display error response
-                    // }
-               });
-          });
-     });
-     </script> -->
 </body>
 
 </html>

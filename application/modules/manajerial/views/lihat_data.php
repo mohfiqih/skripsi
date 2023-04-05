@@ -66,8 +66,8 @@
                                                        <tr>
                                                             <td>Link Berkas</td>
                                                             <td>:</td>
-                                                            <td><a target="_blank" style="text-decoration: none;"
-                                                                      href="<?php echo $d->link_berkas; ?>"><?php echo $d->link_berkas; ?>
+                                                            <td><a style="text-decoration: none;"
+                                                                      href="#"><?php echo $d->link_berkas; ?>
                                                                  </a>
                                                             </td>
                                                        </tr>

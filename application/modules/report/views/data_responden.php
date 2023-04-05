@@ -21,6 +21,7 @@
                <input type="hidden" name="id_paket" value="<?php echo uri(2) == "edit" ? enkrip($d->id_paket) : ""; ?>">
                <?php
                     $no = 0 + 1;
+                    $this->load->model('M_report');
                     if ($data_paket) {
                     foreach ($data_paket as $d) {
                ?>
@@ -94,12 +95,46 @@
                                                             <?php echo $total_responden; ?> Responden
                                                        </td>
                                                   </tr>
-                                                  <!-- <tr>
-                                                       <th width="150">Jumlah Jawaban</th>
+                                                  <tr>
+                                                       <th width="150">Persentase</th>
                                                        <th width="20">:</th>
-                                                       <td><?php echo $total_soal; ?>
+                                                       <td>
+                                                            <?php
+
+                                                $total_id	  = "id_paket_jawaban='" . $d->id_paket . "' ";
+                                                $tertinggi    = $this->M_report->total_soal($total_id)*5;
+                                                $terendah     = $this->M_report->total_soal($total_id)*1;
+ 
+                                                $total = (($this->M_report->total_ss_p($total_id))*4)+
+                                                (($this->M_report->total_s_p($total_id))*3)+
+                                                (($this->M_report->total_ts_p($total_id))*2)+
+                                                (($this->M_report->total_sts_p($total_id))*1);
+                                                       
+                                                $nilai = substr(($total / $tertinggi) * (100), 0, 5);
+                                                                      
+                                          if ($nilai <= 100 && $nilai >= 80) { ?>
+                                                            <span class="badge bg-success text-white">
+                                                                 <?php echo $nilai ?>%
+                                                            </span>
+                                                            <?php } else if ($nilai <= 79.9 && $nilai >= 60) { ?>
+                                                            <span class="badge bg-success text-white">
+                                                                 <?php echo $nilai ?>%
+                                                            </span>
+                                                            <?php } else if ($nilai <= 59.9 && $nilai >= 40) { ?>
+                                                            <span class="badge bg-warning text-white">
+                                                                 <?php echo $nilai ?>%
+                                                            </span>
+                                                            <?php } else if ($nilai <= 39.9 && $nilai >= 20) { ?>
+                                                            <span class="badge bg-danger text-white">
+                                                                 <?php echo $nilai ?>%
+                                                            </span>
+                                                            <?php } else if ($nilai <= 19.9) { ?>
+                                                            <span class="badge bg-danger text-white">
+                                                                 <?php echo $nilai ?>%
+                                                            </span>
+                                                            <?php } ?>
                                                        </td>
-                                                  </tr> -->
+                                                  </tr>
                                              </tbody>
                                         </table>
                                    </div>

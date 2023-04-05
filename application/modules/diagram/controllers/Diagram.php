@@ -53,16 +53,17 @@ class Diagram extends MY_Controller {
 			"jml_mahasiswa"	=> $this->M_chart->total_mahasiswa(NULL, "kuesioner"),
 			"jml_TI"			=> $this->M_chart->total_TI(NULL, "kuesioner"),
 			"jml_KOM"			=> $this->M_chart->total_KOM(NULL, "kuesioner"),
-			// "jml_TI"			=> $this->M_chart->total_TI(NULL, "kuesioner"),
 			"jml_AK"			=> $this->M_chart->total_AK(NULL, "kuesioner"),
 			"jml_FARM"		=> $this->M_chart->total_FARM(NULL, "kuesioner"),
 			"jml_ASP"			=> $this->M_chart->total_ASP(NULL, "kuesioner"),
 			"jml_PH"			=> $this->M_chart->total_PH(NULL, "kuesioner"),
 			"jml_BID"			=> $this->M_chart->total_BID(NULL, "kuesioner"),
 			"jml_PRW"			=> $this->M_chart->total_PRW(NULL, "kuesioner"),
+			
 			"data_pie"		=> $this->M_chart->grafik_pie(NULL, "kuesioner"),
 			"data_responden"	=> $this->M_chart->total_responden(["id_paket"], "paket_soal"),
 			"data_manajerial"	=> $this->M_chart->grafik_manajerial(NULL, "manajerial"),
+			"data_paket"		=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
 			
 			"user"			=> $data_user,
 	   );

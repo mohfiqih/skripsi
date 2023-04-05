@@ -2,27 +2,6 @@
 
 class Manajerial extends MY_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-
-    /**
-     * [__construct description]
-     *
-     * @method __construct
-     */
     public function __construct()
     {
         // Load the constructer from MY_Controller
@@ -31,13 +10,6 @@ class Manajerial extends MY_Controller {
 		$this->load->model('M_manajerial');
     }
 
-    /**
-     * [index description]
-     *
-     * @method index
-     *
-     * @return [type] [description]
-     */
 	public function meta()
 	{
 	  $data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
@@ -59,30 +31,26 @@ class Manajerial extends MY_Controller {
 		$this->load->view('template', $this->meta());
 	}
 
-	// public function form()
+	public function edit()
+	{
+		$data		= $this->meta();
+		$data["edit"]	= $this->M_Universal->getOne(["id_m" => dekrip(uri(3))], "manajerial");
+		
+		$this->load->view('template', $data);
+	}
+	
+	// public function edit() 
 	// {
 	// 	$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 	// 	$data = array(
-	// 		"judul"		=> "Form Data",
-	// 		"halaman"		=> "tambah_list",
-	// 		"view"		=> "tambah_list",
-	// 		"user"		=> $data_user
+	// 		"judul"			=> "Halaman Edit",
+	// 		"halaman"			=> "edit_form",
+	// 		"view"			=> "edit_form",
+	// 		"data_edit"		=>  $this->M_Universal->getMulti(["id_m" => dekrip(uri(3))], "manajerial"),
+	// 		"user"			=> $data_user
 	// 	);
-	// 	$this->load->view('template', $data, FALSE);
+	// 	$this->load->view('template', $data);
 	// }
-
-	public function edit() 
-	{
-		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
-		$data = array(
-			"judul"			=> "Halaman Edit",
-			"halaman"			=> "edit_form",
-			"view"			=> "edit_form",
-			"data_edit"		=>  $this->M_Universal->getMulti(["id_m" => dekrip(uri(3))], "manajerial"),
-			"user"			=> $data_user
-		);
-		$this->load->view('template', $data);
-	}
 	
 	public function lihat()
 	{
@@ -98,7 +66,7 @@ class Manajerial extends MY_Controller {
 		$this->load->view('template', $data);
 	}
 
-	//backend
+	// fungsi
 	public function tambah()
 	{
 		$config['upload_path'] = './assets/upload/'; //path folder
@@ -148,19 +116,17 @@ class Manajerial extends MY_Controller {
 	    }else{
 								
 		if ($tambah){
-			notifikasi_redirect("success", "Data berhasil ditambah", uri(1));
-			 $this->session->set_flashdata('notifikasi', 'Data berhasil ditambahkan!');
+			 $this->session->set_flashdata('notifikasi_tambah', 'Data manajerial berhasil ditambahkan!');
 			 redirect(uri(1), 'refresh');
 		} else {
-			// notifikasi_redirect("error", "Gagal menambah data", uri(1));
-			$this->session->set_flashdata('notifikasi', 'Username atau password salah!');
+			$this->session->set_flashdata('notifikasi_gagal_tambah', 'Data manajerial gagal ditambahkan!');
 			 redirect(uri(1), 'refresh');
 		};
 
 	    }
 	}
 	
-	public function update_manajerial()
+	public function update()
 	{
 		$id_m	= dekrip($this->input->post("id_m"));
 		
@@ -175,14 +141,11 @@ class Manajerial extends MY_Controller {
 	                if ($this->upload->do_upload('file_foto'))
 	                {
 	                        $gbr = $this->upload->data();
-	                        //Compress Image
 	                        $config['image_library']='gd2';
 	                        $config['source_image']='./assets/upload/'.$gbr['file_name'];
 	                        $config['create_thumb']= FALSE;
 	                        $config['maintain_ratio']= FALSE;
 	                        $config['quality']= '100%';
-	                    //     $config['width']= 800;
-	                    //     $config['height']= 800;
 	                        $config['new_image']= './assets/upload/'.$gbr['file_name'];
 	                        $this->load->library('image_lib', $config);
 	                        $this->image_lib->resize();
@@ -211,9 +174,11 @@ class Manajerial extends MY_Controller {
 	                }           
 	    }else{				
 		if ($update){
-			notifikasi_redirect("success", "Data berhasil diupdate", uri(1));
+			$this->session->set_flashdata('notifikasi_berhasil_update', 'Data manajerial berhasil diupdate!');
+			redirect(uri(1), 'refresh');
 		} else {
-			notifikasi_redirect("error", "Gagal mengupdate data", uri(1));
+			$this->session->set_flashdata('notifikasi_gagal_update', 'Data manajerial gagal diupdate!');
+			redirect(uri(1), 'refresh');
 		};
 
 	    }
@@ -224,25 +189,16 @@ class Manajerial extends MY_Controller {
 		$hapus = $this->M_Universal->delete(["id_m" => dekrip(uri(3))], "manajerial");
 		
 		if ($hapus){
-			notifikasi_redirect("success", "Berhasil menghapus data aplikasi", uri(1));
+			$this->session->set_flashdata('notifikasi_hapus', 'Data manajerial berhasil dihapus');
+			redirect(uri(1), 'refresh');
+			// notifikasi_redirect("success", "Berhasil menghapus data aplikasi", uri(1));
 		} else {
-			notifikasi_redirect("error", "Gagal menghapus data aplikasi", uri(1));
+			$this->session->set_flashdata('notifikasi_gagal_hapus', 'Data manajerial gagal dihapus');
+			redirect(uri(1), 'refresh');
+			// notifikasi_redirect("error", "Gagal menghapus data aplikasi", uri(1));
 		};
 	}
-
-	// public function tambah_berkas()
-	// {
-	// 	$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
-	// 	$data = array(
-	// 		"judul"			=> "Detail Data",
-	// 		"halaman"			=> "tambah_berkas",
-	// 		"view"			=> "tambah_berkas",
-	// 		"data_edit"		=> $this->M_Universal->getMulti(["id_m" => dekrip(uri(3))], "manajerial"),
-	// 		"user"			=> $data_user
-	// 	);
-	// 	$this->load->view('template', $data);
-	// }
-
+	
 	public function download($id){
 		$this->load->helper('download');
 		$fileinfo = $this->M_berkas->download($id);
