@@ -31,7 +31,7 @@ class M_dasbor extends CI_Model
      }
 
 
-          function grafik_pie()
+    function grafik_pie()
      {
         $sql = "SELECT sebagai, COUNT(*) AS Jumlah FROM kuesioner GROUP BY sebagai ORDER BY sebagai";
         $hasil= $this->db->query($sql);
@@ -243,6 +243,11 @@ class M_dasbor extends CI_Model
         $this->db->order_by('id_paket', 'asc');
         $query = $this->db->get()->num_rows();
         return $query;
+    }
+
+    function jumlah_saran($where)
+    {
+        return $this->db->get('klasifikasi')->num_rows();
     }
 }
 ?>

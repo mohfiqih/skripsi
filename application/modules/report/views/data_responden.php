@@ -102,7 +102,7 @@
                                                             <?php
 
                                                 $total_id	  = "id_paket_jawaban='" . $d->id_paket . "' ";
-                                                $tertinggi    = $this->M_report->total_soal($total_id)*5;
+                                                $tertinggi    = $this->M_report->total_soal($total_id)*4;
                                                 $terendah     = $this->M_report->total_soal($total_id)*1;
  
                                                 $total = (($this->M_report->total_ss_p($total_id))*4)+

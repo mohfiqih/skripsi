@@ -109,73 +109,73 @@ class Reset extends MY_Controller
     }
 
     // fungsi password
-//     public function password()
-// 	{
-// 		if($this->input->get('hash'))
-// 		{
-// 			$hash = $this->input->get('hash');
-// 			$this->data['hash']=$hash;
-// 			$getHashDetails = $this->M_Universal->getHahsDetails($hash);
-// 			if($getHashDetails!=false)
-// 			{
-// 				$hash_expiry = $getHashDetails->hash_expiry;
-// 				$currentDate = date('Y-m-d H:i');
-// 				if($currentDate < $hash_expiry)
-// 				{
-// 					if($_SERVER['REQUEST_METHOD']=='POST')
-// 					{
-// 						$this->form_validation->set_rules('currentPassword','Current Password','required');
-// 						$this->form_validation->set_rules('user_password','New Password','required');
-// 						$this->form_validation->set_rules('cpassword','Confirm New Password','required|matches[password]');
-// 						if($this->form_validation->run()==TRUE)
-// 						{
-// 							$currentPassword = sha1($this->input->post('currentPassword'));
-// 							$newPassword = $this->input->post('user_password');
+    public function password()
+	{
+		if($this->input->get('hash'))
+		{
+			$hash = $this->input->get('hash');
+			$this->data['hash']=$hash;
+			$getHashDetails = $this->M_Universal->getHahsDetails($hash);
+			if($getHashDetails!=false)
+			{
+				$hash_expiry = $getHashDetails->hash_expiry;
+				$currentDate = date('Y-m-d H:i');
+				if($currentDate < $hash_expiry)
+				{
+					if($_SERVER['REQUEST_METHOD']=='POST')
+					{
+						$this->form_validation->set_rules('currentPassword','Current Password','required');
+						$this->form_validation->set_rules('user_password','New Password','required');
+						$this->form_validation->set_rules('cpassword','Confirm New Password','required|matches[password]');
+						if($this->form_validation->run()==TRUE)
+						{
+							$currentPassword = sha1($this->input->post('currentPassword'));
+							$newPassword = $this->input->post('user_password');
 
-// 							$validateCurrentPassword = $this->M_Universal->validateCurrentPassword($currentPassword,$hash);
-// 							if($validateCurrentPassword!=false)
-// 							{
-// 								 $newPassword =sha1($newPassword);
-// 								 $data = array(
-// 								 	'user_password'=>$newPassword,
-// 								 	'hash_key'=>null,
-// 								 	'hash_expiry'=>null
-// 								);
-// 								 $this->M_Universal->updateNewPassword($data,$hash);
-// 								 $this->session->set_flashdata('success','Successfully changed Password');
-// 								 redirect(base_url('auth/forgotPassword'));
-// 							}
-// 							else
-// 							{
-// 								$this->session->set_flashdata('error','Current Password is wrong');
-// 								$this->load->view('reset_password',$this->data);	
-// 							}
+							$validateCurrentPassword = $this->M_Universal->validateCurrentPassword($currentPassword,$hash);
+							if($validateCurrentPassword!=false)
+							{
+								 $newPassword =sha1($newPassword);
+								 $data = array(
+								 	'user_password'=>$newPassword,
+								 	'hash_key'=>null,
+								 	'hash_expiry'=>null
+								);
+								 $this->M_Universal->updateNewPassword($data,$hash);
+								 $this->session->set_flashdata('success','Successfully changed Password');
+								 redirect(base_url('auth/forgotPassword'));
+							}
+							else
+							{
+								$this->session->set_flashdata('error','Current Password is wrong');
+								$this->load->view('reset_password',$this->data);	
+							}
 
-// 						}
-// 						else
-// 						{
-// 							$this->load->view('reset_password',$this->data);	
-// 						}
-// 					}
-// 					else
-// 					{
-// 						$this->load->view('reset_password',$this->data);
-// 					}
-// 				}
-// 				else
-// 				{
-// 					$this->session->set_flashdata('error','link is expired');
-// 					redirect(base_url('auth/forgotPassword'));
-// 				}
-// 			}
-// 			else
-// 			{
-// 				echo 'invalid link';exit;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			redirect(base_url('auth/forgotPassword'));
-// 		}
-// 	}
+						}
+						else
+						{
+							$this->load->view('reset_password',$this->data);	
+						}
+					}
+					else
+					{
+						$this->load->view('reset_password',$this->data);
+					}
+				}
+				else
+				{
+					$this->session->set_flashdata('error','link is expired');
+					redirect(base_url('auth/forgotPassword'));
+				}
+			}
+			else
+			{
+				echo 'invalid link';exit;
+			}
+		}
+		else
+		{
+			redirect(base_url('auth/forgotPassword'));
+		}
+	}
 }

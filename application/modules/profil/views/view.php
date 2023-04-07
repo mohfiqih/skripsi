@@ -26,14 +26,12 @@
                                         src="<?php echo base_url().'assets/images/'.$edit->user_foto; ?>" /><br />
                               </center>
 
-                              <!-- <div class="mb-2"><br />
-                                   <label class="form-label">Profile Photo</label>
-                                   <input type="file" class="form-control" name="file_foto" value=""><br />
-                                   <p>Photo files must be jpg, png and jpeg and file size
-                                        must be
-                                        under 2MB<br />
+                              <div class="mb-2"><br />
+                                   <label class="form-label">Profile Photo</label><br />
+                                   <p>Untuk mengubah foto profil, pilih menu Edit Profil pada icon profil anda.
+                                        Terimakasih<br />
                                    </p>
-                              </div> -->
+                              </div>
                          </div>
                     </div>
                </div>
@@ -46,10 +44,31 @@
                                    <input type="text" class="form-control" name="user_nama"
                                         value="<?php echo $edit->user_id; ?>" readonly>
                               </div>
+                              <!-- If Else ID Identitas -->
+                              <?php if ($this->user_level == "Super Admin"):?>
+                              <div class="mb-2">
+                                   <label class="form-label">ID Admin</label>
+                                   <input type="text" class="form-control" value="<?php echo $edit->username_id; ?>"
+                                        readonly>
+                              </div>
+                              <?php elseif ($this->user_level == "Dosen" && $this->user_level == "Pengevaluasi"):?>
+                              <div class="mb-2">
+                                   <label class="form-label">NIPY</label>
+                                   <input type="text" class="form-control" value="<?php echo $edit->username_id; ?>"
+                                        readonly>
+                              </div>
+                              <?php elseif ($this->user_level == "Mahasiswa"):?>
+                              <div class="mb-2">
+                                   <label class="form-label">NIM</label>
+                                   <input type="text" class="form-control" value="<?php echo $edit->username_id; ?>"
+                                        readonly>
+                              </div>
+                              <?php endif; ?>
+
                               <div class="mb-2">
                                    <label class="form-label">Username</label>
                                    <input type="text" class="form-control" name="user_nama"
-                                        value="<?php echo $edit->user_nama; ?>" readonly>
+                                        value="<?php echo $edit->email; ?>" readonly>
                               </div>
                               <div class="mb-2">
                                    <label class="form-label">Nama Lengkap</label>
@@ -60,6 +79,31 @@
                                    <label class="form-label">Sebagai</label>
                                    <input type="text" class="form-control" name="nama_lengkap"
                                         value="<?php echo $edit->user_level; ?>" readonly>
+                              </div>
+                              <?php if ($this->user_level == "Super Admin" && $this->user_level == "Pengevaluasi"):?>
+                              <div class="mb-2">
+                                   <label class="form-label">Bidang</label>
+                                   <input type="text" class="form-control" name="nama_lengkap"
+                                        value="<?php echo $edit->user_prodi; ?>" readonly>
+                              </div>
+                              <?php elseif ($this->user_level == "Dosen"):?>
+                              <div class="mb-2">
+                                   <label class="form-label">Prodi</label>
+                                   <input type="text" class="form-control" name="nama_lengkap"
+                                        value="<?php echo $edit->user_prodi; ?>" readonly>
+                              </div>
+                              <?php elseif ($this->user_level == "Mahasiswa"):?>
+                              <div class="mb-2">
+                                   <label class="form-label">Prodi</label>
+                                   <input type="text" class="form-control" name="nama_lengkap"
+                                        value="<?php echo $edit->user_prodi; ?>" readonly>
+                              </div>
+                              <?php endif; ?>
+
+                              <div class="mb-2">
+                                   <label class="form-label">Jenis Kelamin</label>
+                                   <input type="text" class="form-control" name="nama_lengkap"
+                                        value="<?php echo $edit->user_gender; ?>" readonly>
                               </div>
                          </div> <!-- end col -->
                     </div>

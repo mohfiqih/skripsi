@@ -100,56 +100,55 @@
           </div>
      </div>
 </div>
-<div class="container-fluid">
-     <div class="row">
-          <div class="col-md-3 mb-2">
-               <div class="card card-light-blue">
-                    <a href="<?php echo base_url('report/komentar'); ?>" class="dropdown-item">
-                         <div class="card-body">
-                              <center>
-                                   <h4 class="header-title mt-0 mb-3"></h4>
-                              </center>
-
-                              <div class="widget-box-2">
-                                   <div class="widget-detail-2 text-end">
-                                        <center>
-                                             <h2 class="fw-normal text-white" data-plugin="counterup">
-                                                  <?php echo $jml_soal; ?> </h2>
-                                             <p class="text-white mb-3">Label Baik</p>
-                                        </center>
-                                   </div>
-                              </div>
-                         </div>
-                    </a>
+<div class="row">
+     <div class="col-md-2 mb-4 stretch-card transparent">
+          <div class="card card-tale">
+               <div class="card-body">
+                    <center>
+                         <p class="mb-4">Label Baik</p><br />
+                         <p class="fs-30 mb-2"><?php echo $jml_baik; ?></p>
+                         <p>Baik</p>
+                    </center>
                </div>
           </div>
-          <div class="col-md-3 mb-4">
-               <div class="card card-light-danger">
-                    <a href="<?php echo base_url('report/komentar'); ?>" class="dropdown-item">
-                         <div class="card-body">
-                              <center>
-                                   <h4 class="header-title mt-0 mb-3"></h4>
-                              </center>
-
-                              <div class="widget-box-2">
-                                   <div class="widget-detail-2 text-end">
-                                        <center>
-                                             <h2 class="fw-normal text-white" data-plugin="counterup">
-                                                  <?php echo $jml_soal; ?> </h2>
-                                             <p class="text-white mb-3">Label Kurang</p>
-                                        </center>
-                                   </div>
-                              </div>
-                         </div>
-                    </a>
+     </div>
+     <div class="col-md-2 mb-4 stretch-card transparent">
+          <div class="card card-dark-blue">
+               <div class="card-body">
+                    <center>
+                         <p class="mb-4">Label Kurang</p><br />
+                         <p class="fs-30 mb-2"><?php echo $jml_kurang; ?></p>
+                         <p>Paket</p>
+                    </center>
+               </div>
+          </div>
+     </div>
+     <div class="col-md-2 mb-4 stretch-card transparent">
+          <div class="card card-light-blue">
+               <div class="card-body">
+                    <center>
+                         <p class="mb-4">Jumlah Saran</p><br />
+                         <p class="fs-30 mb-2"><?php echo $jml_saran; ?></p>
+                         <p>Saran</p>
+                    </center>
+               </div>
+          </div>
+     </div>
+     <div class="col-md-2 mb-4 stretch-card transparent">
+          <div class="card card-light-danger">
+               <div class="card-body">
+                    <center>
+                         <p class="mb-4">Paket Kuesioner</p><br />
+                         <p class="fs-30 mb-2"><?php echo $jml_paket; ?></p>
+                         <p>Paket</p>
+                    </center>
                </div>
           </div>
      </div>
 </div>
 <div class="row">
      <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="card" style="margin-right: 12px;margin-left: 12px;">
-
+          <div class="card">
                <div class="card-body">
                     <h5>Analisis Skala Likert</h5>
                     <p style="width: 300px;">Berikut hasil analisis dari skala likert setiap paket kuesioner</p>
@@ -256,13 +255,17 @@
                     </div>
                </div>
           </div>
-          <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
-               <div class="card">
-                    <div class="card-body">
-                         <div class="table-responsive">
-                              <figure class="highcharts-figure">
-                                   <div id="total_responden"></div>
-                              </figure>
+          <div class="card" style="margin-top: 15px;">
+               <div class="card-body">
+                    <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
+                         <div class="card">
+                              <div class="card-body">
+                                   <div class="table-responsive">
+                                        <figure class="highcharts-figure">
+                                             <div id="total_responden"></div>
+                                        </figure>
+                                   </div>
+                              </div>
                          </div>
                     </div>
                </div>
@@ -270,7 +273,7 @@
      </div>
 
      <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="card" style="margin-right: 12px;margin-left: 12px;">
+          <div class="card">
                <div class="card-body">
                     <h5>Analisis Klasifikasi</h5>
                     <p style="width: 300px;">Berikut hasil analisis dari klasifikasi komentar setiap paket kuesioner</p>
@@ -347,31 +350,39 @@
                     </div>
                </div>
           </div>
-          <div class="card" style="margin-right: 12px;margin-left: 12px;margin-top: 15px;">
+          <div class="card" style="margin-top: 15px;">
                <div class="card-body">
-                    <div class="table-responsive">
-                         <figure class="highcharts-figure">
-                              <div id="manajerial"></div>
-                         </figure>
-                    </div>
-               </div>
-          </div>
-     </div>
-     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
-               <div class="card">
-                    <div class="card-body">
-                         <div class="table-responsive">
-                              <figure class="highcharts-figure">
-                                   <div id="grafik_aplikasi"></div>
-                              </figure>
+                    <div class="card" style="margin-right: 12px;margin-left: 12px;margin-top: 15px;">
+                         <div class="card-body">
+                              <div class="table-responsive">
+                                   <figure class="highcharts-figure">
+                                        <div id="manajerial"></div>
+                                   </figure>
+                              </div>
                          </div>
                     </div>
                </div>
           </div>
      </div>
 
-     <!-- <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
+     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
+          <div class="card">
+               <div class="card-body">
+                    <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
+                         <div class="card">
+                              <div class="card-body">
+                                   <div class="table-responsive">
+                                        <figure class="highcharts-figure">
+                                             <div id="grafik_aplikasi"></div>
+                                        </figure>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+          <!-- <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
           <div class="card">
                <div class="card-body" style="height: 260px;overflow: auto;">
                     <h4 class="header-title mt-0 mb-3">
@@ -472,9 +483,8 @@
                </div>
           </div>
      </div> -->
-</div>
-<div class="row">
-     <div class="col-xl-6 col-md-6" style="margin-right: 12px;margin-left: 12px;">
+     </div>
+     <div class="col-xl-6 col-md-6" style="margin-top: 20px;">
           <div class="card">
                <div class="card-body" style="height: 260px;overflow: auto;">
                     <h4 class="header-title mt-0 mb-3">Total Responden
@@ -507,21 +517,7 @@
                </div>
           </div>
      </div>
-     <!-- <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="card">
-               <div class="card-body">
-                    <h4 class="header-title mt-0 mb-3">
-                         <center>Diagram Kategori Responden</center>
-                    </h4>
-                    <div class="table-responsive" style="overflow: auto;">
-                         <figure class="highcharts-figure">
-                              <div id="pie"></div>
-                         </figure>
-                    </div>
-               </div>
-          </div>
-     </div> -->
-</div><br />
+</div>
 
 <!-- ---------------------------------------- LEVEL PENGEVALUASI (P2M) ------------------------------------------->
 <!-- ---------------------------------------- LEVEL PENGEVALUASI (P2M) ------------------------------------------->
@@ -670,7 +666,6 @@
                                    <?php
                                    date_default_timezone_set("Asia/jakarta");
                               ?>
-
                                    <h5 class="btn btn-sm btn-light bg-white"><i class="fa-solid fa-clock"></i>
                                         <span id="jam"><button class="btn btn-sm btn-light bg-white" type="button">
                                         </span>
@@ -688,28 +683,36 @@
           </div>
      </div>
      <div class="row">
-          <div class="col-md-8 grid-margin stretch-card">
-
-               <div class="card tale-bg">
-                    <!-- <div class="card-people mt-auto">
-                         <img src="<?php echo base_url('assets/auth/images/dashboard.png') ?>" alt="people">
-                         <div class="weather-info">
-                         </div>
-                    </div> -->
+          <div class="col-md-8 grid-margin transparent">
+               <div class="card tale-bg stretch-card transparent" style="">
                     <div class="alert alert-dark" role="alert">
                          <h4 class="alert-heading">Informasi Sistem!</h4>
                          <hr>
                          <p>Dalam rangka untuk pengembangan sistem kedepannya, mohon untuk
                               pengguna
                               sistem bisa memberikan ulasan pada
-                              kuesioner berikut ini, isi dengan jujur selama anda menggunakan sistem tersebut. Jika ada
+                              kuesioner berikut ini, isi dengan jujur selama anda menggunakan sistem tersebut. Jika
+                              ada
                               kendala sampaikan dalam kolom komentar. Terimakasih.</p>
                          <hr>
+                         <?php
+                              $no=0+1;
+                                   if ($data_paket){
+                                        foreach ($data_paket as $d){ 
+                         ?>
+                         <p class="mb-0">Kuesioner :
+                              <a style="text-align: justify;text-decoration: none;"><?php echo $d->aplikasi; ?>
+                                   v<?php echo $d->versi_apl_paket; ?></a>
+                         </p>
                          <p class="mb-0">Link Kuesioner :<br />
                               <a style="text-align: justify;text-decoration: none;"
-                                   href="https://localhost/web_skripsi/kuesioner/skala/VUpCaWQvTEdhWGNWRGh6YUxWdUlIZw">https://localhost/web_skripsi/kuesioner/skala/VUpCaWQvTEdhWGNWRGh6YUxWdUlIZw</a>
-                         </p>
+                                   href="<?php echo base_url('kuesioner/skala/') . enkrip($d->id_paket); ?>"><?php echo base_url('kuesioner/skala/') . enkrip($d->id_paket); ?></a>
+                         </p><br />
+                         <?php }} else { ?>
+                         <td class="text-center" colspan="6">Tidak ada data</td>
+                         <?php } ?>
                     </div>
+
                </div>
           </div>
      </div>

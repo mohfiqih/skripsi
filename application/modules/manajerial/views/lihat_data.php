@@ -88,7 +88,7 @@
                                                             <td>:</td>
                                                             <td>
                                                                  <a style="text-decoration: none;"
-                                                                      href="<?php echo base_url('bankberkas/lihat/'). uri(3); ?>">Lihat
+                                                                      href="<?php echo base_url('berkas/lihat/'). uri(3); ?>">Lihat
                                                                       Berkas</a>
                                                             </td>
                                                        </tr>

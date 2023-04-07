@@ -1,3 +1,6 @@
+<!----------------------------------- Form Login Super Admin ------------------------------------>
+<!----------------------------------- Form Login Super Admin ------------------------------------>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,7 +22,7 @@
 
      <link rel="shortcut icon" href="<?php echo base_url('assets/backend'); ?>/images/phb.png">
 
-     <title>Login Repository & Evaluasi</title>
+     <title>Login | Repository</title>
 
      <script>
      $(window).load(function() {
@@ -55,7 +58,6 @@
                                    </div>
 
                                    <form action="auth/proses" method="POST">
-
                                         <!-- Notif Salah Username Password -->
                                         <?php if ($this->session->flashdata('notifikasi')){ ?>
                                         <div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert"
@@ -106,16 +108,17 @@
                                                   <div class="control__indicator"></div>
                                              </label>
                                              <span class="ml-auto"><a
-                                                       href="<?php echo base_url('reset/forgotPassword') ?>"
+                                                       href="<?php echo base_url('auth/forgotPassword') ?>"
                                                        class="forgot-pass">Forgot
                                                        Password?</a></span>
                                         </div>
 
                                         <input type="submit" value="Login" class="btn btn-block btn-primary">
 
-                                        <span class="d-block text-left my-4 text-muted">Copyright Repo - Moh.
+                                        <span class="d-block text-left my-4 text-muted"> Copyright &copy; Repository
+                                             Evaluasi -
+                                             Moh.
                                              Fiqih</span>
-
                                    </form>
                               </div>
                          </div>
@@ -130,3 +133,9 @@
 </body>
 
 </html>
+
+<!----------------------------------- Form Login Pengevaluasi (SPMI) ------------------------------------>
+<!----------------------------------- Form Login Pengevaluasi (SPMI) ------------------------------------>
+
+<!----------------------------------- Form Login Dosen & Mahasiswa ------------------------------------>
+<!----------------------------------- Form Login Dosen & Mahasiswa ------------------------------------>

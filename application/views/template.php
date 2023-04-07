@@ -4,7 +4,7 @@
 <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <title>Kuesioner Evaluasi Sistem - Admin</title>
+     <title>Kuesioner Evaluasi Sistem</title>
      <link rel="stylesheet"
           href="<?php echo base_url('assets/template_sky/template/vendors/feather/feather.css'); ?>" />
      <link rel="stylesheet"
@@ -169,7 +169,7 @@
                               </a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link" href="<?php echo base_url('bankberkas'); ?>">
+                              <a class="nav-link" href="<?php echo base_url('berkas'); ?>">
                                    <i class="fa-solid fa-file menu-icon"></i>
                                    <span class="menu-title">Data Berkas</span>
                               </a>
@@ -504,50 +504,6 @@
                                    <i class="icon-bell mx-0"></i>
                                    <span class="count"></span>
                               </a>
-                              <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                                   aria-labelledby="notificationDropdown">
-                                   <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                                   <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                             <div class="preview-icon bg-success">
-                                                  <i class="ti-info-alt mx-0"></i>
-                                             </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                             <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                                             <p class="font-weight-light small-text mb-0 text-muted">
-                                                  Just now
-                                             </p>
-                                        </div>
-                                   </a>
-                                   <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                             <div class="preview-icon bg-warning">
-                                                  <i class="ti-settings mx-0"></i>
-                                             </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                             <h6 class="preview-subject font-weight-normal">Settings</h6>
-                                             <p class="font-weight-light small-text mb-0 text-muted">
-                                                  Private message
-                                             </p>
-                                        </div>
-                                   </a>
-                                   <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                             <div class="preview-icon bg-info">
-                                                  <i class="ti-user mx-0"></i>
-                                             </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                             <h6 class="preview-subject font-weight-normal">New user registration
-                                             </h6>
-                                             <p class="font-weight-light small-text mb-0 text-muted">
-                                                  2 days ago
-                                             </p>
-                                        </div>
-                                   </a>
-                              </div> -->
                          </li>
                          <li class="nav-item nav-profile dropdown">
                               <div class="u-text">
@@ -990,6 +946,105 @@
 
      });
      </script>
+
+     <!-- Kesimpulan -->
+     <script type="text/javascript">
+     // Create the chart
+     Highcharts.chart('kesimpulan', {
+          chart: {
+               type: 'column'
+          },
+          title: {
+               text: 'Grafik Persentase Kuesioner',
+               align: 'left'
+          },
+          subtitle: {
+               text: 'Source: <a ' +
+                    'href="https://www.highcharts.com/"' +
+                    'target="_blank">Highchart.com</a>',
+               align: 'left'
+          },
+          accessibility: {
+               announceNewData: {
+                    enabled: true
+               }
+          },
+          xAxis: {
+               type: 'category'
+          },
+          yAxis: {
+               title: {
+                    text: 'Persentase'
+               }
+
+          },
+          legend: {
+               enabled: false
+          },
+          plotOptions: {
+               series: {
+                    borderWidth: 0,
+                    dataLabels: {
+                         enabled: true,
+                         format: '{point.y:1f} %'
+                    }
+               }
+          },
+
+          tooltip: {
+               headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+               pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:2f} Persen</b><br/>'
+          },
+
+          series: [{
+               name: "Persentase",
+               colorByPoint: true,
+               data: [
+                    <?php
+                    $this->load->model('M_chart');
+                         if(is_array($data_paket)){
+                         foreach ($data_paket as $d) {
+                              $id = $d->nama_paket;
+                              // $versi = $d->versi_apl_paket;
+                              // $id_versi = $id+$versi;
+                              
+                              $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
+                              $tertinggi    = $this->M_chart->total_soal($total_id)*4;
+                              $terendah     = $this->M_chart->total_soal($total_id)*1;
+
+                              $jml = (($this->M_chart->total_ss_p($total_id))*4)+
+                                             (($this->M_chart->total_s_p($total_id))*3)+
+                                             (($this->M_chart->total_ts_p($total_id))*2)+
+                                             (($this->M_chart->total_sts_p($total_id))*1);
+                                             
+                              $nilai = substr(($jml / $tertinggi) * (100), 0, 4);
+                              
+                              echo "{name: '$id',y: $nilai},";
+                         }
+                    }  
+                    ?>
+               ]
+          }],
+          drilldown: {
+               breadcrumbs: {
+                    position: {
+                         align: 'right'
+                    }
+               },
+               series: [{
+                    name: "Chrome",
+                    id: "Chrome",
+                    data: [
+                         [
+                              "v65.0",
+                              0.1
+                         ]
+                    ]
+               }, ]
+          }
+     });
+     </script>
+     <!-- End Kesimpulan -->
 
      <!-- <script>
      const popup = document.querySelector('.popup');

@@ -3,7 +3,7 @@
 
 <head>
      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-     <title>Reset Password Email</title>
+     <title>Reset Password to Email</title>
      <meta name="description" content="Reset Password Email Template.">
      <style type="text/css">
      a:hover {
@@ -61,7 +61,7 @@
                                                        following link and follow the instructions.
                                                   </p><br />
                                                   <center>
-                                                       <form action="<?=base_url('reset/forgotPassword')?>"
+                                                       <form action="<?=base_url('auth/forgotPassword')?>"
                                                             method="post">
                                                             <input type="email" class="form-control" name="email"
                                                                  style="width: 250px;" placeholder="Masukan Email anda"
@@ -81,11 +81,10 @@
                                                                       <?php echo validation_errors(); ?></p>
                                                             </div>
 
-                                                            <div class="col-6">
-                                                                 <button type="submit"
-                                                                      class="btn btn-primary btn-block">Send Reset
-                                                                      Link</button>
-                                                            </div>
+                                                            <button style="width: 250px;" type="submit"
+                                                                 class="btn btn-primary btn-block">Send
+                                                                 Reset
+                                                                 Link</button>
                                                        </form>
                                                   </center>
                                              </td>

@@ -57,15 +57,6 @@ class Paket extends MY_Controller {
 		};
 	}
 
-     // # Load View
-	// public function edit_paket()
-	// {
-	// 	$data			= $this->meta();
-	// 	$data["edit_paket"]	= $this->M_Universal->getOne(["id_paket" => dekrip(uri(3))], "paket_soal");
-		
-	// 	$this->load->view('template', $data);
-	// }
-
      public function edit_paket()
 	{
 		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");

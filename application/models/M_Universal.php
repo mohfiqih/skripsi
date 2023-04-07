@@ -208,6 +208,40 @@ class M_Universal extends CI_Model
         return $query;
     }
 
+    function checkUser($email,$password)
+	{
+		$query = $this->db->query("SELECT * from user where email='$email' AND password='$password'");
+		if($query->num_rows()==1)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function checkCurrentPassword($currentPassword)
+	{
+		$userid = $this->session->userdata('LoginSession')['user_id'];
+		$query = $this->db->query("SELECT * from user WHERE user_id='$userid' AND password='$currentPassword' ");
+		if($query->num_rows()==1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function updatePassword($password)
+	{
+		$userid = $this->session->userdata('LoginSession')['user_id'];
+		$query = $this->db->query("update  users set password='$password' WHERE user_id='$userid' ");
+		
+	}
+    
     // Validasi Email
     public function validateEmail($email)
 	{

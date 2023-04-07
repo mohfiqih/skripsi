@@ -44,7 +44,8 @@ class Dasbor extends MY_Controller {
 			"data_klasifikasi"	=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
 
 			"jml_baik"		=> $this->M_dasbor->label_baik(["id_paket"], "klasifikasi"),
-			"jml_kurang"		=> $this->M_dasbor->label_baik(["id_paket"], "klasifikasi"),
+			"jml_kurang"		=> $this->M_dasbor->label_kurang(["id_paket"], "klasifikasi"),
+			"jml_saran"		=> $this->M_dasbor->jumlah_saran(["id_paket"], "klasifikasi"),
 			"user"			=> $data_user,
 			"paket"			=> $data_paket
 	   );

@@ -33,7 +33,7 @@
 
 <!-- Berhasil Update -->
 <?php if ($this->session->flashdata('notifikasi_berhasil_update')){ ?>
-<div class="alert alert-warning alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+<div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
      <span class="btn-label"></span><?php echo $this->session->flashdata('notifikasi_berhasil_update'); ?>
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -185,11 +185,11 @@
                                                             <label for="example-select-floating">Berkas Kecil</label>
                                                             <input class="form-control flatpickr-input active"
                                                                  value="<?php echo uri(2) == "edit" ? $edit->judul : ""; ?>"
-                                                                 type="text" name="file_foto" placeholder="Edit File"
+                                                                 type="text" name="file" placeholder="Edit File"
                                                                  readonly><br />
                                                             <div class="form-control" style="height: 150px;">
 
-                                                                 <input type="file" name="file_foto">
+                                                                 <input type="file" name="file">
                                                                  <div class="dz-message needsclick">
                                                                       <i
                                                                            class="h1 text-muted dripicons-cloud-upload"></i><br />
@@ -258,11 +258,11 @@
                                                             data-mdb-toggle="tooltip"
                                                             class="fas fa-eye text-success me-3" title="Detail">
                                                        </a>
-                                                       <a href="<?php echo url(1) .'/edit/'. enkrip($d->id_m); ?>"
+                                                       <!-- <a href="<?php echo url(1) .'/edit/'. enkrip($d->id_m); ?>"
                                                             style="margin-right: 10px;text-decoration: none;"
                                                             data-mdb-toggle="tooltip"
                                                             class="fas fa-pen text-warning me-3" title="Edit">
-                                                       </a>
+                                                       </a> -->
                                                        <a href="<?php echo url(1) .'/hapus/'. enkrip($d->id_m); ?>"
                                                             data-mdb-toggle="tooltip" title="Remove"
                                                             onclick="return confirm('Yakin hapus data <?php echo $d->nama_apl; ?> v<?php echo $d->versi_apl; ?>?')"><i

@@ -1,4 +1,4 @@
-<div style="margin-right: 12px;margin-left: 12px;">
+<div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
           aria-label="breadcrumb">
           <ol class="breadcrumb bg-primary">
@@ -10,14 +10,15 @@
      </nav>
 </div>
 <div class="row">
-     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="card" style="margin-right: 12px;margin-left: 12px;">
-
+     <div class="col-xl-6 col-md-6" style="margin-top: 20px;">
+          <div class="card">
                <div class="card-body">
-                    <h5>Analisis Skala Likert</h5>
-                    <p style="width: 300px;">Berikut hasil analisis dari skala likert setiap paket kuesioner</p>
+                    <div class="card" style="margin-left: 20px;margin-top: 20px;">
+                         <h5>Analisis Skala Likert</h5>
+                         <p style="width: 250px;">Berikut hasil analisis dari skala likert setiap paket kuesioner</p>
+                    </div>
                     <br />
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="overflow-x: auto;">
                          <table id="cari_skala" class="table table-hover mb-0">
                               <thead>
                                    <tr>
@@ -39,7 +40,6 @@
                                         <td><?php echo $d->nama_paket; ?> v.<?php echo $d->versi_apl_paket; ?></td>
                                         <td>
                                              <?php
-
                                                 $total_id	  = "id_paket_jawaban='" . $d->id_paket . "' ";
                                                 $tertinggi    = $this->M_chart->total_soal($total_id)*4;
                                                 $terendah     = $this->M_chart->total_soal($total_id)*1;
@@ -119,26 +119,34 @@
                     </div>
                </div>
           </div>
-          <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
-               <div class="card">
-                    <div class="card-body">
-                         <div class="table-responsive">
-                              <figure class="highcharts-figure">
-                                   <div id="total_responden"></div>
-                              </figure>
+
+          <div class="card" style="margin-top: 15px;">
+               <div class="card-body">
+                    <div class="card" style="margin-right: 12px;margin-top: 15px;">
+                         <div class="card-body">
+                              <div class="table-responsive">
+                                   <figure class="highcharts-figure">
+                                        <div id="kesimpulan"></div>
+                                   </figure>
+                              </div>
                          </div>
                     </div>
                </div>
           </div>
+
      </div>
 
-     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="card" style="margin-right: 12px;margin-left: 12px;">
+     <div class="col-xl-6 col-md-6" style="margin-top: 20px;">
+          <div class="card">
                <div class="card-body">
-                    <h5>Analisis Klasifikasi</h5>
-                    <p style="width: 300px;">Berikut hasil analisis dari klasifikasi komentar setiap paket kuesioner</p>
+                    <div class="card" style="margin-left: 20px;margin-top: 20px;">
+                         <h5>Analisis Klasifikasi</h5>
+                         <p style="width: 250px;">Berikut hasil analisis dari klasifikasi komentar setiap paket
+                              kuesioner</p>
+                    </div>
+
                     <br />
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="overflow-x: auto;">
                          <table id="cari_klasifikasi" class="table table-hover mb-0">
                               <thead>
                                    <tr>
@@ -210,31 +218,59 @@
                     </div>
                </div>
           </div>
-          <div class="card" style="margin-right: 12px;margin-left: 12px;margin-top: 15px;">
+
+          <div class="card" style="margin-top: 15px;">
                <div class="card-body">
-                    <div class="table-responsive">
-                         <figure class="highcharts-figure">
-                              <div id="manajerial"></div>
-                         </figure>
-                    </div>
-               </div>
-          </div>
-     </div>
-     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
-               <div class="card">
-                    <div class="card-body">
-                         <div class="table-responsive">
-                              <figure class="highcharts-figure">
-                                   <div id="grafik_aplikasi"></div>
-                              </figure>
+                    <div class="card" style="margin-right: 12px;margin-top: 15px;">
+                         <div class="card-body">
+                              <div class="table-responsive">
+                                   <figure class="highcharts-figure">
+                                        <div id="manajerial"></div>
+                                   </figure>
+                              </div>
                          </div>
                     </div>
                </div>
           </div>
      </div>
 
-     <!-- <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
+     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
+          <div class="card">
+               <div class="card-body">
+                    <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
+                         <div class="card">
+                              <div class="card-body">
+                                   <div class="table-responsive">
+                                        <figure class="highcharts-figure">
+                                             <div id="grafik_aplikasi"></div>
+                                        </figure>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+     </div>
+     <div class="col-xl-6 col-md-6">
+          <div class="card" style="margin-top: 15px;">
+               <div class="card-body">
+                    <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
+                         <div class="card">
+                              <div class="card-body">
+                                   <div class="table-responsive">
+                                        <figure class="highcharts-figure">
+                                             <div id="total_responden"></div>
+                                        </figure>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+<!-- <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
           <div class="card">
                <div class="card-body" style="height: 260px;overflow: auto;">
                     <h4 class="header-title mt-0 mb-3">
@@ -335,4 +371,3 @@
                </div>
           </div>
      </div> -->
-</div>
