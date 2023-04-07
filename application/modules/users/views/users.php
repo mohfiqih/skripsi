@@ -2,6 +2,66 @@
      <title>Data Users | Repository & Kuesioner Online</title>
 </head>
 
+<!-- Berhasil Tambah -->
+<?php if ($this->session->flashdata('notif_add')){ ?>
+<div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_add'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
+<!-- Gagal Tambah -->
+<?php if ($this->session->flashdata('notif_wrong')){ ?>
+<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_wrong'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
+<!-- Success Hapus -->
+<?php if ($this->session->flashdata('notif_delete')){ ?>
+<div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_delete'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
+<!-- Wrong Hapus -->
+<?php if ($this->session->flashdata('notif_wrong_delete')){ ?>
+<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_wrong_delete'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
+<!-- Update Berhasil -->
+<?php if ($this->session->flashdata('notif_update')){ ?>
+<div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_update'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
+<!-- Update Gagal -->
+<?php if ($this->session->flashdata('notif_wrong_update')){ ?>
+<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_wrong_update'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
 <div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
           aria-label="breadcrumb">
@@ -71,10 +131,18 @@
                                                                  <div class="form-floating mb-3">
                                                                       <label>Username</label>
                                                                       <input type="text" class="form-control"
-                                                                           name="user_nama"
-                                                                           value="<?php echo uri(2) == "edit" ? $edit->user_nama : ""; ?>"
-                                                                           placeholder="Username" autocomplete="off"
-                                                                           required>
+                                                                           name="email"
+                                                                           value="<?php echo uri(2) == "edit" ? $edit->email : ""; ?>"
+                                                                           placeholder="Email" required>
+
+                                                                 </div>
+                                                                 <div class="form-floating mb-3">
+                                                                      <label>NIPY/NIDN/NIM</label>
+                                                                      <input type="text" class="form-control"
+                                                                           name="username_id"
+                                                                           value="<?php echo uri(2) == "edit" ? $edit->username_id : ""; ?>"
+                                                                           placeholder="Masukan id username"
+                                                                           autocomplete="off" required>
 
                                                                  </div>
                                                                  <div class="form-floating mb-3">
@@ -82,10 +150,19 @@
                                                                       <input type="password" class="form-control"
                                                                            name="user_password"
                                                                            value="<?php echo uri(2) == "edit" ? $edit->user_password : ""; ?>"
-                                                                           placeholder="Password" autocomplete="off"
-                                                                           required>
+                                                                           placeholder="Password" id="inputPassword"
+                                                                           for="inputPassword" required>
 
                                                                  </div>
+                                                                 <!-- <div class="d-flex mb-2 align-items-center">
+                                                                      <label
+                                                                           class="control control--checkbox mb-3 mb-sm-0">
+                                                                           <input style="margin-left: 5px;"
+                                                                                type="checkbox" class="form-check-input"
+                                                                                id="showpw" onclick="myFunction()" />
+                                                                           <div class="control__indicator"></div>
+                                                                      </label>
+                                                                 </div><br /> -->
                                                                  <div class="form-floating mb-3">
                                                                       <label>Nama Lengkap</label>
                                                                       <input type="text" class="form-control"
@@ -231,7 +308,6 @@
                                                             <button type="submit" class="btn btn-success">
                                                                  <?php echo (uri(2) == 'edit') ? 'Update' : 'Tambah'; ?></button>
 
-
                                                             <button type="button" class="btn btn-danger"
                                                                  data-dismiss="modal" aria-label="Close">Batal</button>
                                                        </div>
@@ -250,12 +326,12 @@
                               style="border-top:2px solid #eee;">
                               <thead>
                                    <tr>
-                                        <th>User ID</th>
-                                        <th>Username</th>
+                                        <th>ID User</th>
+                                        <th>Email</th>
                                         <th>Nama Lengkap</th>
                                         <th>Sebagai</th>
                                         <th>Prodi</th>
-                                        <th>Gender</th>
+                                        <!-- <th>Gender</th> -->
                                         <th>Action</th>
                                    </tr>
                               </thead>
@@ -265,12 +341,12 @@
                                         foreach ($data_user as $d){
                                         ?>
                                    <tr style="vertical-align:middle">
-                                        <td><?php echo $d->user_id; ?></td>
-                                        <td><?php echo $d->user_nama; ?></td>
+                                        <td><?php echo $d->username_id; ?></td>
+                                        <td><?php echo $d->email; ?></td>
                                         <td><?php echo $d->user_namalengkap; ?></td>
                                         <td><?php echo level_user($d->user_level); ?></td>
                                         <td><?php echo $d->user_prodi; ?></td>
-                                        <td><?php echo $d->user_gender; ?></td>
+                                        <!-- <td><?php echo $d->user_gender; ?></td> -->
                                         <td>
                                              <div class="btn-group">
                                                   <a style="margin-right: 10px;text-decoration: none;"
@@ -278,15 +354,21 @@
                                                        data-mdb-toggle="tooltip" class="fas fa-edit text-warning me-3"
                                                        title="Edit">
                                                   </a>
-                                                  <!-- <button id="addModal">Edit</button> -->
-                                                  <?php if ($this->user_nama != $d->user_nama){ ?>
+
+                                                  <a style="margin-right: 10px;text-decoration: none;"
+                                                       href="<?php echo url(1) .'/hapus/'. enkrip($d->user_id); ?>"
+                                                       data-mdb-toggle="tooltip" class="fas fa-trash text-danger me-3"
+                                                       title="Hapus" onclick="return confirm('Yakin hapus dta user?')">
+                                                  </a>
+
+                                                  <!-- <?php if ($this->user_email != $d->user_email){ ?>
                                                   <a style="margin-right: 10px;text-decoration: none;"
                                                        href="<?php echo url(1) .'/hapus/'. enkrip($d->user_id); ?>"
                                                        onclick="return confirm('Yakin hapus user')"
                                                        data-mdb-toggle="tooltip" class="fas fa-trash text-danger me-3"
                                                        title="Hapus">
                                                   </a>
-                                                  <?php } ?>
+                                                  <?php } ?> -->
                                              </div>
                                         </td>
 
@@ -303,3 +385,18 @@
           </div>
      </div>
 </div>
+<script>
+$(window).load(function() {
+     $("#preloader").delay(3000).fadeOut("slow");
+});
+</script>
+<script type="text/javascript">
+function myFunction() {
+     var x = document.getElementById("inputPassword");
+     if (x.type === "password") {
+          x.type = "text";
+     } else {
+          x.type = "password";
+     }
+}
+</script>

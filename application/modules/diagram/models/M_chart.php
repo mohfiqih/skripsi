@@ -232,5 +232,30 @@ class M_chart extends CI_Model
         $query = $this->db->get()->num_rows();
         return $query;
     }
+
+    // Total Label Klasifikasi
+    function label_baik($where)
+    {
+        $this->db->select('*');
+        $this->db->from('klasifikasi');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = klasifikasi.id_paket_jawaban');
+        $this->db->where($where);
+        $this->db->where('label = "Baik"');
+        $this->db->order_by('id_paket', 'asc');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
+
+    function label_kurang($where)
+    {
+        $this->db->select('*');
+        $this->db->from('klasifikasi');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = klasifikasi.id_paket_jawaban');
+        $this->db->where($where);
+        $this->db->where('label="Kurang"');
+        $this->db->order_by('id_paket', 'asc');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
 }
 ?>

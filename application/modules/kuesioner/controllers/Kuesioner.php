@@ -71,9 +71,10 @@ class Kuesioner extends MY_Controller
 		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
 		$data = array(
 			"judul"		=> "Halaman Kuesioner",
-			"halaman"		=> "klasifikasi",
-			"view"		=> "klasifikasi",
-			"data_soal"	=> $this->M_Universal->get_soal_kuesioner(["daftar_soal.paket_id" => dekrip(uri(3))]),
+			"halaman"		=> "komentar",
+			"view"		=> "komentar",
+			// "data_soal"	=> $this->M_Universal->get_soal_kuesioner(["daftar_soal.paket_id" => dekrip(uri(3))]),
+			"data_paket"	=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
 			"user"		=> $data_user,
 		);
 

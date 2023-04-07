@@ -105,7 +105,7 @@
                                              <th>Link Kuesioner</th>
                                              <th>:</th>
                                              <td> <a
-                                                       href="<?php echo base_url('kuesioner/index/') . enkrip($d->id_paket); ?>">Link
+                                                       href="<?php echo base_url('kuesioner/skala/') . enkrip($d->id_paket); ?>">Link
                                                        Kuesioner
                                                   </a>
                                              </td>
@@ -124,6 +124,8 @@
           </form>
      </div>
 </div><br />
+
+
 
 <div class="card">
      <div class="container-fluid">
@@ -178,21 +180,21 @@
                                                        </div>
                                                        <?php } ?>
                                                        <div class="form-floating mb-3">
-                                                            <label>Tipe Pertanyaan</label>
+                                                            <label>Type Pertanyaan</label>
                                                             <select class="form-control" name="type_soal"
                                                                  style="background-color: white;" required>
-                                                                 <option>Pilih Tipe Pertanyaan</option>
+                                                                 <option>Type Pertanyaan</option>
                                                                  <option value="Skala Likert"
                                                                       <?php if (uri(1) == "tambah") ?>>
                                                                       Skala Likert</option>
-                                                                 <option value="Teks Singkat"
+                                                                 <!-- <option value="Teks Singkat"
                                                                       <?php if (uri(1) == "tambah"); ?>>
-                                                                      Teks Singkat</option>
+                                                                      Teks Singkat</option> -->
                                                             </select>
                                                        </div>
                                                        <div class="form-floating mb-3">
                                                             <label>Pertanyaan</label>
-                                                            <textarea style="height: 200px;" class="form-control"
+                                                            <textarea style="height: 150px;" class="form-control"
                                                                  name="soal" rows="15"
                                                                  placeholder="Ketikkan Pertanyaan.."></textarea>
                                                        </div>
@@ -250,8 +252,7 @@
                                                   </div>
                                              </div><br />
                                              <div class="modal-footer">
-                                                  <button type="submit" class="btn btn-success"
-                                                       style="height: 43px;">Tambah</button>
+                                                  <button type="submit" class="btn btn-success">Tambah</button>
                                              </div>
                                         </div>
                                    </div>

@@ -55,6 +55,8 @@
                                    </div>
 
                                    <form action="auth/proses" method="POST">
+
+                                        <!-- Notif Salah Username Password -->
                                         <?php if ($this->session->flashdata('notifikasi')){ ?>
                                         <div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert"
                                              aria-label="Close" role="alert">
@@ -66,6 +68,20 @@
                                              </button>
                                         </div>
                                         <?php } ?>
+
+                                        <!-- Notif Logout -->
+                                        <?php if ($this->session->flashdata('notif_logout')){ ?>
+                                        <div class="alert alert-success alert-dismissible fade show"
+                                             data-dismiss="alert" aria-label="Close" role="alert">
+                                             <span
+                                                  class="btn-label"></span><?php echo $this->session->flashdata('notif_logout'); ?>
+                                             <button type="button" class="close" data-dismiss="alert"
+                                                  aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                             </button>
+                                        </div>
+                                        <?php } ?>
+
                                         <input type="hidden"
                                              name="<?php echo $this->security->get_csrf_token_name(); ?>"
                                              value="<?php echo $this->security->get_csrf_hash(); ?>">
@@ -89,13 +105,16 @@
                                                        onclick="myFunction()" />
                                                   <div class="control__indicator"></div>
                                              </label>
-                                             <!-- <span class="ml-auto"><a href="#" class="forgot-pass">Contact Admin</a></span>  -->
+                                             <span class="ml-auto"><a
+                                                       href="<?php echo base_url('reset/forgotPassword') ?>"
+                                                       class="forgot-pass">Forgot
+                                                       Password?</a></span>
                                         </div>
 
                                         <input type="submit" value="Login" class="btn btn-block btn-primary">
 
-                                        <span class="d-block text-left my-4 text-muted">Skripsi Teknik
-                                             Informatika - by Moh. Fiqih</span>
+                                        <span class="d-block text-left my-4 text-muted">Copyright Repo - Moh.
+                                             Fiqih</span>
 
                                    </form>
                               </div>

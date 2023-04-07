@@ -47,9 +47,13 @@ class Paket extends MY_Controller {
 		$tambah = $this->M_Universal->insert($data, "paket_soal");
 
 		if ($tambah) {
-			notifikasi_redirect("success", "Berhasil Menambah Paket Soal", uri(1));
+			$this->session->set_flashdata('notif_tambah_paket', 'Berhasil Menambah Paket Kuesioner!');
+			redirect(uri(1), 'refresh');
+			// notifikasi_redirect("success", "Berhasil Menambah Paket Soal", uri(1));
 		} else {
-			notifikasi_redirect("error", "Gagal Menambah Paket Soal", uri(1));
+			$this->session->set_flashdata('notif_gagal_paket', 'Berhasil Menambah Paket Kuesioner!');
+			redirect(uri(1), 'refresh');
+			// notifikasi_redirect("error", "Gagal Menambah Paket Soal", uri(1));
 		};
 	}
 
@@ -104,9 +108,11 @@ class Paket extends MY_Controller {
 		$hapus = $this->M_Universal->delete(["id_paket" => dekrip(uri(3))], "paket_soal");
 
 		if ($hapus) {
-			notifikasi_redirect("success", "Paket Soal Berhasil di Hapus", uri(1));
+			$this->session->set_flashdata('notif_berhasil_hapus', 'Paket Kuesioner berhasil dihapus!');
+			redirect(uri(1), 'refresh');
 		} else {
-			notifikasi_redirect("error", "Paket Soal Gagal di Hapus", uri(1));
+			$this->session->set_flashdata('notif_gagal_hapus', 'Paket Kuesioner gagal dihapus!');
+			redirect(uri(1), 'refresh');
 		};
 	}
 
@@ -165,9 +171,11 @@ class Paket extends MY_Controller {
 		$tambah 	= $this->M_Universal->insert($data, "daftar_soal");
 
 		if ($tambah) {
-			notifikasi_redirect("success", "Berhasil Menambah Soal", redirect(uri(1)));
+			$this->session->set_flashdata('notif_berhasil_soal', 'Berhasil menambahkan pertanyaan!');
+			redirect(uri(1), 'refresh');
 		} else {
-			notifikasi_redirect("error", "Gagal Menambah Soal", redirect(uri(1)));
+			$this->session->set_flashdata('notif_gagal_soal', 'Gagal menambahkan pertanyaan!');
+			redirect(uri(1), 'refresh');
 		};
 	}
 

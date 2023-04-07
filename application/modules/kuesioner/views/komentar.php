@@ -129,12 +129,12 @@
                                         anda menggunakannya, jika ada trouble pada sistem tuliskan pada kolom dibawah
                                         ini.</p>
                                    <hr>
-                                   <?php
-                                        $no = 0 + 1;
-                                        if ($data_soal) {
-                                        foreach ($data_soal as $d) {
-                                        ?>
                                    <form role="form">
+                                        <?php
+                                        $no = 0 + 1;
+                                        if ($data_paket) {
+                                        foreach ($data_paket as $d) {
+                                        ?>
                                         <input id="inputIdentitas" name="id_identitas"
                                              value="<?php echo $user->user_id; ?>" hidden>
                                         <input id="inputNama" name="nama_lengkap"
@@ -150,13 +150,10 @@
 
                                         <div class="form-items mb-2">
                                              <td class="title">
-                                                  <!-- <?php echo $d->soal; ?> -->
-                                                  <p>Berikan ulasan tentang syncnau</p>
+                                                  <p>Berikan ulasan anda untuk sistem, guna pengembangan kedepannya.</p>
                                              </td>
                                         </div>
-                                        <!-- <textarea type="text" class="form-control" id="inputJawaban" name="jawaban"
-                                             placeholder="Ketik Jawaban Anda" required>
-                                        </textarea> -->
+
                                         <div class="form-floating mb-3">
                                              <textarea style="height: 150px;" class="form-control" id="inputJawaban"
                                                   name="jawaban" placeholder="Ketik Jawaban Anda" rows="15"
@@ -164,13 +161,16 @@
                                         </div>
                                         <button id="submitBtn" type="submit" class="btn btn-success">Kirim
                                              Jawaban <span class="btn-label"> <i class="fa fa-back"></i></span></button>
-                                   </form>
-                                   <?php }
+
+                                        <?php }
                                         } else { ?>
-                                   <div class="logo">
-                                        <h5><a><span>Tidak Ada Pertanyaan</span></a></h5>
-                                   </div>
-                                   <?php } ?>
+                                        <div class="logo">
+                                             <h5><a><span>Tidak Ada Pertanyaan</span></a></h5>
+                                        </div>
+                                        <?php } ?>
+
+
+                                   </form>
                               </div>
                          </div>
                     </div>

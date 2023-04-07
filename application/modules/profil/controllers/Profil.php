@@ -89,12 +89,18 @@ class Profil extends MY_Controller {
 						
 						$update = $this->M_Universal->update($data, ["user_id" => $user_id], "user");
 						
-						notifikasi_redirect("success", "Update profil dan password berhasil", $_SERVER['HTTP_REFERER']);
+						// notifikasi_redirect("success", "Update profil dan password berhasil", $_SERVER['HTTP_REFERER']);
+						$this->session->set_flashdata('profil_pw_berhasil', 'Update profil dan password berhasil!', $_SERVER['HTTP_REFERER']);
+        					redirect('profil', 'refresh');
 					} else {
-						notifikasi_redirect("error", "Password baru yang Anda masukkan tidak sama", $_SERVER['HTTP_REFERER']);
+						// notifikasi_redirect("error", "Password baru yang Anda masukkan tidak sama", $_SERVER['HTTP_REFERER']);
+						$this->session->set_flashdata('pw_tak_sama', 'Password baru yang Anda masukkan tidak sama!', $_SERVER['HTTP_REFERER']);
+        					redirect('profil', 'refresh');
 					}
 				} else {
-					notifikasi_redirect("error", "Password saat ini yang Anda masukkan salah", $_SERVER['HTTP_REFERER']);
+					// notifikasi_redirect("error", "Password saat ini yang Anda masukkan salah", $_SERVER['HTTP_REFERER']);
+					$this->session->set_flashdata('pw_salah', 'Password saat ini yang Anda masukkan salah!', $_SERVER['HTTP_REFERER']);
+        				redirect('profil', 'refresh');
 				}
 			} 
 			else {
@@ -117,9 +123,13 @@ class Profil extends MY_Controller {
 				);
 				
 				$this->session->set_userdata("log_admin", $session);
-				notifikasi_redirect("success", "Update profil berhasil", $_SERVER['HTTP_REFERER']);
+				// notifikasi_redirect("success", "Update profil berhasil", $_SERVER['HTTP_REFERER']);
+				$this->session->set_flashdata('profil_berhasil', 'Update profil berhasil!', $_SERVER['HTTP_REFERER']);
+        			redirect('profil', 'refresh');
 			} else {
-				notifikasi_redirect("error", "Update profil gagal", $_SERVER['HTTP_REFERER']);
+				// notifikasi_redirect("error", "Update profil gagal", $_SERVER['HTTP_REFERER']);
+				$this->session->set_flashdata('profil_gagal', 'Update profil gagal!', $_SERVER['HTTP_REFERER']);
+        			redirect('profil', 'refresh');
 			}
 			
 		} else {
@@ -145,12 +155,18 @@ class Profil extends MY_Controller {
 					
 					$update = $this->M_Universal->update($data, ["user_id" => $user_id], "user");
 					
-					notifikasi_redirect("success", "Update profil dan password berhasil", $_SERVER['HTTP_REFERER']);
+					// notifikasi_redirect("success", "Update profil dan password berhasil", $_SERVER['HTTP_REFERER']);
+					$this->session->set_flashdata('profil_pw_berhasil', 'Update profil dan password berhasil!', $_SERVER['HTTP_REFERER']);
+        				redirect('profil', 'refresh');
 				} else {
-					notifikasi_redirect("error", "Password baru yang Anda masukkan tidak sama", $_SERVER['HTTP_REFERER']);
+					// notifikasi_redirect("error", "Password baru yang Anda masukkan tidak sama", $_SERVER['HTTP_REFERER']);
+					$this->session->set_flashdata('pw_tak_sama', 'Password baru yang Anda masukkan tidak sama!', $_SERVER['HTTP_REFERER']);
+        				redirect('profil', 'refresh');
 				}
 			} else {
-				notifikasi_redirect("error", "Password saat ini yang Anda masukkan salah", $_SERVER['HTTP_REFERER']);
+				// notifikasi_redirect("error", "Password saat ini yang Anda masukkan salah", $_SERVER['HTTP_REFERER']);
+				$this->session->set_flashdata('pw_salah', 'Password saat ini yang Anda masukkan salah!', $_SERVER['HTTP_REFERER']);
+        			redirect('profil', 'refresh');
 			}
 		} 
 		else {
@@ -173,9 +189,13 @@ class Profil extends MY_Controller {
 			);
 			
 			$this->session->set_userdata("log_admin", $session);
-			notifikasi_redirect("success", "Update profil berhasil", $_SERVER['HTTP_REFERER']);
+			// notifikasi_redirect("success", "Update profil berhasil", $_SERVER['HTTP_REFERER']);
+			$this->session->set_flashdata('profil_berhasil', 'Update profil berhasil!', $_SERVER['HTTP_REFERER']);
+        		redirect('profil', 'refresh');
 		} else {
-			notifikasi_redirect("error", "Update profil gagal", $_SERVER['HTTP_REFERER']);
+			// notifikasi_redirect("error", "Update profil gagal", $_SERVER['HTTP_REFERER']);
+			$this->session->set_flashdata('profil_gagal', 'Update profil gagal!', $_SERVER['HTTP_REFERER']);
+        		redirect('profil', 'refresh');
 		}
 	}
   }

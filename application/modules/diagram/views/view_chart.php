@@ -12,13 +12,13 @@
 <div class="row">
      <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
           <div class="card" style="margin-right: 12px;margin-left: 12px;">
+
                <div class="card-body">
-                    <!-- <h4 class=" header-title mt-0 mb-3">
-                         <center>Hasil Kuesioner
-                         </center>
-                    </h4><br /> -->
+                    <h5>Analisis Skala Likert</h5>
+                    <p style="width: 300px;">Berikut hasil analisis dari skala likert setiap paket kuesioner</p>
+                    <br />
                     <div class="table-responsive">
-                         <table id="cari" class="table table-hover mb-0">
+                         <table id="cari_skala" class="table table-hover mb-0">
                               <thead>
                                    <tr>
                                         <!-- <th>No</th> -->
@@ -36,12 +36,12 @@
                                    ?>
                                    <tr>
                                         <!-- <th><?php echo $no++; ?></th> -->
-                                        <td><?php echo $d->nama_paket; ?></td>
+                                        <td><?php echo $d->nama_paket; ?> v.<?php echo $d->versi_apl_paket; ?></td>
                                         <td>
                                              <?php
 
                                                 $total_id	  = "id_paket_jawaban='" . $d->id_paket . "' ";
-                                                $tertinggi    = $this->M_chart->total_soal($total_id)*5;
+                                                $tertinggi    = $this->M_chart->total_soal($total_id)*4;
                                                 $terendah     = $this->M_chart->total_soal($total_id)*1;
  
                                                 $total = (($this->M_chart->total_ss_p($total_id))*4)+
@@ -52,22 +52,22 @@
                                                 $nilai = substr(($total / $tertinggi) * (100), 0, 5);
                                                                       
                                           if ($nilai <= 100 && $nilai >= 80) { ?>
+                                             <!-- Sangat Setuju -->
                                              <span class="badge bg-success text-white">
                                                   <?php echo $nilai ?>%
                                              </span>
+                                             <!-- Setuju -->
                                              <?php } else if ($nilai <= 79.9 && $nilai >= 60) { ?>
                                              <span class="badge bg-success text-white">
                                                   <?php echo $nilai ?>%
                                              </span>
+                                             <!-- Tidak Setuju -->
                                              <?php } else if ($nilai <= 59.9 && $nilai >= 40) { ?>
-                                             <span class="badge bg-warning text-white">
-                                                  <?php echo $nilai ?>%
-                                             </span>
-                                             <?php } else if ($nilai <= 39.9 && $nilai >= 20) { ?>
                                              <span class="badge bg-danger text-white">
                                                   <?php echo $nilai ?>%
                                              </span>
-                                             <?php } else if ($nilai <= 19.9) { ?>
+                                             <!-- Sangat Tidak Setuju -->
+                                             <?php } else if ($nilai <= 40) { ?>
                                              <span class="badge bg-danger text-white">
                                                   <?php echo $nilai ?>%
                                              </span>
@@ -131,8 +131,86 @@
                </div>
           </div>
      </div>
+
      <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
           <div class="card" style="margin-right: 12px;margin-left: 12px;">
+               <div class="card-body">
+                    <h5>Analisis Klasifikasi</h5>
+                    <p style="width: 300px;">Berikut hasil analisis dari klasifikasi komentar setiap paket kuesioner</p>
+                    <br />
+                    <div class="table-responsive">
+                         <table id="cari_klasifikasi" class="table table-hover mb-0">
+                              <thead>
+                                   <tr>
+                                        <!-- <th>No</th> -->
+                                        <th>Nama Paket</th>
+                                        <th>Baik</th>
+                                        <th>Kurang</th>
+                                        <th>Hasil</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <?php
+                                        $no = 0 + 1;
+                                        $this->load->model('M_chart');
+                                        if ($data_klasifikasi) {
+                                             foreach ($data_klasifikasi as $d) {
+                                   ?>
+                                   <tr>
+                                        <!-- <th><?php echo $no++; ?></th> -->
+                                        <td><?php echo $d->nama_paket; ?> v.<?php echo $d->versi_apl_paket; ?></td>
+                                        <td>
+                                             <p class="text-success">
+                                                  <?php 
+                                                  $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
+
+                                                  $Baik = $this->M_chart->label_baik($total_id, "klasifikasi");
+                                                  $Kurang = $this->M_chart->label_kurang($total_id, "klasifikasi");
+                                                  
+                                                  echo $Baik;
+                                                  ?>
+                                             </p>
+                                        </td>
+                                        <td>
+                                             <p class="text-danger">
+                                                  <?php 
+                                                  $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
+
+                                                  $Baik = $this->M_chart->label_baik($total_id, "klasifikasi");
+                                                  $Kurang = $this->M_chart->label_kurang($total_id, "klasifikasi");
+                                                  
+                                                  echo $Kurang;
+                                                  ?>
+                                             </p>
+                                        </td>
+                                        <td>
+                                             <?php 
+                                             $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
+
+                                             $Baik = $this->M_chart->label_baik($total_id, "klasifikasi");
+                                             $Kurang = $this->M_chart->label_kurang($total_id, "klasifikasi");
+
+                                             if ($Baik > $Kurang) { ?>
+                                             <span class="badge bg-success text-white">
+                                                  Baik
+                                             </span>
+                                             <?php } else if ($Baik < $Kurang) { ?>
+                                             <span class="badge bg-danger text-white">
+                                                  Kurang
+                                             </span>
+                                             <?php } ?>
+                                        </td>
+                                   </tr>
+
+                                   <?php }} else { ?>
+                                   <td class="text-center" colspan="9">No Data</td>
+                                   <?php } ?>
+                              </tbody>
+                         </table>
+                    </div>
+               </div>
+          </div>
+          <div class="card" style="margin-right: 12px;margin-left: 12px;margin-top: 15px;">
                <div class="card-body">
                     <div class="table-responsive">
                          <figure class="highcharts-figure">
@@ -141,6 +219,8 @@
                     </div>
                </div>
           </div>
+     </div>
+     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
           <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
                <div class="card">
                     <div class="card-body">

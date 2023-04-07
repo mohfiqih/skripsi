@@ -97,12 +97,12 @@
 
                                         </div><br />
                                         <div style="margin-left: 10px;">
-                                             <a href="<?php echo url(1) .'/edit/'. enkrip($d->id_m); ?>">
+                                             <!-- <a href="<?php echo url(1) .'/edit/'. enkrip($d->id_m); ?>">
                                                   <button style="height: 43px;" type="button"
                                                        class="btn btn-danger"><span class="btn-label"><i
                                                                  class=" fas fa-edit"></i></span>
                                                        Edit</button>
-                                             </a>
+                                             </a> -->
                                              <a href="<?php echo base_url('manajerial'); ?>">
                                                   <button style="height: 43px;margin-left: 5px;" type="button"
                                                        class="btn btn-warning"><span class="btn-label"><i

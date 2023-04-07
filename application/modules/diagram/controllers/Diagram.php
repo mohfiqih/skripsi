@@ -64,6 +64,11 @@ class Diagram extends MY_Controller {
 			"data_responden"	=> $this->M_chart->total_responden(["id_paket"], "paket_soal"),
 			"data_manajerial"	=> $this->M_chart->grafik_manajerial(NULL, "manajerial"),
 			"data_paket"		=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
+
+			"data_klasifikasi"	=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
+
+			"jml_baik"		=> $this->M_chart->label_baik(["id_paket"], "klasifikasi"),
+			"jml_kurang"		=> $this->M_chart->label_baik(["id_paket"], "klasifikasi"),
 			
 			"user"			=> $data_user,
 	   );

@@ -105,16 +105,18 @@ class Manajerial extends MY_Controller {
 							$tambah = $this->M_Universal->insert($data, "manajerial");
 
 							if ($tambah){
-								notifikasi_redirect("success", "Data berhasil ditambah", uri(1));
+								$this->session->set_flashdata('notifikasi_tambah', 'Data manajerial berhasil ditambahkan!');
+			 					redirect(uri(1), 'refresh');
 							} else {
-								notifikasi_redirect("error", "Gagal menambah data", uri(1));
+								$this->session->set_flashdata('notifikasi_gagal_tambah', 'Data manajerial gagal ditambahkan!');
+			 					redirect(uri(1), 'refresh');
 							};
   
 	                }else{
-					notifikasi_redirect("error", "Gagal menambah data", uri(1));
+					$this->session->set_flashdata('notifikasi_gagal_tambah', 'Data manajerial gagal ditambahkan!');
+			 		redirect(uri(1), 'refresh');
 	                }           
-	    }else{
-								
+	    }else{					
 		if ($tambah){
 			 $this->session->set_flashdata('notifikasi_tambah', 'Data manajerial berhasil ditambahkan!');
 			 redirect(uri(1), 'refresh');
@@ -122,7 +124,6 @@ class Manajerial extends MY_Controller {
 			$this->session->set_flashdata('notifikasi_gagal_tambah', 'Data manajerial gagal ditambahkan!');
 			 redirect(uri(1), 'refresh');
 		};
-
 	    }
 	}
 	

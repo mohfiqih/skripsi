@@ -32,15 +32,19 @@ class Dasbor extends MY_Controller {
 			// Grafik Pie & Total Responden Berdasarkan Kategori Responden
 			"jml_dosen"		=> $this->M_dasbor->total_dosen(NULL, "kuesioner"),
 			"jml_mahasiswa"	=> $this->M_dasbor->total_mahasiswa(NULL, "kuesioner"),
-			// "jml_karyawan"		=> $this->M_dasbor->total_karyawan(NULL, "responden"),
-			// "jml_staf"		=> $this->M_dasbor->total_staf(NULL, "responden"),
-			// "data_pie"		=> $this->M_dasbor->grafik_pie(NULL, "responden"),
+			
 			"data_paket"		=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
 			"data_pertanyaan"	=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
-			
-			// "jml_dosen"		=> $this->M_dasbor->total_dosen(NULL, "responden"),
-			// "data_pie"		=> $this->M_dasbor->grafik_pie(NULL, "responden"),
-			// "data_pertanyaan"	=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
+
+			"data_pie"		=> $this->M_dasbor->grafik_pie(NULL, "kuesioner"),
+			"data_responden"	=> $this->M_dasbor->total_responden(["id_paket"], "paket_soal"),
+			"data_manajerial"	=> $this->M_dasbor->grafik_manajerial(NULL, "manajerial"),
+			"data_paket"		=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
+
+			"data_klasifikasi"	=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
+
+			"jml_baik"		=> $this->M_dasbor->label_baik(["id_paket"], "klasifikasi"),
+			"jml_kurang"		=> $this->M_dasbor->label_baik(["id_paket"], "klasifikasi"),
 			"user"			=> $data_user,
 			"paket"			=> $data_paket
 	   );

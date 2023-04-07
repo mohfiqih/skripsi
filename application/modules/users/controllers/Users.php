@@ -69,7 +69,8 @@ class Users extends MY_Controller {
 	{
 		$data = array(
 			"user_id"			=> date("ymdHis"),
-			"user_nama"		=> $this->input->post("user_nama"),
+			"email"			=> $this->input->post("email"),
+			"username_id"		=> $this->input->post("username_id"),
 			"user_password"	=> password_hash($this->input->post("user_password"), PASSWORD_BCRYPT),
 			"user_namalengkap"	=> $this->input->post("user_namalengkap"),
 			"user_level"		=> $this->input->post("user_level"),
@@ -80,9 +81,11 @@ class Users extends MY_Controller {
 		$tambah = $this->M_Universal->insert($data, "user");
 		
 		if ($tambah){
-			notifikasi_redirect("success", "Tambah user berhasil", uri(1));
+			 $this->session->set_flashdata('notif_add', 'Data user berhasil ditambahkan!');
+			 redirect(uri(1), 'refresh');
 		} else {
-			notifikasi_redirect("error", "Tambah user gagal", uri(1));
+			$this->session->set_flashdata('notif_wrong', 'Data user gagal ditambahkan!');
+			 redirect(uri(1), 'refresh');
 		}
 	}
 	
@@ -92,7 +95,8 @@ class Users extends MY_Controller {
 		$user_password	= $this->input->post("user_password");
 		$cek			= $this->M_Universal->getOneSelect("user_password", ["user_id" => $user_id], "user");
 		$data		= array(
-			"user_nama"		=> $this->input->post("user_nama"),
+			"email"			=> $this->input->post("email"),
+			"username_id"		=> $this->input->post("username_id"),
 			"user_password"	=> $user_password != $cek->user_password ? password_hash($user_password, PASSWORD_BCRYPT) : $user_password,
 			"user_namalengkap"	=> $this->input->post("user_namalengkap"),
 			"user_level"		=> $this->input->post("user_level"),
@@ -103,9 +107,11 @@ class Users extends MY_Controller {
 		$update = $this->M_Universal->update($data, ["user_id" => $user_id], "user");
 		
 		if ($update){
-			notifikasi_redirect("success", "Update user berhasil", uri(1));
+			$this->session->set_flashdata('notif_update', 'Data user berhasil diupdate!');
+			 redirect(uri(1), 'refresh');
 		} else {
-			notifikasi_redirect("error", "Update user gagal", uri(1));
+			$this->session->set_flashdata('notif_wrong_update', 'Data user gagal diupdate!');
+			 redirect(uri(1), 'refresh');
 		};
 	}
 	
@@ -114,9 +120,11 @@ class Users extends MY_Controller {
 		$hapus = $this->M_Universal->delete(["user_id" => dekrip(uri(3))], "user");
 		
 		if ($hapus){
-			notifikasi_redirect("success", "Hapus user berhasil", uri(1));
+			$this->session->set_flashdata('notif_delete', 'Data user berhasil dihapus!');
+			 redirect(uri(1), 'refresh');
 		} else {
-			notifikasi_redirect("error", "Hapus user gagal", uri(1));
+			$this->session->set_flashdata('notif_wrong_delete', 'Data user gagal dihapus!');
+			 redirect(uri(1), 'refresh');
 		};
 	}
 

@@ -1,9 +1,10 @@
 <head>
      <title>Manajerial | Repository & Kuesioner Online</title>
 </head>
+
 <!-- Berhasil Tambah -->
 <?php if ($this->session->flashdata('notifikasi_tambah')){ ?>
-<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+<div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
      <span class="btn-label"></span><?php echo $this->session->flashdata('notifikasi_tambah'); ?>
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -19,6 +20,7 @@
      </button>
 </div>
 <?php } ?>
+
 <!-- Berhasil Hapus -->
 <?php if ($this->session->flashdata('notifikasi_hapus')){ ?>
 <div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
@@ -28,6 +30,7 @@
      </button>
 </div>
 <?php } ?>
+
 <!-- Berhasil Update -->
 <?php if ($this->session->flashdata('notifikasi_berhasil_update')){ ?>
 <div class="alert alert-warning alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">

@@ -32,6 +32,8 @@
                                              </th>
                                              <th class="align-middle" scope="col">Responden
                                              </th>
+                                             <th class="align-middle" scope="col">Hasil
+                                             </th>
                                              <th class="align-middle" scope="col" style="width: 5px;">
                                                   Action
                                              </th>
@@ -56,6 +58,23 @@
                                              </td>
                                              <td class="align-middle">
                                                   <?php echo $d->responden; ?>
+                                             </td>
+                                             <td>
+                                                  <?php 
+                                                  $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
+
+                                                  $Baik = $this->report->label_baik($total_id, "klasifikasi");
+                                                  $Kurang = $this->report->label_kurang($total_id, "klasifikasi");
+
+                                             if ($Baik > $Kurang) { ?>
+                                                  <span class="badge bg-success text-white">
+                                                       Baik
+                                                  </span>
+                                                  <?php } else if ($Baik < $Kurang) { ?>
+                                                  <span class="badge bg-danger text-white">
+                                                       Kurang
+                                                  </span>
+                                                  <?php } ?>
                                              </td>
                                              <td class="align-middle">
                                                   <a style="margin-left: 10px;text-decoration: none;"

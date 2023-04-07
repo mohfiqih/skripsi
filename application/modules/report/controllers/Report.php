@@ -116,7 +116,8 @@ class Report extends MY_Controller
 			"halaman"			=> "komentar_kuesioner",
 			"view"			=> "komentar_kuesioner",
 			"data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
-			// "total_soal"		=> $this->report->total_soal($total_soal),
+			"jml_baik"		=> $this->report->label_baik(["id_paket"], "klasifikasi"),
+			"jml_kurang"		=> $this->report->label_baik(["id_paket"], "klasifikasi"),
 			"user"			=> $data_user
 		);
 		$this->load->view('template', $data);
