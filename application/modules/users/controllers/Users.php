@@ -76,6 +76,7 @@ class Users extends MY_Controller {
 			"user_level"		=> $this->input->post("user_level"),
 			"user_prodi"		=> $this->input->post("user_prodi"),
 			"user_gender"		=> $this->input->post("user_gender"),
+			"user_status"		=> $this->input->post("user_status"),
 		);
 		
 		$tambah = $this->M_Universal->insert($data, "user");
@@ -102,6 +103,7 @@ class Users extends MY_Controller {
 			"user_level"		=> $this->input->post("user_level"),
 			"user_prodi"		=> $this->input->post("user_prodi"),
 			"user_gender"		=> $this->input->post("user_gender"),
+			"user_status"		=> $this->input->post("user_status"),
 		);
 		
 		$update = $this->M_Universal->update($data, ["user_id" => $user_id], "user");

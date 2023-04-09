@@ -22,5 +22,56 @@ class M_auth extends CI_Model
 		}
 	}
 
-	
+	// Validasi Email
+    public function validateEmail($email)
+	{
+		$query = $this->db->query("SELECT * FROM user WHERE email='$email'");
+		if($query->num_rows() == 1)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function updatePasswordhash($data,$email)
+	{
+		$this->db->where('email',$email);
+		$this->db->update('user',$data);
+	}
+
+	public function getHahsDetails($hash)
+	{
+		$query =$this->db->query("SELECT * FROM user WHERE hash_key='$hash'");
+		if($query->num_rows()==1)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+	public function validateCurrentPassword($currentPassword,$hash)
+	{
+		$query = $this->db->query("SELECT * FROM user WHERE password='$currentPassword' AND hash_key='$hash'");
+		if($query->num_rows()==1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function updateNewPassword($data,$hash)
+	{
+		$this->db->where('hash_key',$hash);
+		$this->db->update('user',$data);
+	}
 }

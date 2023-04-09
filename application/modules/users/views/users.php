@@ -1,5 +1,5 @@
 <head>
-     <title>Data Users | Repository & Kuesioner Online</title>
+     <title>Data Users | Sistem e-Repo</title>
 </head>
 
 <!-- Berhasil Tambah -->
@@ -301,6 +301,22 @@
                                                                            </option>
                                                                       </select>
                                                                  </div>
+                                                                 <div class="form-floating mb-3">
+                                                                      <label for="example-select-floating">Pilih
+                                                                           Status</label><br />
+                                                                      <select class="form-control" name="user_status"
+                                                                           aria-label="Floating label select example"
+                                                                           required>
+                                                                           <option value="">Pilih Status</option>
+                                                                           <option value="Aktif"
+                                                                                <?php if (uri(2) == 'edit') echo $edit->user_status == "1" ? "selected" : ""; ?>>
+                                                                                Aktif</option>
+                                                                           <option value="Nonaktif"
+                                                                                <?php if (uri(2) == 'edit') echo $edit->user_status == "0" ? "selected" : ""; ?>>
+                                                                                Nonaktif
+                                                                           </option>
+                                                                      </select>
+                                                                 </div>
                                                             </div>
 
                                                        </div><br />
@@ -330,8 +346,9 @@
                                         <th>Email</th>
                                         <th>Nama Lengkap</th>
                                         <th>Sebagai</th>
-                                        <th>Prodi</th>
+                                        <th>Bidang</th>
                                         <!-- <th>Gender</th> -->
+                                        <th>Status</th>
                                         <th>Action</th>
                                    </tr>
                               </thead>
@@ -346,7 +363,20 @@
                                         <td><?php echo $d->user_namalengkap; ?></td>
                                         <td><?php echo level_user($d->user_level); ?></td>
                                         <td><?php echo $d->user_prodi; ?></td>
-                                        <!-- <td><?php echo $d->user_gender; ?></td> -->
+                                        <td>
+                                             <?php 
+                                             $status	   = $d->user_status;
+
+                                             if ($status=="Aktif") { ?>
+                                             <span class="badge bg-success text-white">
+                                                  Aktif
+                                             </span>
+                                             <?php } else if ($status=="Nonaktif") { ?>
+                                             <span class="badge bg-danger text-white">
+                                                  Nonaktif
+                                             </span>
+                                             <?php } ?>
+                                        </td>
                                         <td>
                                              <div class="btn-group">
                                                   <a style="margin-right: 10px;text-decoration: none;"

@@ -238,7 +238,7 @@ class M_Universal extends CI_Model
 	function updatePassword($password)
 	{
 		$userid = $this->session->userdata('LoginSession')['user_id'];
-		$query = $this->db->query("update  users set password='$password' WHERE user_id='$userid' ");
+		$query = $this->db->query("update  user set password='$password' WHERE user_id='$userid' ");
 		
 	}
     
@@ -264,7 +264,7 @@ class M_Universal extends CI_Model
 
 	public function getHahsDetails($hash)
 	{
-		$query =$this->db->query("select * from user WHERE hash_key='$hash'");
+		$query =$this->db->query("SELECT * FROM user WHERE hash_key='$hash'");
 		if($query->num_rows()==1)
 		{
 			return $query->row();
@@ -294,5 +294,7 @@ class M_Universal extends CI_Model
 		$this->db->where('hash_key',$hash);
 		$this->db->update('user',$data);
 	}
+
+    
 }
 ?>

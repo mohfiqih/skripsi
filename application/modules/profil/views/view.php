@@ -1,3 +1,6 @@
+<head>
+     <title>Profil | Sistem e-Repo</title>
+</head>
 <div class="container-fluid">
      <div>
           <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
@@ -39,11 +42,11 @@
                <div class="col-md-8">
                     <div class="card">
                          <div class="card-body">
-                              <div class="mb-2">
+                              <!-- <div class="mb-2">
                                    <label class="form-label">User ID</label>
                                    <input type="text" class="form-control" name="user_nama"
                                         value="<?php echo $edit->user_id; ?>" readonly>
-                              </div>
+                              </div> -->
                               <!-- If Else ID Identitas -->
                               <?php if ($this->user_level == "Super Admin"):?>
                               <div class="mb-2">
@@ -51,7 +54,7 @@
                                    <input type="text" class="form-control" value="<?php echo $edit->username_id; ?>"
                                         readonly>
                               </div>
-                              <?php elseif ($this->user_level == "Dosen" && $this->user_level == "Pengevaluasi"):?>
+                              <?php elseif ($this->user_level == "Dosen" or $this->user_level == "Pengevaluasi"):?>
                               <div class="mb-2">
                                    <label class="form-label">NIPY</label>
                                    <input type="text" class="form-control" value="<?php echo $edit->username_id; ?>"
@@ -104,6 +107,12 @@
                                    <label class="form-label">Jenis Kelamin</label>
                                    <input type="text" class="form-control" name="nama_lengkap"
                                         value="<?php echo $edit->user_gender; ?>" readonly>
+                              </div>
+                              <div class="mb-2">
+                                   <label class="form-label">Status</label>
+                                   <input type="text" class="form-control" name="nama_lengkap"
+                                        value="<?php echo $edit->user_status; ?>" readonly>
+                                   </span>
                               </div>
                          </div> <!-- end col -->
                     </div>

@@ -1,3 +1,6 @@
+<head>
+     <title>Diagram Anaisis | Sistem e-Repo</title>
+</head>
 <div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
           aria-label="breadcrumb">
@@ -49,8 +52,8 @@
                                                 (($this->M_chart->total_ts_p($total_id))*2)+
                                                 (($this->M_chart->total_sts_p($total_id))*1);
                                                        
-                                                $nilai = substr(($total / $tertinggi) * (100), 0, 5);
-                                                                      
+                                                $nilai = substr(($total!=0)?($total / $tertinggi) * 100:0, 0, 5);
+                                                
                                           if ($nilai <= 100 && $nilai >= 80) { ?>
                                              <!-- Sangat Setuju -->
                                              <span class="badge bg-success text-white">
@@ -71,9 +74,14 @@
                                              <span class="badge bg-danger text-white">
                                                   <?php echo $nilai ?>%
                                              </span>
+                                             <?php } else if ($nilai == 0) { ?>
+                                             <span class="badge bg-danger text-white">
+                                                  <?php echo $nilai ?>%
+                                             </span>
                                              <?php } ?>
                                         </td>
                                         <td>
+                                             <!-- $rata=($totalnilai!=0)?($totalnilai/$jumlah) * 100:0; -->
                                              <?php
                                              $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
                                              $tertinggi    = $this->M_chart->total_soal($total_id)*4;
@@ -84,7 +92,8 @@
                                              (($this->M_chart->total_ts_p($total_id))*2)+
                                              (($this->M_chart->total_sts_p($total_id))*1);
                                                                     
-                                             $nilai = ($total / $tertinggi) * 100;
+                                             $nilai = substr(($total!=0)?($total / $tertinggi) * 100:0, 0, 5);
+                                             
                                                                       
                                              if ($nilai <= 100 && $nilai >= 80) { ?>
                                              <span class="badge bg-success text-white">
@@ -95,18 +104,17 @@
                                                   Setuju
                                              </span>
                                              <?php } else if ($nilai <= 59.9 && $nilai >= 40) { ?>
-                                             <span class="badge bg-warning text-white">
-                                                  Cukup
-                                             </span>
-                                             <?php } else if ($nilai <= 39.9 && $nilai >= 20) { ?>
                                              <span class="badge bg-danger text-white">
                                                   Tidak Setuju
                                              </span>
-                                             <?php } else if ($nilai <= 19.9) { ?>
+                                             <?php } else if ($nilai <= 59.9 && $nilai >= 1) { ?>
                                              <span class="badge bg-danger text-white">
                                                   Sangat Tidak Setuju
                                              </span>
-
+                                             <?php } else if ($nilai==0) { ?>
+                                             <span class="badge bg-warning text-white">
+                                                  Kosong
+                                             </span>
                                              <?php } ?>
                                         </td>
                                    </tr>
@@ -126,7 +134,7 @@
                          <div class="card-body">
                               <div class="table-responsive">
                                    <figure class="highcharts-figure">
-                                        <div id="kesimpulan"></div>
+                                        <div id="kesimpulan_chart"></div>
                                    </figure>
                               </div>
                          </div>
@@ -140,7 +148,7 @@
           <div class="card">
                <div class="card-body">
                     <div class="card" style="margin-left: 20px;margin-top: 20px;">
-                         <h5>Analisis Klasifikasi</h5>
+                         <h5>Analisis Klasifikasi Komentar</h5>
                          <p style="width: 250px;">Berikut hasil analisis dari klasifikasi komentar setiap paket
                               kuesioner</p>
                     </div>
@@ -206,6 +214,10 @@
                                              <span class="badge bg-danger text-white">
                                                   Kurang
                                              </span>
+                                             <?php } else if ($Baik==$Kurang) { ?>
+                                             <span class="badge bg-warning text-white">
+                                                  Kosong
+                                             </span>
                                              <?php } ?>
                                         </td>
                                    </tr>
@@ -233,9 +245,53 @@
                </div>
           </div>
      </div>
-
+</div>
+<div class="row">
      <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="card">
+          <div class="card"><br />
+               <div class="card-body" style="overflow: auto;">
+                    <h4 class="header-title mt-0 mb-3">Total Responden
+                         Berdasarkan
+                         Kategori</h4><br />
+                    <div class="table-responsive">
+                         <table class="table table-hover mb-0">
+                              <thead>
+                                   <tr>
+                                        <th>No</th>
+                                        <th>Kategori Responden</th>
+                                        <th>Responden</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <tr>
+                                        <th>1</th>
+                                        <td>Dosen</td>
+                                        <td><?php echo $jml_dosen; ?></td>
+                                   </tr>
+                                   <tr>
+                                        <th>2</th>
+                                        <td>Mahasiswa</td>
+                                        <td><?php echo $jml_mahasiswa; ?>
+                                        </td>
+                                   </tr>
+                                   <!-- <tr>
+                                        <th>3</th>
+                                        <td>Super Admin</td>
+                                        <td><?php echo $jml_mahasiswa; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>4</th>
+                                        <td>Pengevaluasi</td>
+                                        <td><?php echo $jml_mahasiswa; ?>
+                                        </td>
+                                   </tr> -->
+                              </tbody>
+                         </table>
+                    </div>
+               </div>
+          </div>
+          <div class="card" style="margin-top: 20px;">
                <div class="card-body">
                     <div class="col-xl-12 col-md-12" style="margin-top: 15px;">
                          <div class="card">
@@ -250,7 +306,6 @@
                     </div>
                </div>
           </div>
-
      </div>
      <div class="col-xl-6 col-md-6">
           <div class="card" style="margin-top: 15px;">
@@ -265,6 +320,91 @@
                                    </div>
                               </div>
                          </div>
+                    </div>
+               </div>
+          </div>
+          <div class="card" style="margin-top: 20px;">
+               <div class="card-body" style="overflow: auto;">
+                    <h4 class="header-title mt-0 mb-3">Total Responden Prodi
+                    </h4>
+                    <div class="table-responsive">
+                         <table class="table table-hover mb-0">
+                              <thead>
+                                   <tr>
+                                        <th>No</th>
+                                        <th>Prodi</th>
+                                        <th>Total</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <tr>
+                                        <th>1</th>
+                                        <td>DIV Teknik Informatika</td>
+                                        <td><?php echo $jml_TI; ?></td>
+                                   </tr>
+                                   <tr>
+                                        <th>2</th>
+                                        <td>DIV Akuntansi Sektor Publik</td>
+                                        <td><?php echo $jml_ASP; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>3</th>
+                                        <td>DIII Teknik Komputer</td>
+                                        <td><?php echo $jml_KOM; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>4</th>
+                                        <td>DIII Akuntansi</td>
+                                        <td><?php echo $jml_AK; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>5</th>
+                                        <td>DIII Farmasi</td>
+                                        <td><?php echo $jml_FARM; ?>
+                                        </td>
+                                   </tr>
+
+                                   <tr>
+                                        <th>6</th>
+                                        <td>DIII Perhotelan</td>
+                                        <td><?php echo $jml_PER; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>7</th>
+                                        <td>DIII Kebidanan</td>
+                                        <td><?php echo $jml_BID; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>8</th>
+                                        <td>DIII Teknik Mesin</td>
+                                        <td><?php echo $jml_MSN; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>9</th>
+                                        <td>DIII Desain Komunikasi Visual</td>
+                                        <td><?php echo $jml_DKV; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>10</th>
+                                        <td>DIII Keperawatan</td>
+                                        <td><?php echo $jml_PRWT; ?>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <th>11</th>
+                                        <td>DIII Teknik Eletkro</td>
+                                        <td><?php echo $jml_ELKTR; ?>
+                                        </td>
+                                   </tr>
+                              </tbody>
+                         </table>
                     </div>
                </div>
           </div>
@@ -302,72 +442,4 @@
                </div>
           </div>
      </div>
-     <div class="col-xl-6 col-md-6" style="margin-top: 15px;">
-          <div class="card">
-               <div class="card-body" style="height: 260px;overflow: auto;">
-                    <h4 class="header-title mt-0 mb-3">
-                         <center>Total Prodi</center>
-                    </h4>
-                    <div class="table-responsive">
-                         <table class="table table-hover mb-0">
-                              <thead>
-                                   <tr>
-                                        <th>No</th>
-                                        <th>Kategori Responden</th>
-                                        <th>Jumlah Responden</th>
-                                   </tr>
-                              </thead>
-                              <tbody>
-                                   <tr>
-                                        <th>1</th>
-                                        <td>DIV Teknik Informatika</td>
-                                        <td><?php echo $jml_TI; ?></td>
-                                   </tr>
-                                   <tr>
-                                        <th>2</th>
-                                        <td>DIII Teknik Komputer</td>
-                                        <td><?php echo $jml_KOM; ?>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <th>3</th>
-                                        <td>DIII Akuntansi</td>
-                                        <td><?php echo $jml_AK; ?>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <th>4</th>
-                                        <td>DIII Farmasi</td>
-                                        <td><?php echo $jml_FARM; ?>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <th>5</th>
-                                        <td>DIV Akuntansi Sektor Publik</td>
-                                        <td><?php echo $jml_ASP; ?>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <th>6</th>
-                                        <td>DIII Perhotelan</td>
-                                        <td><?php echo $jml_PH; ?>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <th>7</th>
-                                        <td>DIII Kebidanan</td>
-                                        <td><?php echo $jml_BID; ?>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <th>8</th>
-                                        <td>DIII Keperawatan</td>
-                                        <td><?php echo $jml_PRW; ?>
-                                        </td>
-                                   </tr>
-                              </tbody>
-                         </table>
-                    </div>
-               </div>
-          </div>
-     </div> -->
+      -->

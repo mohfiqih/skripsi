@@ -61,4 +61,6 @@ $route['translate_uri_dashes']	= FALSE;
 
 $route['login']				= 'auth/login';
 $route['login/user']		     = 'auth/user';
+$route['forgotPassword']	          = 'auth/forgotPassword';
+$route['export']                   = 'export';
 $route['logout']				= 'auth/logout';

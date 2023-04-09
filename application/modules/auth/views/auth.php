@@ -22,7 +22,7 @@
 
      <link rel="shortcut icon" href="<?php echo base_url('assets/backend'); ?>/images/phb.png">
 
-     <title>Login | Repository</title>
+     <title>Login | Sistem e-Repo</title>
 
      <script>
      $(window).load(function() {
@@ -53,8 +53,8 @@
                          <div class="row justify-content-center">
                               <div class="col-md-8">
                                    <div class="mb-4">
-                                        <h3>Login to <strong>Sistem</strong></h3>
-                                        <p class="mb-4">Repository & Evaluasi Sistem</p>
+                                        <h3>Login to <strong>e-Repo</strong></h3>
+                                        <p class="mb-4">Sistem Repository Evaluasi Aplikasi</p>
                                    </div>
 
                                    <form action="auth/proses" method="POST">

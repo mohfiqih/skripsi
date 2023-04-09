@@ -1,5 +1,5 @@
 <head>
-     <title>Hasil Kuesioner | Repository</title>
+     <title>Hasil Kuesioner | Sistem e-Repo</title>
 </head>
 <div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
@@ -18,6 +18,28 @@
           <div class="card">
                <div class="card-body">
                     <div class="row">
+                         <!-- <div class="col-md-6">
+                              <a style="decoration: none;"
+                                   href="<?php echo base_url('export/print_hasil_kuesioner'); ?>">
+                                   <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                        class="btn btn-danger aves-effect waves-light" type="button">
+                                        <i class="fa fa-print"></i>
+                                        Print
+                                   </button>
+                              </a>
+                              <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                   class="btn btn-warning dropdown-toggle aves-effect waves-light" type="button"
+                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                   <i class="fa fa-download"></i> Export
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_hasil_pdf'); ?>">PDF</a>
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_hasil_excel'); ?>">Excel</a>
+                              </div>
+                         </div> -->
                          <div class="card-body" data-mdb-perfect-scrollbar="true" style="overflow-x: auto;">
                               <table id="myTable" class="table table-hover mb-0">
                                    <thead>
@@ -70,27 +92,27 @@
                                                 (($this->M_report->total_ts_p($total_id))*2)+
                                                 (($this->M_report->total_sts_p($total_id))*1);
                                                        
-                                                $nilai = substr(($total / $tertinggi) * (100), 0, 5);
+                                                $nilai = substr(($total!=0)?($total / $tertinggi) * 100:0, 0, 5);
                                                                       
-                                          if ($nilai <= 100 && $nilai >= 80) { ?>
+                                                  if ($nilai <= 100 && $nilai >= 80) { ?>
                                                   <span class="badge bg-success text-white">
-                                                       <?php echo $nilai ?>%
+                                                       Sangat Setuju
                                                   </span>
                                                   <?php } else if ($nilai <= 79.9 && $nilai >= 60) { ?>
                                                   <span class="badge bg-success text-white">
-                                                       <?php echo $nilai ?>%
+                                                       Setuju
                                                   </span>
                                                   <?php } else if ($nilai <= 59.9 && $nilai >= 40) { ?>
+                                                  <span class="badge bg-danger text-white">
+                                                       Tidak Setuju
+                                                  </span>
+                                                  <?php } else if ($nilai <= 59.9 && $nilai >= 1) { ?>
+                                                  <span class="badge bg-danger text-white">
+                                                       Sangat Tidak Setuju
+                                                  </span>
+                                                  <?php } else if ($nilai==0) { ?>
                                                   <span class="badge bg-warning text-white">
-                                                       <?php echo $nilai ?>%
-                                                  </span>
-                                                  <?php } else if ($nilai <= 39.9 && $nilai >= 20) { ?>
-                                                  <span class="badge bg-danger text-white">
-                                                       <?php echo $nilai ?>%
-                                                  </span>
-                                                  <?php } else if ($nilai <= 19.9) { ?>
-                                                  <span class="badge bg-danger text-white">
-                                                       <?php echo $nilai ?>%
+                                                       Kosong
                                                   </span>
                                                   <?php } ?>
                                              </td>

@@ -1,5 +1,5 @@
 <head>
-     <title>Hasil Kuesioner | Repository</title>
+     <title>Hasil Kuesioner | Sistem e-Repo</title>
 </head>
 <div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
@@ -27,7 +27,7 @@
                                              <th class="align-middle" scope="col" style="width: 5px;">No
                                              </th>
                                              <th class="align-middle" scope="col">Jawaban</th>
-                                             <th class="align-middle" scope="col">Klasifikasi
+                                             <th class="align-middle" scope="col">Label
                                              </th>
                                              <!-- <th class="align-middle" scope="col" style="width: 5px;">
                                                   Action
@@ -48,7 +48,20 @@
                                                   <?php echo $d->jawaban; ?>
                                              </td>
                                              <td class="align-middle">
-                                                  <?php echo $d->klasifikasi; ?>
+                                                  <!-- <?php echo $d->label; ?> -->
+                                                  <?php 
+
+                                                  $label = $d->label;
+                                                  
+                                                  if ($label=='Baik') { ?>
+                                                  <span class="badge bg-success text-white">
+                                                       Baik
+                                                  </span>
+                                                  <?php } else if ($label=='Kurang') { ?>
+                                                  <span class="badge bg-danger text-white">
+                                                       Kurang
+                                                  </span>
+                                                  <?php } ?>
                                              </td>
                                              <!-- <td class="align-middle">
                                                   <a style="margin-left: 10px;text-decoration: none;"
@@ -57,7 +70,6 @@
                                                        title="Soal">
                                                   </a>
                                              </td> -->
-
                                         </tr>
                                         <?php }} else { ?>
                                         <td class="text-center" colspan="4">Tidak ada data</td>

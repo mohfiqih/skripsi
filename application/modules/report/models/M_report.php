@@ -92,8 +92,8 @@ class M_report extends CI_Model
     function total_responden($where)
     {
         $this->db->select('*');
-        $this->db->from('responden');
-        $this->db->join('paket_soal', 'paket_soal.id_paket = responden.paket_id_responden');
+        $this->db->from('kuesioner');
+        $this->db->join('paket_soal', 'paket_soal.id_paket = kuesioner.id_paket_jawaban');
         $this->db->where($where);
         $this->db->order_by('id_paket', 'asc');
         $query = $this->db->get()->num_rows();
@@ -157,6 +157,18 @@ class M_report extends CI_Model
         $this->db->where('jawaban = "1"');
         $this->db->order_by('id_paket', 'asc');
         $query = $this->db->get()->num_rows();
+        return $query;
+    }
+
+    public function get_klasifikasi($where)
+    {
+        $this->db->select('*');
+        $this->db->from('paket_soal');
+        $this->db->join('klasifikasi', 'klasifikasi.id_paket_jawaban = paket_soal.id_paket', 'klasifikasi.jawaban');
+        $this->db->where($where);
+        // $this->db->order_by('id_paket', 'asc');
+        // $this->db->group_by('id_paket');
+        $query = $this->db->get()->result();
         return $query;
     }
 

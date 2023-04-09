@@ -1,3 +1,6 @@
+<head>
+     <title>Edit Profil | Sistem e-Repo</title>
+</head>
 <div class="container-fluid">
      <!-- Profil Berhasil -->
      <?php if ($this->session->flashdata('profil_berhasil')){ ?>

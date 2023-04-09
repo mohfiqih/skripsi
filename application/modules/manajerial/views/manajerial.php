@@ -1,5 +1,5 @@
 <head>
-     <title>Manajerial | Repository & Kuesioner Online</title>
+     <title>Manajerial | Sistem e-Repo</title>
 </head>
 
 <!-- Berhasil Tambah -->
@@ -50,6 +50,7 @@
 </div>
 <?php } ?>
 
+
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
      <strong>Informasi!</strong> Kapasitas upload data maksimal 10 MB hanya untuk data berukuran teks, untuk data besar
      sertakan link pada tambah data!<br />
@@ -71,6 +72,7 @@
           </ol>
      </nav>
 </div>
+
 <div class="card">
      <div class="content">
           <div class="container-fluid">
@@ -78,24 +80,30 @@
                     <div class="card-body">
                          <div class="row">
                               <div class="col-md-6">
-                                   <button style="height: 43px;" type="button"
-                                        class=" btn btn-success waves-effect waves-light" data-toggle="modal"
+                                   <button style="height: 43px;margin-left: 5px;margin-top: 5px;" type="button"
+                                        class="btn btn-success waves-effect waves-light" data-toggle="modal"
                                         data-target="#addModal"><span class="btn-label"><i
                                                   class="fa fa-plus"></i></span>
                                         <?php echo (uri(2) == 'edit') ? 'Edit Data' : 'Tambah'; ?></button>
-                                   <button style="height: 43px;margin-left: 5px;"
-                                        class="btn btn-danger dropdown-toggle aves-effect waves-light" type="button"
+                                   <a style="decoration: none;"
+                                        href="<?php echo base_url('export/print_manajerial'); ?>">
+                                        <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                             class="btn btn-danger aves-effect waves-light" type="button">
+                                             <i class="fa fa-print"></i>
+                                             Print
+                                        </button>
+                                   </a>
+                                   <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                        class="btn btn-warning dropdown-toggle aves-effect waves-light" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         <i class="fa fa-download"></i> Export
                                    </button>
                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item"
-                                             href="<?php echo base_url('manajerial/export_manajerial'); ?>"
-                                             target="_blank">PDF</a>
-                                        <a class="dropdown-item" href="#" target="_blank">Excel</a>
-                                        <a class="dropdown-item" href="#" target="_blank">Something else
-                                             here</a>
+                                             href="<?php echo base_url('export/export_manajerial_pdf'); ?>">PDF</a>
+                                        <a class="dropdown-item"
+                                             href="<?php echo base_url('export/export_manajerial_excel'); ?>">Excel</a>
                                    </div>
                               </div>
 

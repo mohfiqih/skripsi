@@ -1,5 +1,5 @@
 <head>
-     <title>Bank Pertanyaan | Repository</title>
+     <title>Hasil Kuesioner | Sistem e-Repo</title>
 </head>
 <div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
@@ -27,16 +27,28 @@
                ?>
                <div class="card">
                     <div style="margin-left: 20px;margin-top: 20px;">
-                         <a href="<?php echo base_url('bankpertanyaan/hasil_kuesioner_pdf/' . uri(3)); ?>"
-                              target="_blank">
-                              <button type="button" class=" btn btn-danger waves-effect waves-light">
-                                   <span class="btn-label"><i class="fa fa-download"></i></span>Export
+                         <a style="decoration: none;" href="<?php echo base_url('export/print_hasil/') . uri(3); ?>">
+                              <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                   class="btn btn-danger aves-effect waves-light" type="button">
+                                   <i class="fa fa-print"></i>
+                                   Print
                               </button>
                          </a>
-                         <a href="<?php echo base_url('report'); ?>">
+                         <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                              class="btn btn-warning dropdown-toggle aves-effect waves-light" type="button"
+                              id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-download"></i> Export
+                         </button>
+                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item"
+                                   href="<?php echo base_url('export/export_hasil_pdf/') . uri(3); ?>">PDF</a>
+                              <a class="dropdown-item"
+                                   href="<?php echo base_url('export/export_hasil_excel/') . uri(3); ?>">Excel</a>
+                         </div>
+                         <!-- <a href="<?php echo base_url('report'); ?>">
                               <button type="button" class="btn btn-warning"><i class=" fas fa-backward"></i>
                                    Kembali</button>
-                         </a>
+                         </a> -->
                     </div>
                     <div class="card-body">
                          <div class="row">
@@ -67,20 +79,6 @@
                                                             <?php echo $d->responden; ?>
                                                        </td>
                                                   </tr>
-
-                                             </tbody>
-                                        </table>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-6" style="overflow: auto;margin-top: 10px;">
-                                   <div class="box-header with-border">
-                                        <h4 class="box-title" style="margin-left: 20px;margin-top: 10px;">Data
-                                             Kuesioner</h4>
-                                   </div>
-                                   <div style="overflow: auto;">
-                                        <table class="table table-hover mb-0">
-                                             <tbody>
                                                   <tr>
                                                        <th width="150">Tanggal</th>
                                                        <th width="20">:</th>
@@ -95,9 +93,97 @@
                                                             <?php echo $total_responden; ?> Responden
                                                        </td>
                                                   </tr>
+
+                                             </tbody>
+                                        </table>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-6" style="overflow: auto;margin-top: 10px;">
+                                   <div class="box-header with-border">
+                                        <h4 class="box-title" style="margin-left: 20px;margin-top: 10px;">Data
+                                             Kesimpulan</h4>
+                                   </div>
+                                   <div style="overflow: auto;">
+                                        <table class="table table-hover mb-0">
+                                             <tbody>
                                                   <tr>
-                                                       <th width="150">Persentase</th>
+                                                       <th width="150">
+                                                            Total Skor
+                                                       </th>
                                                        <th width="20">:</th>
+                                                       <th>SS</th>
+                                                       <th>S</th>
+                                                       <th>TS</th>
+                                                       <th>STS</th>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>
+
+                                                       </td>
+                                                       <td>
+
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $ss; ?>
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $s; ?>
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $ts; ?>
+                                                       </td>
+                                                       <td>
+                                                            <?php echo $sts; ?>
+                                                       </td>
+                                                  </tr>
+                                             </tbody>
+                                        </table>
+                                        <!-- Total Kesimpulan -->
+                                        <table class="table table-hover mb-0">
+                                             <thead>
+                                                  <tr>
+                                                       <th>
+                                                            Total
+                                                       </th>
+
+                                                       <th>
+                                                            Y
+                                                       </th>
+                                                       <th>
+                                                            X
+                                                       </th>
+                                                       <th>
+                                                            Interval
+                                                       </th>
+                                                       <th>
+                                                            Hasil (%)
+                                                       </th>
+                                                  </tr>
+                                             </thead>
+                                             <tbody>
+                                                  <tr>
+                                                       <td class="align-middle">
+                                                            <?php
+                         
+                                                                 echo $total; ?>
+                                                       </td>
+
+                                                       <td>
+                                                            <?php
+                                                                 echo $tertinggi; ?>
+                                                       </td>
+
+                                                       <td>
+                                                            <?php
+                                                                 echo $terendah; ?>
+                                                       </td>
+
+                                                       <td>
+                                                            <?php
+                                                                 echo $interval; ?>
+                                                       </td>
+
                                                        <td>
                                                             <?php
 
@@ -131,6 +217,51 @@
                                                             <?php } else if ($nilai <= 19.9) { ?>
                                                             <span class="badge bg-danger text-white">
                                                                  <?php echo $nilai ?>%
+                                                            </span>
+                                                            <?php } ?>
+                                                       </td>
+                                                  </tr>
+                                             </tbody>
+
+                                        </table>
+                                        <table style="margin-left: 20px;margin-top: 10px;">
+                                             <tbody>
+                                                  <tr>
+                                                       <th width="150">Kategori</th>
+                                                       <th width="20">:</th>
+                                                       <td>
+                                                            <?php
+                                             $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
+                                             $tertinggi    = $this->M_report->total_soal($total_id)*4;
+                                             $terendah     = $this->M_report->total_soal($total_id)*1;
+
+                                             $total = (($this->M_report->total_ss_p($total_id))*4)+
+                                             (($this->M_report->total_s_p($total_id))*3)+
+                                             (($this->M_report->total_ts_p($total_id))*2)+
+                                             (($this->M_report->total_sts_p($total_id))*1);
+                                                                    
+                                             $nilai = substr(($total!=0)?($total / $tertinggi) * 100:0, 0, 5);
+                                             
+                                                                      
+                                             if ($nilai <= 100 && $nilai >= 80) { ?>
+                                                            <span class="badge bg-success text-white">
+                                                                 Sangat Setuju
+                                                            </span>
+                                                            <?php } else if ($nilai <= 79.9 && $nilai >= 60) { ?>
+                                                            <span class="badge bg-success text-white">
+                                                                 Setuju
+                                                            </span>
+                                                            <?php } else if ($nilai <= 59.9 && $nilai >= 40) { ?>
+                                                            <span class="badge bg-danger text-white">
+                                                                 Tidak Setuju
+                                                            </span>
+                                                            <?php } else if ($nilai <= 59.9 && $nilai >= 1) { ?>
+                                                            <span class="badge bg-danger text-white">
+                                                                 Sangat Tidak Setuju
+                                                            </span>
+                                                            <?php } else if ($nilai==0) { ?>
+                                                            <span class="badge bg-warning text-white">
+                                                                 Kosong
                                                             </span>
                                                             <?php } ?>
                                                        </td>
@@ -217,7 +348,8 @@
                                                   </td>
                                                   <?php }
                                                   } else { ?>
-                                                  <td class="text-center" colspan="8">Tidak ada data</td>
+                                                  <td class="text-center" colspan="8">
+                                                       Tidak ada data</td>
                                                   <?php } ?>
                                              </tr>
                                         </tbody>

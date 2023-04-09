@@ -3,7 +3,9 @@
 
 <head>
      <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-     <title>Reset Password to Email</title>
+
+     <title>Forgot Password | Sistem e-Repo</title>
+
      <meta name="description" content="Reset Password Email Template.">
      <style type="text/css">
      a:hover {
@@ -41,7 +43,7 @@
                          <tr>
                               <td>
                                    <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0"
-                                        style="max-width:670px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
+                                        style="max-width:400px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
                                         <tr>
                                              <td style="height:40px;">&nbsp;</td>
                                         </tr>
@@ -61,12 +63,29 @@
                                                        following link and follow the instructions.
                                                   </p><br />
                                                   <center>
-                                                       <form action="<?=base_url('auth/forgotPassword')?>"
+                                                       <!-- <?= $this->session->flashdata('message'); ?> -->
+                                                       <?= $this->session->flashdata('email_sent'); ?>
+                                                       <form action="<?= base_url('auth/forgotPassword') ?>"
                                                             method="post">
-                                                            <input type="email" class="form-control" name="email"
-                                                                 style="width: 250px;" placeholder="Masukan Email anda"
-                                                                 required />
+                                                            <input type="hidden"
+                                                                 name="<?php echo $this->security->get_csrf_token_name(); ?>"
+                                                                 value="<?php echo $this->security->get_csrf_hash(); ?>">
 
+
+                                                            <!-- <input type="email" class="form-control" name="email"
+                                                                 style="width: 250px;" placeholder="Masukan Email anda"
+                                                                 value="<?= set_value('email'); ?>" />
+                                                            <?= form_error('email', '<small class="text-danger" pl-3>', '</small>'); ?><br /> -->
+
+                                                            <div class="input-group mb-3">
+                                                                 <input type="email" name="email" class="form-control"
+                                                                      placeholder="Email" required>
+                                                                 <div class="input-group-append">
+                                                                      <div class="input-group-text">
+                                                                           <span class="fas fa-mail"></span>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
                                                             <div class="icheck-primary">
                                                                  <?php if($this->session->userdata('error')) { ?>
                                                                  <p class="text-danger">
@@ -81,10 +100,9 @@
                                                                       <?php echo validation_errors(); ?></p>
                                                             </div>
 
-                                                            <button style="width: 250px;" type="submit"
-                                                                 class="btn btn-primary btn-block">Send
-                                                                 Reset
-                                                                 Link</button>
+                                                            <button type="submit"
+                                                                 class="btn btn-primary btn-block">Reset
+                                                                 Password</button>
                                                        </form>
                                                   </center>
                                              </td>

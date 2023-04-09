@@ -1,5 +1,5 @@
 <head>
-     <title>Paket Kuesioner | Repository</title>
+     <title>Paket Kuesioner | Sistem e-Repo</title>
 </head>
 <!-- Berhasil Tambah -->
 <?php if ($this->session->flashdata('notif_tambah_paket')){ ?>
@@ -74,19 +74,28 @@
                <div class="card-body">
                     <div class="row">
                          <div class="col-md-6">
-                              <button style="height: 45px;" type="button" class="btn btn-success" data-toggle="modal"
-                                   data-target="#addModal"><span class="btn-label"><i class="fa fa-plus"></i></span>
+                              <button style="height: 43px;margin-left: 5px;margin-top: 5px;" type="button"
+                                   class="btn btn-success" data-toggle="modal" data-target="#addModal"><span
+                                        class="btn-label"><i class="fa fa-plus"></i></span>
                                    Kuesioner</button>
-                              <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <a style="decoration: none;" href="<?php echo base_url('export/print_paket'); ?>">
+                                   <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                        class="btn btn-danger aves-effect waves-light" type="button">
+                                        <i class="fa fa-print"></i>
+                                        Print
+                                   </button>
+                              </a>
+                              <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                   class="btn btn-warning dropdown-toggle aves-effect waves-light" type="button"
+                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
                                    <i class="fa fa-download"></i> Export
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                   <a class="dropdown-item" href="<?php echo base_url('paket/laporan_paket'); ?>"
-                                        target="_blank">PDF</a>
-                                   <a class="dropdown-item" href="#" target="_blank">Excel</a>
-                                   <a class="dropdown-item" href="#" target="_blank">Something else
-                                        here</a>
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_paket_pdf'); ?>">PDF</a>
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_paket_excel'); ?>">Excel</a>
                               </div>
                          </div>
 

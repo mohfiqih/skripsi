@@ -36,7 +36,7 @@ class Report extends MY_Controller
 	public function data_responden()
 	{
 		$data_user			= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
-		$total_responden		= "paket_id_responden='" . dekrip(uri(3)) . "' ";
+		$total_responden		= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
 		$total_soal			= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
 		// Menarik id paket
 		$total_id				= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
@@ -45,18 +45,25 @@ class Report extends MY_Controller
 			"judul"			=> "Data Kuesioner",
 			"halaman"			=> "data_responden",
 			"view"			=> "data_responden",
+			
 			// Menarik Data paket berdasarkan id_paket
 			"data_paket"		=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
-			// Menarik Data identitas responden berdasarkan id_paket 
-			// "data_kuesioner"	=> $this->M_Universal->getMulti(["id_identitas" => dekrip(uri(3))], "jawaban"),
-			// "data_identitas"	=> $this->report->get_jawaban(["responden.paket_id_responden" => dekrip(uri(3))]),
 			"data_identitas"	=>  $this->report->get_kuesioner(["kuesioner.id_paket_jawaban" => dekrip(uri(3))]),
 
-			// Menghitung total Responden yg Menjawab berdasarkan id_paket
-			// "total_responden"	=> $this->report->total_responden($total_responden),
+			"total_responden"	=> $this->report->total_responden($total_responden),
+			
+			// Menghitung Nilai Tertinggi, Terendah dan Interval
+			"total"			=> ($this->report->total_ss_p($total_id)*4)+($this->report->total_s_p($total_id)*3)+($this->report->total_ts_p($total_id)*2)+($this->report->total_sts_p($total_id)*1),
+			"interval"		=> $this->report->total_responden($total_responden)/4,
+			"terendah"		=> $this->report->total_responden($total_responden)*1,
+			"tertinggi"		=> $this->report->total_soal($total_soal)*4,
+			
+			// Menghitung Skor Total Positif + Negatif
+			"ss"		=> ($this->report->total_ss_p($total_id))*4,
+			"s"		=> ($this->report->total_s_p($total_id))*3,
+			"ts"		=> ($this->report->total_ts_p($total_id))*2,
+			"sts"	=> ($this->report->total_sts_p($total_id))*1,
 
-			// Menghitung total Jumlah Jawaban dari responden berdasarkkan id_paket
-			// "total_soal"		=> $this->report->total_soal($total_soal),
 			"user"			=> $data_user
 		);
 
@@ -131,7 +138,8 @@ class Report extends MY_Controller
 			"judul"			=> "Hasil Kuesioner",
 			"halaman"			=> "data_komentar",
 			"view"			=> "data_komentar",
-			"data_klasifikasi"	=> $this->M_Universal->getMulti(NULL, "klasifikasi"),
+			// "data_klasifikasi"	=> $this->M_Universal->getMulti(NULL, "klasifikasi"),
+			"data_klasifikasi"	=>  $this->report->get_klasifikasi(["klasifikasi.id_paket_jawaban" => dekrip(uri(3))]),
 			"user"			=> $data_user
 		);
 		$this->load->view('template', $data);

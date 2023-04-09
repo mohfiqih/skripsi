@@ -4,7 +4,7 @@
 <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <title>Kuesioner Evaluasi Sistem</title>
+     <!-- <title>Kuesioner Evaluasi Sistem</title> -->
      <link rel="stylesheet"
           href="<?php echo base_url('assets/template_sky/template/vendors/feather/feather.css'); ?>" />
      <link rel="stylesheet"
@@ -12,8 +12,6 @@
      <link rel="stylesheet"
           href="<?php echo base_url('assets/template_sky/template/vendors/css/vendor.bundle.base.css'); ?>" />
 
-     <link rel="stylesheet"
-          href="<?php echo base_url('assets/template_sky/template/vendors/ti-icons/css/themify-icons.css'); ?>" />
      <!-- Font Awesome -->
      <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/fontawesome.min.css'); ?>" />
      <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.min.css'); ?>">
@@ -226,21 +224,14 @@
                               </a>
                               <div class="collapse" id="export">
                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('#') ?>">Export Manajerial</a>
+                                        <li class="nav-item">
+                                             <a class="nav-link" href="<?php echo base_url('export/pdf') ?>">Export
+                                                  PDF</a>
                                         </li>
-                                        <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Berkas</a></li> -->
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Paket</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Pertanyaan</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Skala Likert</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Komentar</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Link</a></li>
+                                        <li class="nav-item">
+                                             <a class="nav-link" href="<?php echo base_url('export/excel') ?>">
+                                                  Export Excel</a>
+                                        </li>
                                    </ul>
                               </div>
                          </li>
@@ -947,10 +938,11 @@
      });
      </script>
 
-     <!-- Kesimpulan -->
+
+     <!-- Kesimpulan Chart -->
      <script type="text/javascript">
      // Create the chart
-     Highcharts.chart('kesimpulan', {
+     Highcharts.chart('kesimpulan_chart', {
           chart: {
                type: 'column'
           },
@@ -1005,9 +997,6 @@
                          if(is_array($data_paket)){
                          foreach ($data_paket as $d) {
                               $id = $d->nama_paket;
-                              // $versi = $d->versi_apl_paket;
-                              // $id_versi = $id+$versi;
-                              
                               $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
                               $tertinggi    = $this->M_chart->total_soal($total_id)*4;
                               $terendah     = $this->M_chart->total_soal($total_id)*1;

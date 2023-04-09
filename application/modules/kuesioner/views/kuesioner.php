@@ -2,22 +2,6 @@
      <title>Kuesioner | Repository & Kuesioner Online</title>
 </head>
 
-<!-- <div class="card">
-     <div class="container-fluid">
-          <div class="card">
-               <div class="card-body">
-                    <div class="row">
-                         <form role="form">
-                              <input type="text" class="form-control" id="inputJawaban" name="jawaban"
-                                   placeholder="Ketik Jawaban Anda" required autofocus />
-                              <button id="submitBtn" type="submit" class="btn btn-success">Kirim</button>
-                         </form>
-                    </div>
-               </div>
-          </div>
-     </div>
-</div> -->
-
 <div class="card">
      <div class="container-fluid">
           <div class="card">
@@ -285,26 +269,6 @@
                                              <h5><a><span>Tidak Ada Pertanyaan Kuesioner</span></a></h5>
                                         </div>
                                         <?php } ?>
-                                        <!-- <table>
-                                             <tbody>
-                                                  <tr>
-                                                       <td class="align-middle">
-                                                            <div>
-                                                                 <input id="jawaban" class="from-control"
-                                                                      style="height: 40px; width: 375px;border-radius: 6px;margin-left: 20px;"
-                                                                      name="<?php echo "jawaban" . $d->id_soal; ?>" rows="15"
-                                                                      placeholder="Ketik Jawaban Anda.." required></input>
-                                                            </div>
-                                                            <div class="form-floating mb-2">
-                                                                 <input type="text" class="form-control"
-                                                                      name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                      placeholder="Ketik Jawaban Anda.."
-                                                                      autocomplete="off" required>
-                                                            </div>
-                                                       </td>
-                                                  </tr>
-                                             </tbody>
-                                        </table> -->
 
                                    </div>
                                    <br />

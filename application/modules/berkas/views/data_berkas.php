@@ -1,5 +1,5 @@
 <head>
-     <title>Bank Berkas | Repository & Kuesioner Online</title>
+     <title>Data Berkas | Sistem e-Repo</title>
 </head>
 <div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
@@ -19,16 +19,24 @@
                <div class="card-body">
                     <div class="row">
                          <div class="col-md-6">
-                              <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <a style="decoration: none;" href="<?php echo base_url('export/print_berkas'); ?>">
+                                   <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                        class="btn btn-danger aves-effect waves-light" type="button">
+                                        <i class="fa fa-print"></i>
+                                        Print
+                                   </button>
+                              </a>
+                              <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                   class="btn btn-warning dropdown-toggle aves-effect waves-light" type="button"
+                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
                                    <i class="fa fa-download"></i> Export
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                   <a class="dropdown-item" href="<?php echo base_url('berkas/export_data_berkas'); ?>"
-                                        target="_blank">PDF</a>
-                                   <a class="dropdown-item" href="#" target="_blank">Excel</a>
-                                   <a class="dropdown-item" href="#" target="_blank">Something else
-                                        here</a>
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_berkas_pdf'); ?>">PDF</a>
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_berkas_excel'); ?>">Excel</a>
                               </div>
                          </div>
 

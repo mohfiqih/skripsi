@@ -90,7 +90,7 @@ class M_dasbor extends CI_Model
          return $mahasiswa;
      }
 
-     # Total Prodi
+# Total Prodi
      function total_TI()
      {
          $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "TI"');
@@ -100,9 +100,16 @@ class M_dasbor extends CI_Model
 
      function total_KOM()
      {
-         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "KOM"');
+         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "TKOM"');
          $KOM = $query->num_rows();
          return $KOM;
+     }
+
+    function total_ASP()
+     {
+         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "ASP"');
+         $ASP = $query->num_rows();
+         return $ASP;
      }
 
      function total_AK()
@@ -119,16 +126,9 @@ class M_dasbor extends CI_Model
          return $FARM;
      }
 
-     function total_ASP()
+     function total_PER()
      {
-         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "ASP"');
-         $ASP = $query->num_rows();
-         return $ASP;
-     }
-
-     function total_PH()
-     {
-         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "PH"');
+         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "PER"');
          $PH = $query->num_rows();
          return $PH;
      }
@@ -140,12 +140,34 @@ class M_dasbor extends CI_Model
          return $BID;
      }
 
-     function total_PRW()
+     function total_MSN()
      {
-         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "PRW"');
-         $PRW = $query->num_rows();
-         return $PRW;
+         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "MSN"');
+         $MSN = $query->num_rows();
+         return $MSN;
      }
+
+     function total_DKV()
+     {
+         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "DKV"');
+         $DKV = $query->num_rows();
+         return $DKV;
+     }
+
+     function total_PRWT()
+     {
+         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "PRWT"');
+         $PRWT = $query->num_rows();
+         return $PRWT;
+     }
+
+     function total_ELKTR()
+     {
+         $query   = $this->db->query('SELECT * FROM kuesioner WHERE prodi= "ELKTR"');
+         $ELKTR = $query->num_rows();
+         return $ELKTR;
+     }
+
 
 
     //  SKORRR
@@ -249,5 +271,12 @@ class M_dasbor extends CI_Model
     {
         return $this->db->get('klasifikasi')->num_rows();
     }
+
+    function total_prodi()
+     {
+         $query   = $this->db->query('SELECT * FROM user WHERE user_prodi');
+         $prodi = $query->num_rows();
+         return $prodi;
+     }
 }
 ?>
