@@ -140,36 +140,36 @@ class Auth extends MY_Controller
 			$this->form_validation->set_rules('email','Email','required');
 			if($this->form_validation->run()==TRUE)
 			{
-				$email  = $this->input->post('email');
-				$validateEmail = $this->M_auth->validateEmail($email);
+				$email_send  = $this->input->post('email');
+				$validateEmail = $this->M_auth->validateEmail($email_send);
 				if($validateEmail!=false)
 				{
 					$row = $validateEmail;
 					$id = $row->user_id;
 
-					$string = time().$id.$email;
-					$hash_string = hash('sha256',$string);
+					$string = time().$id.$email_send;
+					$hash_string = password_hash($string, PASSWORD_BCRYPT);
 					$currentDate = date('Y-m-d H:i');
 					$hash_expiry = date('Y-m-d H:i',strtotime($currentDate. ' + 1 days'));
 					$data = array(
-						'hash_key' 	=> $hash_string,
-						'hash_expiry' 	=> $hash_expiry,
+						'hash_key'=>$hash_string,
+						'hash_expiry'=>$hash_expiry,
 					);
 					
 					$resetLink = base_url().'auth/password?hash='.$hash_string;
-					$message = '<p>Your reset password Link is here:</p>'.$resetLink;
+					$message = 'Your reset password Link is here: '.$resetLink;
 					$subject = "Password Reset link";
-					$sentStatus = $this->sendEmail($email,$subject,$message);
+					$sentStatus = $this->sendEmail($email_send,$subject,$message);
 					
 					if($sentStatus==TRUE) {
-						$this->M_auth->updatePasswordhash($data,$email);
-						$this->session->set_flashdata('success','Reset password link successfully sent');
+						$this->M_auth->updatePasswordhash($data,$email_send);
+						$this->session->set_flashdata('success','Reset password berhasil dikirim ke email!');
+						redirect(base_url('forgotPassword'));
+					} else {
+						$this->session->set_flashdata('error','Gagal kirim email!');
 						redirect(base_url('forgotPassword'));
 						// var_dump($sentStatus);
-					} else {
-						// $this->session->set_flashdata('error','Gagal kirim email!');
-						// redirect(base_url('forgotPassword'));
-						var_dump($sentStatus);
+						// var_dump($resetLink);
 					}
 				} else {
 					$this->session->set_flashdata('error','Tidak ada email tersebut!');
@@ -177,7 +177,6 @@ class Auth extends MY_Controller
 				}
 
 			} else {
-				// $this->session->set_flashdata('error','Email tidak boleh kosong!');
 				$this->load->view('forgot_password');	
 			}
 		} else {
@@ -185,153 +184,41 @@ class Auth extends MY_Controller
 		}
 	}
 
-	// public function sendEmail($email, $subject, $message){
+	public function sendEmail($email_send,$subject,$message)
+    {
 
-     //            $config = array(
-     //            'useragent' => 'codeIgniter',
-     //            'protocol' => 'mail',
-     //            'mailpath' => '/usr/sbin/sendmail',
-     //            'smtp_host' => 'localhost',
-     //            'smtp_user' => 'cproject163@gmail.com',
-     //            'smtp_pass' => 'mohfiqiherinsyah1606',
-     //            'smtp_port' => 25,
-     //            'smtp_timeout' => 55,
-     //            'wordwrap' => TRUE,
-     //            'wrapchars' => 76,
-     //            'mailtype' => 'html',
-     //            'charset' => 'utf-8',
-     //            'validate' => FALSE,
-     //            'priority' => 3,
-     //            'crlf' => "\r\n",
-     //            'newline' => "\r\n",
-     //            'bcc_batch_mode' => FALSE,
-     //            'bcc_batch_size' => 200,
-     //            );
-
-     //            $this->load->library('email', $config);
-     //            $this->email->set_newline('\r\n');
-     //            $this->email->from('myemail');
-     //            $this->email->to($email);    //email address passed into the function.
-     //            $this->email->subject($subject); // subject passed into the function
-     //            $this->email->message($message); //content passed into the function
-     //            $this->email->set_mailtype('html');
-
-     //            if($this->email->send()){
-     //                return TRUE;
-     //            }
-     //            else{
-     //                // return FALSE;
-	// 			echo $this->email->print_debugger();
-	// 			die;
-     //            }
-
-     //    }
-
-	// public function sendEmail($email,$subject,$message) 
-	// {
-	// 	$this->load->library('email');   
-	// 	$config = array();
-	// 	$config['protocol']     = "smtp"; // you can use 'mail' instead of 'sendmail or smtp'
-	// 	$config['smtp_host']    = "ssl://smtp.googlemail.com";// you can use 'smtp.googlemail.com' or 'smtp.gmail.com' instead of 'ssl://smtp.googlemail.com'
-	// 	$config['smtp_user']    = "my@gmail.com"; // client email gmail id
-	// 	$config['smtp_pass']    = "******"; // client password
-	// 	$config['smtp_port']    =  465;
-	// 	$config['smtp_crypto']  = 'ssl';
-	// 	$config['smtp_timeout'] = "";
-	// 	$config['mailtype']     = "html";
-	// 	$config['charset']      = "iso-8859-1";
-	// 	$config['newline']      = "\r\n";
-	// 	$config['wordwrap']     = TRUE;
-	// 	$config['validate']     = FALSE;
-	// 	$this->load->library('email', $config); // intializing email library, whitch is defiend in system
-
-	// 	$this->email->set_newline("\r\n"); // comuplsory line attechment because codeIgniter interacts with the SMTP server with regards to line break
-
-	// 	$from_email = $this->input->post('f_email'); // sender email, coming from my view page 
-	// 	$to_email = $this->input->post('email'); // reciever email, coming from my view page
-	// 	//Load email library
-
-	// 	$this->email->from($from_email);
-	// 	$this->email->to($to_email);
-	// 	$this->email->subject('Send Email Codeigniter'); 
-	// 	$this->email->message('The email send using codeigniter library');  // we can use html tag also beacause use $config['mailtype'] = 'HTML'
-	// 	//Send mail
-	// 	if($this->email->send()){
-	// 		$this->session->set_flashdata("email_sent","Congragulation Email Send Successfully.");
-	// 		echo "email_sent";
-	// 	}
-	// 	else{
-	// 		echo "email_not_sent";
-	// 		echo $this->email->print_debugger();  // If any error come, its run
-	// 	}
-	// }
-    
-	public function sendEmail($email,$subject,$message){
-
-                $config = Array(
-				'protocol' => 'smtp',
-				'smtp_server' => 'ssl://smtp.googlemail.com',
-				'smtp_host' => 'ssl://smtp.googlemail.com',
-				'smtp_port' => 465,
-				'auth_username' => 'cproject163@gmail.com',  //gmail id
-				'auth_password' => 'mohfiqiherinsyah1606',   //gmail password
-				'force_sender'=> 'cproject163@gmail.com',
-				'mailtype' => 'html',
-				'charset' => 'iso-8859-1',
-				'wordwrap' => TRUE
-			);
-
-			 $this->email->initialize($config);
-                $this->load->library('email', $config);
-                $this->email->set_newline('\r\n');
-                $this->email->from('noreply');
-                $this->email->to($email);    //email address passed into the function.
-                $this->email->subject($subject); // subject passed into the function
-                $this->email->message($message); //content passed into the function
-                $this->email->set_mailtype('html');
-
-                if($this->email->send()){
-                    return TRUE;
-                }
-                else{
-                    // return FALSE;
-				echo $this->email->print_debugger();
-				die;
-                }
-
-        }
-
-	/*user this email sending code */
-// 	public function sendEmail($email,$subject,$message)
-//     {
-// 	    $config = Array(
-// 	      'protocol' => 'smtp',
-// 	      'smtp_host' => 'ssl://smtp.googlemail.com',
+    	/*This email configuration for sending email by Google Email(Gmail Acccount) from localhost */
+	    $config = Array(
+	      'protocol' => 'smtp',
+	      'smtp_server' => 'smtp.gmail.com',
 	     
-// 	      'smtp_port' => 465,
-// 	      'smtp_user' => 'mohfiqiherinsyah90@gmail.com',  //gmail id
-// 	      'smtp_pass' => 'Mohfiqiherinsyah160600',   //gmail password
+	      'smtp_port' => 465,
+	      'auth_username' => 'mfiqiherinsyah90@gmail.com',  //gmail id
+	      'auth_password' => 'agbpxdfoibccylit',   //gmail password
 	      
-// 	      'mailtype' => 'html',
-// 	      'charset' => 'iso-8859-1',
-// 	      'wordwrap' => TRUE
-// 	    	);
+	      'mailtype' => 'html',
+	      'charset' => 'iso-8859-1',
+	      'wordwrap' => TRUE
+	    	);
 
-//           $this->load->library('email', $config);
-//           $this->email->set_newline("\r\n");
-//           $this->email->from('noreply');
-//           $this->email->to($email);
-//           $this->email->subject($subject);
-//           $this->email->message($message);
-  
-// 		if ($this->email->send()) {
-// 			return true;
-// 		} else {
-// 			return false;
-// 			// echo $this->email->print_debugger();
-// 			// die;
-// 		}
-//     }
+          $this->load->library('email', $config);
+          $this->email->set_newline("\r\n");
+          $this->email->from('smtp_user');
+          $this->email->to($email_send);
+          $this->email->subject($subject);
+          $this->email->message($message);
+          
+          if($this->email->send())
+         {
+           return true;
+         }
+         else
+         {
+         	// return false;
+		echo $this->email->print_debugger();
+		die;
+         }
+    }
 
     public function password()
 	{
@@ -350,16 +237,16 @@ class Auth extends MY_Controller
 					{
 						$this->form_validation->set_rules('currentPassword','Current Password','required');
 						$this->form_validation->set_rules('user_password','New Password','required');
-						$this->form_validation->set_rules('cpassword','Confirm New Password','required|matches[password]');
+						$this->form_validation->set_rules('cpassword','Confirm New Password','required|matches[user_password]');
 						if($this->form_validation->run()==TRUE)
 						{
-							$currentPassword = sha1($this->input->post('currentPassword'));
+							$currentPassword = password_hash($this->input->post('currentPassword'));
 							$newPassword = $this->input->post('user_password');
 
 							$validateCurrentPassword = $this->M_auth->validateCurrentPassword($currentPassword,$hash);
-							if($validateCurrentPassword!=false)
+							if($newPassword!=FALSE)
 							{
-								 $newPassword =sha1($newPassword);
+								 $newPassword = password_hash($newPassword, PASSWORD_BCRYPT);
 								 $data = array(
 								 	'user_password'=>$newPassword,
 								 	'hash_key'=>null,
@@ -367,29 +254,24 @@ class Auth extends MY_Controller
 								);
 								 $this->M_auth->updateNewPassword($data,$hash);
 								 $this->session->set_flashdata('success','Successfully changed Password');
-								 redirect(base_url('forgotPassword'));
+								 redirect(base_url('auth'));
 							}
 							else
 							{
 								$this->session->set_flashdata('error','Current Password is wrong');
 								$this->load->view('reset_password',$this->data);	
 							}
-
-						}
-						else
-						{
+						} else {
 							$this->load->view('reset_password',$this->data);	
 						}
-					}
-					else
-					{
+					} else {
 						$this->load->view('reset_password',$this->data);
 					}
 				}
 				else
 				{
 					$this->session->set_flashdata('error','link is expired');
-					redirect(base_url('forgotPassword'));
+					redirect(base_url('auth/forgotPassword'));
 				}
 			}
 			else
@@ -399,7 +281,7 @@ class Auth extends MY_Controller
 		}
 		else
 		{
-			$this->load->view('reset_password',$this->data);
+			redirect(base_url('auth/forgotPassword'));
 		}
 	}
 

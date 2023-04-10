@@ -56,9 +56,9 @@ class M_auth extends CI_Model
 
 	}
 
-	public function validateCurrentPassword($currentPassword,$hash)
+	public function validateCurrentPassword($newPassword,$hash)
 	{
-		$query = $this->db->query("SELECT * FROM user WHERE password='$currentPassword' AND hash_key='$hash'");
+		$query = $this->db->query("SELECT * FROM user WHERE user_password='$newPassword' AND hash_key='$hash'");
 		if($query->num_rows()==1)
 		{
 			return true;
@@ -71,6 +71,7 @@ class M_auth extends CI_Model
 
 	public function updateNewPassword($data,$hash)
 	{
+		
 		$this->db->where('hash_key',$hash);
 		$this->db->update('user',$data);
 	}

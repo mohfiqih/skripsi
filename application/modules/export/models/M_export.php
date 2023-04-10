@@ -117,7 +117,7 @@ class M_export extends CI_Model
         $query = $this->db->get()->result();
         return $query;
     }
-
+    
     function label_baik($where)
     {
         $this->db->select('*');

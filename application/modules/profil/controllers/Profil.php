@@ -150,7 +150,6 @@ class Profil extends MY_Controller {
 					$data = array(
 						"user_namalengkap"	=> $namalengkap,
 						"user_password"	=> $passbaru2,
-						
 					);
 					
 					$update = $this->M_Universal->update($data, ["user_id" => $user_id], "user");

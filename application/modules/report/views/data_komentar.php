@@ -20,6 +20,28 @@
           <div class="card">
                <div class="card-body">
                     <div class="row">
+                         <div class="col-md-6">
+                              <a style="decoration: none;"
+                                   href="<?php echo base_url('export/print_komentar/') . uri(3); ?>">
+                                   <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                        class="btn btn-danger aves-effect waves-light" type="button">
+                                        <i class="fa fa-print"></i>
+                                        Print
+                                   </button>
+                              </a>
+                              <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                   class="btn btn-warning dropdown-toggle aves-effect waves-light" type="button"
+                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                   <i class="fa fa-download"></i> Export
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_komentar_pdf/') . uri(3); ?>">PDF</a>
+                                   <a class="dropdown-item"
+                                        href="<?php echo base_url('export/export_komentar_excel/') . uri(3); ?>">Excel</a>
+                              </div>
+                         </div>
                          <div class="card-body" data-mdb-perfect-scrollbar="true" style="overflow-x: auto;">
                               <table id="myTable" class="table table-hover mb-0">
                                    <thead>

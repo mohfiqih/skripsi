@@ -413,21 +413,14 @@
                               </a>
                               <div class="collapse" id="export">
                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link"
-                                                  href="<?php echo base_url('#') ?>">Export Manajerial</a>
+                                        <li class="nav-item">
+                                             <a class="nav-link" href="<?php echo base_url('export/pdf') ?>">Export
+                                                  PDF</a>
                                         </li>
-                                        <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Berkas</a></li> -->
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Paket</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Pertanyaan</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Skala Likert</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Komentar</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">
-                                                  Export Link</a></li>
+                                        <li class="nav-item">
+                                             <a class="nav-link" href="<?php echo base_url('export/excel') ?>">
+                                                  Export Excel</a>
+                                        </li>
                                    </ul>
                               </div>
                          </li>
@@ -993,18 +986,18 @@
                colorByPoint: true,
                data: [
                     <?php
-                    $this->load->model('M_chart');
+                    $this->load->model('M_Universal');
                          if(is_array($data_paket)){
                          foreach ($data_paket as $d) {
                               $id = $d->nama_paket;
                               $total_id	   = "id_paket_jawaban='" . $d->id_paket . "' ";
-                              $tertinggi    = $this->M_chart->total_soal($total_id)*4;
-                              $terendah     = $this->M_chart->total_soal($total_id)*1;
+                              $tertinggi    = $this->M_Universal->total_soal($total_id)*4;
+                              $terendah     = $this->M_Universal->total_soal($total_id)*1;
 
-                              $jml = (($this->M_chart->total_ss_p($total_id))*4)+
-                                             (($this->M_chart->total_s_p($total_id))*3)+
-                                             (($this->M_chart->total_ts_p($total_id))*2)+
-                                             (($this->M_chart->total_sts_p($total_id))*1);
+                              $jml = (($this->M_Universal->total_ss_p($total_id))*4)+
+                                             (($this->M_Universal->total_s_p($total_id))*3)+
+                                             (($this->M_Universal->total_ts_p($total_id))*2)+
+                                             (($this->M_Universal->total_sts_p($total_id))*1);
                                              
                               $nilai = substr(($jml / $tertinggi) * (100), 0, 4);
                               

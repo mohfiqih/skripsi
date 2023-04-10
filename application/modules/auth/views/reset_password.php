@@ -41,14 +41,14 @@
                          <tr>
                               <td>
                                    <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0"
-                                        style="max-width:670px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
+                                        style="max-width:450px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
                                         <tr>
                                              <td style="height:40px;">&nbsp;</td>
                                         </tr>
                                         <tr>
                                              <td style="padding:0 35px;">
                                                   <h3
-                                                       style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
+                                                       style="color:#1e1e2d; font-weight:550; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
                                                        Reset Password</h3>
                                                   <span
                                                        style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
@@ -62,27 +62,31 @@
                                                   </p><br />
                                                   <center>
                                                        <form method="post"
-                                                            action="<?php echo base_url('reset/password?hash='.$hash); ?>">
+                                                            action="<?php echo base_url('auth/password?hash='.$hash); ?>">
+                                                            <input type="hidden"
+                                                                 name="<?php echo $this->security->get_csrf_token_name(); ?>"
+                                                                 value="<?php echo $this->security->get_csrf_hash(); ?>">
+
                                                             <div class="card-body">
                                                                  <div class="form-group">
-                                                                      <label for="exampleInputEmail1">Current
-                                                                           Password</label>
+                                                                      <!-- <label for="exampleInputEmail1">Current
+                                                                           Password</label> -->
                                                                       <input type="password" class="form-control"
                                                                            name="currentPassword"
                                                                            id="exampleInputEmail1"
                                                                            placeholder="Current Password">
                                                                  </div>
                                                                  <div class="form-group">
-                                                                      <label for="exampleInputPassword1">New
-                                                                           Password</label>
+                                                                      <!-- <label for="exampleInputPassword1">New
+                                                                           Password</label> -->
                                                                       <input type="password" class="form-control"
                                                                            name="user_password"
                                                                            id="exampleInputPassword1"
-                                                                           placeholder="Confirm new Password">
+                                                                           placeholder="New Password">
                                                                  </div>
                                                                  <div class="form-group">
-                                                                      <label for="exampleInputPassword1">Cofirm New
-                                                                           Password</label>
+                                                                      <!-- <label for="exampleInputPassword1">Cofirm New
+                                                                           Password</label> -->
                                                                       <input type="password" class="form-control"
                                                                            id="exampleInputPassword1" name="cpassword"
                                                                            placeholder="Confirm new Password">
@@ -100,13 +104,11 @@
                                                                       <p class="text-danger">
                                                                            <?php echo validation_errors(); ?></p>
                                                                  </div>
-                                                            </div>
-                                                            <!-- /.card-body -->
-
-                                                            <div class="card-footer">
                                                                  <button type="submit"
-                                                                      class="btn btn-primary">Submit</button>
+                                                                      class="btn btn-primary btn-block">Reset
+                                                                      Password</button>
                                                             </div>
+
                                                        </form>
                                                   </center>
                                              </td>

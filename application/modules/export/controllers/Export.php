@@ -607,5 +607,124 @@ class Export extends MY_Controller {
 		$writer = PHPExcel_IOFactory::createwriter($object, 'Excel2007');
 		$writer->save('php://output');
 		exit;
+	}
+
+	// ----------------- Export Komentar Kuesioner ------------------ #
+	public function export_komentar_pdf()
+	{
+		$data_user			= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
+		$total_responden		= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		$total_soal			= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		// Menarik id paket
+		$total_id				= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+
+		$data = array(
+			"judul"			=> "Data Kuesioner",
+			"halaman"			=> "data_responden",
+			"view"			=> "data_responden",
+			"jml_baik"		=> $this->M_export->label_baik(["id_paket"], "klasifikasi"),
+			"jml_kurang"		=> $this->M_export->label_kurang(["id_paket"], "klasifikasi"),
+			// Menarik Data paket berdasarkan id_paket
+			"data_paket"		=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
+			"data_komentar"	=>  $this->M_export->get_klasifikasi(["klasifikasi.id_paket_jawaban" => dekrip(uri(3))]),
+		);
+	  
+		 $this->load->library('pdf');
+		 $this->pdf->setPaper('A4', 'potrait');
+		 $this->pdf->filename = "laporan-hasil-kuesioner.pdf";
+		 $this->pdf->load_view('pdf/laporan_komentar', $data);
+	}
+
+	public function print_komentar()
+	{
+		$data_user			= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
+		$total_responden		= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		$total_soal			= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		// Menarik id paket
+		$total_id				= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+
+		
+		$data	= array(
+			"judul"			=> "Data Kuesioner",
+			"halaman"			=> "data_responden",
+			"view"			=> "data_responden",
+			"jml_baik"		=> $this->M_export->label_baik(["id_paket"], "klasifikasi"),
+			"jml_kurang"		=> $this->M_export->label_kurang(["id_paket"], "klasifikasi"),
+			// Menarik Data paket berdasarkan id_paket
+			"data_paket"		=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
+			"data_komentar"	=> $this->M_export->get_klasifikasi(["klasifikasi.id_paket_jawaban" => dekrip(uri(3))]),
+		);
+	  
+		 $this->load->view('print/print_komentar', $data);
+	}
+
+		public function export_komentar_excel()
+	{
+		$total_responden		= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		$total_soal			= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+		// Menarik id paket
+		$total_id				= "id_paket_jawaban='" . dekrip(uri(3)) . "' ";
+
+		$data["data_paket"]		= $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal");
+		$data["data_komentar"]	= $this->M_export->get_klasifikasi(["klasifikasi.id_paket_jawaban" => dekrip(uri(3))]);
+
+		require(APPPATH. 'libraries/PHPExcel-1.8/Classes/PHPExcel.php');
+		require(APPPATH. 'libraries/PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
+
+		$object = new PHPExcel();
+		$object->getProperties()->setCreator("Sistem e-Repo");
+		$object->getProperties()->setLastModifiedBy("Sistem e-Repo");
+		$object->getProperties()->setTitle("Hasil Kuesioner");
+
+		$object->setActiveSheetIndex(0);
+
+		// Data Paket
+		$object->getActiveSheet()->setCellValue('B2', 'Nama Paket');
+		$object->getActiveSheet()->setCellValue('B3', 'Sistem');
+		$object->getActiveSheet()->setCellValue('B4', 'Versi Sistem');
+		$object->getActiveSheet()->setCellValue('B5', 'Responden');
+		$object->getActiveSheet()->setCellValue('B6', 'Jumlah Jawaban');
+		$object->getActiveSheet()->setCellValue('B7', 'Tanggal Kuesioner');
+
+		$baris_paket = 2;
+		$no = 1;
+
+		foreach ($data['data_paket'] as $data_paket) {
+		$object->getActiveSheet()->setCellValue('C'.$baris_paket++, $data_paket->nama_paket);
+		$object->getActiveSheet()->setCellValue('C'.$baris_paket++, $data_paket->aplikasi);
+		$object->getActiveSheet()->setCellValue('C'.$baris_paket++, $data_paket->versi_apl_paket);
+		$object->getActiveSheet()->setCellValue('C'.$baris_paket++, $data_paket->responden);
+		$object->getActiveSheet()->setCellValue('C'.$baris_paket++, $responden);
+		$object->getActiveSheet()->setCellValue('C'.$baris_paket++, $data_paket->tgl_kuesioner);
+
+		$baris_paket++;
 		}
+
+		// Data Komentar
+		$object->getActiveSheet()->setCellValue('A9', 'No');
+		$object->getActiveSheet()->setCellValue('B9', 'Komentar');
+		$object->getActiveSheet()->setCellValue('C9', 'label');
+		// $object->getActiveSheet()->setCellValue('G9', '');
+
+		$baris_soal = 10;
+		$no = 1;
+
+		foreach ($data['data_komentar'] as $data_komentar) {
+		$object->getActiveSheet()->setCellValue('A'.$baris_soal, $no++);
+		$object->getActiveSheet()->setCellValue('B'.$baris_soal, $data_komentar->jawaban);
+		$object->getActiveSheet()->setCellValue('C'.$baris_soal, $data_komentar->label);
+
+		$baris_soal++;
+		}
+
+		$filename= "Data Hasil Komentar".'.xlsx';
+		$object->getActiveSheet()->setTitle("Data Hasil Komentar");
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment;filename="'.$filename. '"');
+		header('Cache-Control: max-age=0');
+
+		$writer = PHPExcel_IOFactory::createwriter($object, 'Excel2007');
+		$writer->save('php://output');
+		exit;
+	}
 }
