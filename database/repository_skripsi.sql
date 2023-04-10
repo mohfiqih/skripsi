@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 10:23 AM
+-- Generation Time: Apr 10, 2023 at 04:37 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -94,7 +94,8 @@ INSERT INTO `klasifikasi` (`id`, `id_identitas`, `nama_lengkap`, `prodi`, `sebag
 (53, '220603173621', 'Moh. Fiqih Erinsyah', 'TIK', 'Super Admin', 'L', 33, 'jelek syncnau membosankan', 'Kurang'),
 (54, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 'Syncnau memudahkan pembelajaran', 'Baik'),
 (55, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 'Bagusss', 'Baik'),
-(56, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 'Bagusss bgtt', 'Baik');
+(56, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 'Bagusss bgtt', 'Baik'),
+(57, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 'bagusss bangettt', 'Baik');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,10 @@ INSERT INTO `kuesioner` (`id`, `id_identitas`, `nama_lengkap`, `prodi`, `sebagai
 (136, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 145, 'Skala Likert', '4', '2023-04-07 06:42:16'),
 (137, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 146, 'Skala Likert', '4', '2023-04-07 06:42:16'),
 (138, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 145, 'Skala Likert', '4', '2023-04-07 06:49:10'),
-(139, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 146, 'Skala Likert', '4', '2023-04-07 06:49:10');
+(139, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 146, 'Skala Likert', '4', '2023-04-07 06:49:10'),
+(140, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 145, 'Skala Likert', '4', '2023-04-10 14:03:31'),
+(141, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 146, 'Skala Likert', '4', '2023-04-10 14:03:31'),
+(142, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 148, 'Skala Likert', '4', '2023-04-10 14:03:31');
 
 -- --------------------------------------------------------
 
@@ -195,8 +199,8 @@ CREATE TABLE `user` (
   `user_gender` enum('L','P') COLLATE utf8_unicode_ci NOT NULL,
   `user_created` datetime NOT NULL DEFAULT current_timestamp(),
   `user_edited` datetime DEFAULT NULL,
-  `user_status` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
-  `hash_key` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_status` enum('Aktif','Nonaktif') COLLATE utf8_unicode_ci NOT NULL,
+  `hash_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hash_expiry` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -205,10 +209,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `email`, `username_id`, `user_password`, `user_namalengkap`, `user_foto`, `user_level`, `user_prodi`, `user_gender`, `user_created`, `user_edited`, `user_status`, `hash_key`, `hash_expiry`) VALUES
-('230318024647', 'dosen@gmail.com', '14151617', '$2y$10$sDwUfZfVPkbGNl0Bcv4kye3/v9r.QCEIrTtnEKygCNa2Tq4OJzfSu', 'Dosen', '2aa88be5ccb5c84ac6b5ab1bbde81052.png', 'Dosen', 'TI', 'L', '2023-03-18 08:46:47', NULL, '1', NULL, NULL),
-('230319073905', 'mahasiswa@gmail.com', '22092002', '$2y$10$g8pX940xQQRJFqM3R3BLUOTqPvuiTB5NuO/HKlm0ZDyP2Pzfox4iC', 'Moh. Fiqih Erinsyah', '', 'Mahasiswa', 'TKOM', 'L', '2023-03-19 13:39:05', NULL, '1', NULL, NULL),
-('230331004608', 'spmi@gmail.com', '12345', '$2y$10$x2Swf1joaaYluaDfIL388eI.qvG3yoUtaZza6KNHR61f4JEJifBQ.', 'Bidang SPMI', 'fff30ea3a331e347448ff27b600d1e3a.png', 'Pengevaluasi', 'SPMI', 'L', '2023-03-31 05:46:08', NULL, '1', NULL, NULL),
-('230407050455', 'mohfiqiherinsyah@gmail.com', '112233', '$2y$10$sPPDoZVwzvFD9MUQkEF4aO5FhBi6HbBLh23h2jP9MDgyQS.NZnBNG', 'Moh. Fiqih', 'c1a8e0083c87b227b7fad4f5cbd413d9.png', 'Super Admin', 'TIK', 'L', '2023-04-07 10:04:55', NULL, '1', NULL, NULL);
+('230318024647', 'dosen@gmail.com', '14151617', '$2y$10$sDwUfZfVPkbGNl0Bcv4kye3/v9r.QCEIrTtnEKygCNa2Tq4OJzfSu', 'Dosen', '2aa88be5ccb5c84ac6b5ab1bbde81052.png', 'Dosen', 'TI', 'L', '2023-03-18 08:46:47', NULL, 'Nonaktif', NULL, NULL),
+('230319073905', 'mahasiswa@gmail.com', '22092002', '$2y$10$g8pX940xQQRJFqM3R3BLUOTqPvuiTB5NuO/HKlm0ZDyP2Pzfox4iC', 'Moh. Fiqih Erinsyah', '', 'Mahasiswa', 'TKOM', 'L', '2023-03-19 13:39:05', NULL, 'Aktif', NULL, NULL),
+('230331004608', 'spmi@gmail.com', '12345', '$2y$10$x2Swf1joaaYluaDfIL388eI.qvG3yoUtaZza6KNHR61f4JEJifBQ.', 'Bidang SPMI', 'fff30ea3a331e347448ff27b600d1e3a.png', 'Pengevaluasi', 'SPMI', 'L', '2023-03-31 05:46:08', NULL, 'Aktif', NULL, NULL),
+('230407050455', 'mohfiqiherinsyah@gmail.com', '112233', '$2y$10$honCJp7yYBmjDzrs12jiGOXWdS4N1b9OYlllmG3gqN40x4.0l65Q6', 'Moh. Fiqih', 'c1a8e0083c87b227b7fad4f5cbd413d9.png', 'Super Admin', 'TIK', 'L', '2023-04-07 10:04:55', NULL, 'Aktif', NULL, NULL),
+('230410160014', 'cproject163@gmail.com', '123567', '$2y$10$gCjvkAw3Dsf4c7N/X85Kh.RADF2/kfMqphjbZTIIpKDmgN/VmXVnO', 'Project', '', 'Mahasiswa', 'TI', 'L', '2023-04-10 21:00:14', NULL, 'Aktif', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -282,13 +287,13 @@ ALTER TABLE `daftar_soal`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `kuesioner`
 --
 ALTER TABLE `kuesioner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `manajerial`
