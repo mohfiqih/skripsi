@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2023 at 04:37 PM
+-- Generation Time: Apr 11, 2023 at 07:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -131,7 +131,10 @@ INSERT INTO `kuesioner` (`id`, `id_identitas`, `nama_lengkap`, `prodi`, `sebagai
 (139, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 146, 'Skala Likert', '4', '2023-04-07 06:49:10'),
 (140, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 145, 'Skala Likert', '4', '2023-04-10 14:03:31'),
 (141, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 146, 'Skala Likert', '4', '2023-04-10 14:03:31'),
-(142, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 148, 'Skala Likert', '4', '2023-04-10 14:03:31');
+(142, '230318024647', 'Dosen', 'TI', 'Dosen', 'L', 31, 148, 'Skala Likert', '4', '2023-04-10 14:03:31'),
+(143, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 145, 'Skala Likert', '4', '2023-04-11 17:03:15'),
+(144, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 146, 'Skala Likert', '4', '2023-04-11 17:03:15'),
+(145, '230407050455', 'Moh. Fiqih', 'TIK', 'Super Admin', 'L', 31, 148, 'Skala Likert', '4', '2023-04-11 17:03:15');
 
 -- --------------------------------------------------------
 
@@ -145,17 +148,15 @@ CREATE TABLE `manajerial` (
   `versi_apl` varchar(256) NOT NULL,
   `tgl_publish` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `penyedia_apl` enum('TIK','Vendor') NOT NULL,
-  `link_berkas` text NOT NULL,
-  `judul` varchar(500) NOT NULL
+  `link_berkas` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `manajerial`
 --
 
-INSERT INTO `manajerial` (`id_m`, `nama_apl`, `versi_apl`, `tgl_publish`, `penyedia_apl`, `link_berkas`, `judul`) VALUES
-(56, 'Oase', '1', '2023-04-04 23:54:00', 'TIK', 'canva.com', '22092002_dns_21.pdf'),
-(64, 'Syncnau', '1', '2023-04-06 08:01:00', 'TIK', 'aaaa', '1590-4131-1-SM1.pdf');
+INSERT INTO `manajerial` (`id_m`, `nama_apl`, `versi_apl`, `tgl_publish`, `penyedia_apl`, `link_berkas`) VALUES
+(68, 'Oase', '1.2', '2023-04-12 00:11:00', 'Vendor', 'https://drive.google.com/drive/folders/1LyGfiepI3wZlA7ekN58-GUh6QIn1pxOG?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -180,6 +181,25 @@ CREATE TABLE `paket_soal` (
 INSERT INTO `paket_soal` (`id_paket`, `nama_paket`, `aplikasi`, `versi_apl_paket`, `tgl_kuesioner`, `responden`, `jumlah_soal`) VALUES
 (31, 'Sync', 'Syncnau', '1', '2023-04-04 23:52:00', 'Mahasiswa', 1),
 (33, 'Oase', 'Oase', '1', '2023-04-04 23:52:00', 'Dosen,Mahasiswa', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shared_link`
+--
+
+CREATE TABLE `shared_link` (
+  `id` int(11) NOT NULL,
+  `link_kuesioner` text NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shared_link`
+--
+
+INSERT INTO `shared_link` (`id`, `link_kuesioner`, `date_created`) VALUES
+(8, 'https://localhost/web_skripsi/kuesioner/form/VUpCaWQvTEdhWGNWRGh6YUxWdUlIZw', '2023-04-11 16:07:52');
 
 -- --------------------------------------------------------
 
@@ -212,7 +232,7 @@ INSERT INTO `user` (`user_id`, `email`, `username_id`, `user_password`, `user_na
 ('230318024647', 'dosen@gmail.com', '14151617', '$2y$10$sDwUfZfVPkbGNl0Bcv4kye3/v9r.QCEIrTtnEKygCNa2Tq4OJzfSu', 'Dosen', '2aa88be5ccb5c84ac6b5ab1bbde81052.png', 'Dosen', 'TI', 'L', '2023-03-18 08:46:47', NULL, 'Nonaktif', NULL, NULL),
 ('230319073905', 'mahasiswa@gmail.com', '22092002', '$2y$10$g8pX940xQQRJFqM3R3BLUOTqPvuiTB5NuO/HKlm0ZDyP2Pzfox4iC', 'Moh. Fiqih Erinsyah', '', 'Mahasiswa', 'TKOM', 'L', '2023-03-19 13:39:05', NULL, 'Aktif', NULL, NULL),
 ('230331004608', 'spmi@gmail.com', '12345', '$2y$10$x2Swf1joaaYluaDfIL388eI.qvG3yoUtaZza6KNHR61f4JEJifBQ.', 'Bidang SPMI', 'fff30ea3a331e347448ff27b600d1e3a.png', 'Pengevaluasi', 'SPMI', 'L', '2023-03-31 05:46:08', NULL, 'Aktif', NULL, NULL),
-('230407050455', 'mohfiqiherinsyah@gmail.com', '112233', '$2y$10$honCJp7yYBmjDzrs12jiGOXWdS4N1b9OYlllmG3gqN40x4.0l65Q6', 'Moh. Fiqih', 'c1a8e0083c87b227b7fad4f5cbd413d9.png', 'Super Admin', 'TIK', 'L', '2023-04-07 10:04:55', NULL, 'Aktif', NULL, NULL),
+('230407050455', 'mohfiqiherinsyah@gmail.com', '112233', '$2y$10$wvyNQyd9y0C8j/wKS6YZWeavDwqwx/UJ05Z/NLGDWKl9YZ2ueJjMq', 'Moh. Fiqih', 'c1a8e0083c87b227b7fad4f5cbd413d9.png', 'Super Admin', 'TIK', 'L', '2023-04-07 10:04:55', NULL, 'Aktif', NULL, NULL),
 ('230410160014', 'cproject163@gmail.com', '123567', '$2y$10$gCjvkAw3Dsf4c7N/X85Kh.RADF2/kfMqphjbZTIIpKDmgN/VmXVnO', 'Project', '', 'Mahasiswa', 'TI', 'L', '2023-04-10 21:00:14', NULL, 'Aktif', NULL, NULL);
 
 --
@@ -261,6 +281,12 @@ ALTER TABLE `paket_soal`
   ADD PRIMARY KEY (`id_paket`);
 
 --
+-- Indexes for table `shared_link`
+--
+ALTER TABLE `shared_link`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -293,19 +319,25 @@ ALTER TABLE `klasifikasi`
 -- AUTO_INCREMENT for table `kuesioner`
 --
 ALTER TABLE `kuesioner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `manajerial`
 --
 ALTER TABLE `manajerial`
-  MODIFY `id_m` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id_m` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `paket_soal`
 --
 ALTER TABLE `paket_soal`
   MODIFY `id_paket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `shared_link`
+--
+ALTER TABLE `shared_link`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
