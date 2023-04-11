@@ -54,9 +54,9 @@
                                                   <th class="align-middle" scope="col">Sistem</th>
                                                   <th class="align-middle" scope="col">Versi Sistem</th>
                                                   <th class="align-middle" scope="col" style="width: 10px;">
-                                                       Link Kuesioner
+                                                       Link
                                                   </th>
-                                                  <!-- <th>Copy Link</th> -->
+                                                  <th>Share Link</th>
                                              </tr>
                                         </thead>
                                         <tbody>
@@ -83,10 +83,26 @@
                                                        <?php echo $d->versi_apl_paket; ?>
                                                   </td>
                                                   <td class="align-middle">
-                                                       <a target="_blank"
+                                                       <a target="_blank" style="text-decoration: none;"
                                                             href="<?php echo base_url('kuesioner/form/') . enkrip($d->id_paket); ?>">Klik
                                                             Link
                                                        </a>
+                                                  </td>
+                                                  <td>
+                                                       <?php echo form_open_multipart(uri(2) == "edit" ? url(1, "update") : url(1, "tambah_link")); ?>
+                                                       <!-- <a style="margin-left: 10px;text-decoration: none;"
+                                                            name="<?php echo "link_kuesioner" . $d->id_soal; ?>"
+                                                            data-mdb-toggle="tooltip" title="Share">
+                                                            <i class="fa-solid fa-share-from-square text-success"></i>
+                                                       </a> -->
+                                                       <input
+                                                            value="<?php echo base_url('kuesioner/form/') . enkrip($d->id_paket); ?>"
+                                                            name="<?php echo "link_kuesioner" . $d->id_soal; ?>"
+                                                            hidden />
+                                                       <button type="submit" class="btn btn-success"
+                                                            style="height: 20px;"><i
+                                                                 class="fa-solid fa-share-from-square text-white"></i></button>
+                                                       <?php echo form_close(); ?>
                                                   </td>
                                                   <?php }} else { ?>
                                                   <td class="text-center" colspan="6">Tidak ada data</td>

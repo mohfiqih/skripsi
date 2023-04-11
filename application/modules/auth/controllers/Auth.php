@@ -44,6 +44,7 @@ class Auth extends MY_Controller
 		
         $username	= addslashes(trim($this->input->post('username')));
         $password	= addslashes(trim($this->input->post('password')));
+	   
         $row		= $this->M_auth->validasi($username, $password);
 
         if ($row != null){
@@ -63,74 +64,6 @@ class Auth extends MY_Controller
         redirect('login', 'refresh');
     }
 
-//     public function forgotPassword()
-//     {
-// 	$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-// 	$this->session->userdata('log_admin');
-// 	if ($this->form_validation->run() == false) {
-// 		$this->load->view('forgot_password');
-// 	} else {
-// 		$email = $this->input->post('email');
-// 		$user = $this->db->get_where('user', ['email' => $email, 'user_status' => 1])->row_array();
-
-// 		if($user) {
-// 			$token = base64_encode(random_bytes(32));
-// 			$user_token = [
-// 				'email'=>$email,
-// 				'token'=>$token,
-// 				'user_created'=>time()	
-// 			];
-
-// 			$this->db->insert('user_token', $user_token);
-// 			$this->_sendEmail($token,'forgot');
-			
-// 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Please check yout email to reset your password!</div>');
-// 			redirect('auth/forgotPassword');
-// 			die;
-
-// 		} else {
-// 			 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered or activated</div>');
-// 			 redirect('auth/forgotPassword');
-// 			 die;
-// 		}
-// 	}
-//     }
-
-//     	public function _sendEmail($token,$type)
-//     {
-// 	    $config = [
-// 	      'protocol' => 'smtp',
-// 	      'smtp_host' => 'ssl://smtp.googlemail.com',
-// 		 'smtp_user' => 'adminsisfo@gmail.com',
-// 		 'smtp_pass' => '1234578',
-// 		 'smtp_port' => 465,
-// 		 'mailtype'  => 'html',
-// 		 'charset'   => 'utf-8',
-// 		 'newline'   => "\r\n"
-// 	    ];
-
-//           $this->email->initialize($config);
-
-// 		$this->email->from('adminsisfo@gmail.com', 'Moh. Fiqih Erinsyah');
-// 		$this->email->to($this->input->post('email'));
-
-// 		if ($type == 'verify') {
-// 			$this->email->subject('Account Verification');
-// 			$this->email->message('Click this link to verify you account : <a href="'. base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '")>Activate</a>');
-// 		} else if ($type == 'forgot') {
-// 			$this->email->subject('Reset Password');
-// 			$this->email->message('Click this link to reset you account : <a href="'. base_url() . 'auth/resetPassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '")>Reset Password</a>');
-// 		}
-		
-// 		if ($this->email->send()) {
-// 			return true;
-// 		} else {
-// 			echo $this->email->print_debugger();
-// 			die;
-// 		}
-//     }
-
-    
 	//  Forgot Password
     public function forgotPassword()
 	{
@@ -295,13 +228,13 @@ class Auth extends MY_Controller
 //         }
 //     }
 
-//      public function prosesLogin()
+//      public function prosesLoginuser()
 //     {
 //         $this->load->model('M_auth');
 		
-//         $username	= addslashes(trim($this->input->post('username')));
-//         $password	= addslashes(trim($this->input->post('password')));
-//         $row		= $this->M_auth->validasi($username, $password);
+//         $username_user	= addslashes(trim($this->input->post('username_user')));
+//         $password_user	= addslashes(trim($this->input->post('password_user')));
+//         $row		= $this->M_auth->validasi_user($username_user, $password_user);
 
 //         if ($row != null){
 //             $this->session->set_userdata('log_admin', $row);
@@ -313,11 +246,10 @@ class Auth extends MY_Controller
 //         }
 //     }
 
-//     public function forgotPassword()
+//      function logoutUser()
 //     {
-//         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-//         if ($this->form_validation->run() == false) {
-//             $this->load->view('auth/forgot_password');
-//         }
+// 	   $this->session->sess_destroy();
+// 	   $this->session->set_flashdata('notif_logout', 'Anda telah logout dari sistem!');
+//         redirect('auth/user', 'refresh');
 //     }
 }

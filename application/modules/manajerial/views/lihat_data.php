@@ -84,7 +84,7 @@
                                                             </td>
                                                        </tr>
                                                        <tr>
-                                                            <td>Lihat File</td>
+                                                            <td>Lihat Berkas</td>
                                                             <td>:</td>
                                                             <td>
                                                                  <a style="text-decoration: none;"

@@ -43,7 +43,7 @@
                                         </div><br />
                                         <table class="table table-hover mb-0">
                                              <tbody>
-                                                  <tr>
+                                                  <!-- <tr>
                                                        <td width="150">Kode Berkas</td>
                                                        <td width="20">:</td>
                                                        <td><?php $inisial = substr($d->judul,0,4);
@@ -56,10 +56,10 @@
                                                        <td style="overflow-x: auto;">
                                                             <?php echo $d->judul; ?>
                                                        </td>
-                                                  </tr>
+                                                  </tr> -->
                                                   <tr>
-                                                       <td>Manajerial</td>
-                                                       <td>:</td>
+                                                       <td width="150">Manajerial</td>
+                                                       <td width="20">:</td>
                                                        <td><a style="text-decoration: none;"
                                                                  href="<?php echo base_url('manajerial/lihat/') . uri(3); ?>">Lihat
                                                                  Manajerial</a>
@@ -85,6 +85,15 @@
                                                        </td>
                                                   </tr>
                                                   <tr>
+                                                       <td>Link Berkas</td>
+                                                       <td>:</td>
+                                                       <td>
+                                                            <a target="_blank"
+                                                                 href="<?php echo $d->link_berkas; ?>">Klik
+                                                                 Berkas</a>
+                                                       </td>
+                                                  </tr>
+                                                  <!-- <tr>
                                                        <td>Download</td>
                                                        <td>:</td>
                                                        <td>
@@ -98,7 +107,7 @@
                                                                  </span>
                                                             </a>
                                                        </td>
-                                                  </tr>
+                                                  </tr> -->
                                              </tbody>
 
                                         </table>

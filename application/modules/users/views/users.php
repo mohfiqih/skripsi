@@ -80,28 +80,29 @@
                     <div class="card-body">
                          <div class="row">
                               <div class="col-md-6">
-                                   <!-- <button style="height: 43px;" type="button"
-                                        class=" btn btn-success waves-effect waves-light" data-toggle="modal"
-                                        data-target="#addModal">
-                                        <span class="btn-label"><i class="fa fa-plus"></i></span> Tambah
-                                   </button> -->
-                                   <button style="height: 43px;" type="button"
+                                   <button style="height: 43px;margin-top: 5px;margin-left: 5px;" type="button"
                                         class=" btn btn-success waves-effect waves-light" data-toggle="modal"
                                         data-target="#addModal">
                                         <span class="btn-label"><i class="fa fa-plus"></i></span>
                                         <?php echo (uri(2) == 'edit') ? 'Edit Data' : 'Tambah'; ?> </button>
-                                   <button style="height: 43px;margin-left: 5px;"
-                                        class="btn btn-danger dropdown-toggle aves-effect waves-light" type="button"
+                                   <a style="decoration: none;" href="<?php echo base_url('export/print_user'); ?>">
+                                        <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                             class="btn btn-danger aves-effect waves-light" type="button">
+                                             <i class="fa fa-print"></i>
+                                             Print
+                                        </button>
+                                   </a>
+                                   <button style="height: 43px;margin-left: 5px;margin-top: 5px;"
+                                        class="btn btn-warning dropdown-toggle aves-effect waves-light" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         <i class="fa fa-download"></i> Export
                                    </button>
                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="<?php echo base_url('#'); ?>"
-                                             target="_blank">PDF</a>
-                                        <a class="dropdown-item" href="#" target="_blank">Excel</a>
-                                        <a class="dropdown-item" href="#" target="_blank">Something else
-                                             here</a>
+                                        <a class="dropdown-item"
+                                             href="<?php echo base_url('export/export_user_pdf'); ?>">PDF</a>
+                                        <a class="dropdown-item"
+                                             href="<?php echo base_url('export/export_user_excel'); ?>">Excel</a>
                                    </div>
                               </div>
 
@@ -207,7 +208,8 @@
                                                                       </select>
                                                                  </div>
                                                                  <div class="form-floating mb-3">
-                                                                      <label for="example-select-floating">Program Studi
+                                                                      <label for="example-select-floating">Program
+                                                                           Studi
                                                                            / Bidang</label><br />
                                                                       <select class="form-control" name="user_prodi"
                                                                            aria-label="Floating label select example"
@@ -219,7 +221,8 @@
                                                                                 DIV Teknik Informatika</option>
                                                                            <option value="ASP"
                                                                                 <?php if (uri(2) == 'edit') echo $edit->user_prodi == "ASP" ? "selected" : ""; ?>>
-                                                                                DIV Akuntansi Sektor Publik</option>
+                                                                                DIV Akuntansi Sektor Publik
+                                                                           </option>
                                                                            <option value="TKOM"
                                                                                 <?php if (uri(2) == 'edit') echo $edit->user_prodi == "TKOM" ? "selected" : ""; ?>>
                                                                                 DIII Teknik Komputer

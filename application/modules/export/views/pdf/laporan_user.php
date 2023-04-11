@@ -7,7 +7,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- App favicon -->
      <link rel="shortcut icon" href="<?php echo base_url('assets/backend'); ?>/images/phb.png">
-     <title></title>
+     <title>Laporan Manajerial Sistem</title>
 </head>
 <style>
 table {
@@ -38,14 +38,11 @@ tr:hover {
 <body>
      <!-- <div class="container"> -->
      <div class="row">
-          <!-- <div class="col-md-6">
-               <img width="50" height="50" src="<?php echo base_url('assets/backend/images/phb.png'); ?>" alt="">
-          </div> -->
           <div class="col-md-6">
                <center>
                     <p style="line-height: 70%;">Yayasan Pendidikan Harapan Bersama</p>
                     <h3 style="line-height: 70%;">Politeknik Harapan Bersama</h3>
-                    <h3 style="line-height: 70%;">Program Studi DIII Teknik Komputer</h3>
+                    <!-- <h3 style="line-height: 70%;">Program Studi DIV Teknik Informatika</h3> -->
                     <p style="line-height: 70%;">Kampus I: Jl. Mataram No.9 Tegal 52142 Telp. 0283-352000 Fx.
                          0283-353353</p>
                     <p style="line-height: 70%;">Website: <a style="text-decoration:none;color: black;"
@@ -59,7 +56,7 @@ tr:hover {
           <br />
           <div>
                <center>
-                    <h3>DAFTAR DATA BERKAS</h3>
+                    <h3>DATA USER</h3>
                </center>
           </div>
           <div class="card-body" data-mdb-perfect-scrollbar="true" style="overflow-x: auto;">
@@ -67,35 +64,51 @@ tr:hover {
                     <thead>
                          <tr>
                               <td scope="col">No</td>
-                              <td scope="col">Kode
-                                   Berkas</td>
-                              <td scope="col">Nama Berkas</td>
-                              <td scope="col">Nama Sistem</td>
-                              <td scope="col">Tanggal Berkas</td>
+                              <td scope="col">ID User</td>
+                              <td scope="col">Email</td>
+                              <td scope="col">Nama Lengkap</td>
+                              <td scope="col">Sebagai</td>
+                              <td scope="col">
+                                   Prodi/Bidang
+                              </td>
+                              <td scope="col">
+                                   Gender
+                              </td>
+                              <td scope="col">
+                                   Created
+                              </td>
                          </tr>
                     </thead>
                     <tbody>
                          <?php
                          $no=0+1;
-					if ($data_berkas){
-					foreach ($data_berkas as $d){ 
+					if ($data_user){
+					foreach ($data_user as $d){ 
 					?>
                          <tr class="fw-normal">
                               <td>
                                    <?php echo $no++; ?>
                               </td>
                               <td>
-                                   <?php $inisial = substr($d->judul,0,4);
-                                                        echo $inisial;?>_<?php echo $d->id_m; ?>
+                                   <?php echo $d->username_id ?>
                               </td>
                               <td>
-                                   <?php echo $d->judul; ?>
+                                   <?php echo $d->email; ?>
                               </td>
                               <td>
-                                   <?php echo $d->nama_apl; ?>
+                                   <?php echo $d->user_namalengkap; ?>
                               </td>
                               <td>
-                                   <?php echo $d->tgl_publish; ?>
+                                   <?php echo $d->user_level; ?>
+                              </td>
+                              <td>
+                                   <?php echo $d->user_prodi; ?>
+                              </td>
+                              <td>
+                                   <?php echo $d->user_gender; ?>
+                              </td>
+                              <td>
+                                   <?php echo $d->user_created; ?>
                               </td>
                               <?php }} else { ?>
                               <td class="text-center" colspan="6">Tidak ada data</td>
@@ -105,10 +118,10 @@ tr:hover {
                </table>
           </div>
           <br />
-          <div style="margin-left: 850px;">
+          <div style="margin-left: 870px;">
                <p style="line-height: 70%;">Tegal,</p>
                <p style="line-height: 70%;">Ka. Prodi</p><br /><br />
-               <u style="line-height: 70%;">Rais, S.Pd,M.Kom.</u>
+               <u style="line-height: 70%;"></u>
                <p style="line-height: 70%;">NIPY.</p>
           </div>
      </div>

@@ -121,23 +121,4 @@ class Berkas extends MY_Controller {
 			notifikasi_redirect("error", "Hapus berkas gagal", uri(1));
 		};
 	}
-
-	public function export_data_berkas()
-	{
-		$data	= array(
-			"data_berkas"	=> $this->M_Universal->getMulti(NULL, "manajerial"),
-		);
-	  
-		 $this->load->library('pdf');
-		 $this->pdf->setPaper('A4', 'landscape');
-		 $this->pdf->filename = "laporan-data-berkas.pdf";
-		 $this->pdf->load_view('export_data_berkas', $data);
-	}
-
-	// public function download($id){
-	// 	$this->load->helper('download');
-	// 	$fileinfo = $this->M_berkas->download($id);
-	// 	$d = 'assets/upload/'.$fileinfo['judul'];
-	// 	force_download($d, NULL);
-	//  }
 }

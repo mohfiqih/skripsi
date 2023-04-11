@@ -218,23 +218,4 @@ class Paket extends MY_Controller {
 			notifikasi_redirect("error", "Gagal Hapus Soal", redirect(uri(1)));
 		};
 	}
-
-     # Export Soal
-     public function export_soal()
-	{
-		$data	= array(
-			"judul"		=> "Paket Pertanyaan",
-			"halaman"		=> "paket_soal",
-			"view"		=> "paket_soal",
-			"data_paket"	=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
-			"data_soal"	=> $this->M_Paket->get_soal(["daftar_soal.paket_id" => dekrip(uri(3))]),
-			// "user"		=> $data_user
-		);
-	  
-		 $this->load->library('pdf');
-		 $this->pdf->setPaper('A4', 'potrait');
-		 $this->pdf->filename = "laporan-daftar-pertanyaan.pdf";
-		 $this->pdf->load_view('daftar_soal/export_soal', $data);
-	}
-     
 }

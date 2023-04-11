@@ -74,7 +74,7 @@
                                                                       <input type="password" class="form-control"
                                                                            name="currentPassword"
                                                                            id="exampleInputEmail1"
-                                                                           placeholder="Current Password">
+                                                                           placeholder="New Password">
                                                                  </div>
                                                                  <div class="form-group">
                                                                       <!-- <label for="exampleInputPassword1">New
@@ -82,14 +82,14 @@
                                                                       <input type="password" class="form-control"
                                                                            name="user_password"
                                                                            id="exampleInputPassword1"
-                                                                           placeholder="New Password">
+                                                                           placeholder="Confirm New Password ">
                                                                  </div>
                                                                  <div class="form-group">
                                                                       <!-- <label for="exampleInputPassword1">Cofirm New
                                                                            Password</label> -->
                                                                       <input type="password" class="form-control"
                                                                            id="exampleInputPassword1" name="cpassword"
-                                                                           placeholder="Confirm new Password">
+                                                                           placeholder="Confirm New Password 2">
                                                                  </div>
 
                                                                  <div class="form-check">

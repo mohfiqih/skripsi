@@ -72,8 +72,8 @@ tr:hover {
                               <td scope="col">
                                    Tanggal Berkas
                               </td>
-                              <td scope="col">
-                                   Nama Berkas
+                              <td scope="col" style="width: 50px;">
+                                   Link Berkas
                               </td>
                          </tr>
                     </thead>
@@ -99,11 +99,13 @@ tr:hover {
                               <td>
                                    <?php echo $d->tgl_publish; ?>
                               </td>
-                              <td>
-                                   <a target="_blank" style="text-decoration: none;"
+                              <td style="width: 50px;">
+                                   <a target="_blank"
+                                        href="<?php echo $d->link_berkas; ?>"><?php echo $d->link_berkas; ?></a>
+                                   <!-- <a target="_blank" style="text-decoration: none;"
                                         href="<?php echo base_url('assets/upload/'); ?><?php echo $d->judul; ?>">
                                         <?php echo $d->judul; ?>
-                                   </a>
+                                   </a> -->
                               </td>
                               <?php }} else { ?>
                               <td class="text-center" colspan="6">Tidak ada data</td>

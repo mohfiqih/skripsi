@@ -1150,7 +1150,33 @@
           </div>
      </div>
      <div class="row">
-          <div class="col-md-8 grid-margin transparent">
+          <!-- <div class="col-md-8 mb-4 stretch-card transparent">
+               <div class="card card-dark-blue">
+                    <div class="card-body">
+                         <h4 class="alert-heading">Informasi Sistem!</h4>
+                         <hr>
+                         <p class="mb-4">Dalam rangka untuk pengembangan sistem kedepannya, mohon untuk
+                              pengguna
+                              sistem bisa memberikan ulasan pada
+                              kuesioner berikut ini, isi dengan jujur selama anda menggunakan sistem tersebut. Jika
+                              ada
+                              kendala sampaikan dalam kolom komentar. Terimakasih.</p><br />
+                         <?php
+                              $no=0+1;
+                                   if ($data_shared){
+                                        foreach ($data_shared as $d){ 
+                         ?>
+                         <p class="mb-0">Link Kuesioner :<br />
+                              <a target="_blank" style="text-align: justify;text-decoration: none;color: white;"
+                                   href="<?php echo $d->link_kuesioner; ?>"><?php echo $d->link_kuesioner; ?></a>
+                         </p><br />
+                         <?php }} else { ?>
+                         <td class="text-center" colspan="6">Tidak ada data</td>
+                         <?php } ?>
+                    </div>
+               </div>
+          </div> -->
+          <div class="col-md-8 stretch-card transparent">
                <div class="card tale-bg stretch-card transparent" style="">
                     <div class="alert alert-dark" role="alert">
                          <h4 class="alert-heading">Informasi Sistem!</h4>
@@ -1164,16 +1190,12 @@
                          <hr>
                          <?php
                               $no=0+1;
-                                   if ($data_paket){
-                                        foreach ($data_paket as $d){ 
+                                   if ($data_shared){
+                                        foreach ($data_shared as $d){ 
                          ?>
-                         <p class="mb-0">Kuesioner :
-                              <a style="text-align: justify;text-decoration: none;"><?php echo $d->aplikasi; ?>
-                                   v<?php echo $d->versi_apl_paket; ?></a>
-                         </p>
                          <p class="mb-0">Link Kuesioner :<br />
                               <a target="_blank" style="text-align: justify;text-decoration: none;"
-                                   href="<?php echo base_url('kuesioner/form/') . enkrip($d->id_paket); ?>"><?php echo base_url('kuesioner/form/') . enkrip($d->id_paket); ?></a>
+                                   href="<?php echo $d->link_kuesioner; ?>"><?php echo $d->link_kuesioner; ?></a>
                          </p><br />
                          <?php }} else { ?>
                          <td class="text-center" colspan="6">Tidak ada data</td>

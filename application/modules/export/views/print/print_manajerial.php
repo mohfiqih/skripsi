@@ -73,7 +73,7 @@ tr:hover {
                                    Penyedia
                               </td>
                               <td scope="col">
-                                   Nama Berkas
+                                   Link Berkas
                               </td>
                          </tr>
                     </thead>
@@ -104,10 +104,12 @@ tr:hover {
                                    <?php echo $d->penyedia_apl; ?>
                               </td>
                               <td>
-                                   <a target="_blank" style="text-decoration: none;"
+                                   <a target="_blank"
+                                        href="<?php echo $d->link_berkas; ?>"><?php echo $d->link_berkas; ?></a>
+                                   <!-- <a target="_blank" style="text-decoration: none;"
                                         href="<?php echo base_url('assets/upload/'); ?><?php echo $d->judul; ?>">
                                         <?php echo $d->judul; ?>
-                                   </a>
+                                   </a> -->
                               </td>
                               <?php }} else { ?>
                               <td class="text-center" colspan="6">Tidak ada data</td>

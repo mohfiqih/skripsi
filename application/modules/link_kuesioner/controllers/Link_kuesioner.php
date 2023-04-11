@@ -29,15 +29,50 @@ class Link_kuesioner extends MY_Controller {
 		$this->load->view('template', $this->meta());
 	}
 
-	public function export_link()
+	// Shared Link
+	public function shared()
 	{
-		$data	= array(
-			"data_paket"		=> $this->M_Universal->getMulti(NULL, "paket_soal"),
+	  $data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
+
+        $data = array(
+			"judul"			=> "Dashboard",
+			"keterangan"		=> "Contoh Keterangan",
+			"halaman"			=> "shared_link/shared",
+			"view"			=> "shared_link/shared",
+               "data_shared"	     => $this->M_Universal->getMulti(NULL, "shared_link"),
+			"user"			=> $data_user,
+	   );
+	   $this->load->view('template', $data);
+	}
+
+     # Fungsi Tambah Paket
+     public function tambah_link()
+	{
+		$data = array(
+			"link_kuesioner"		=> $this->input->post("link_kuesioner"),
 		);
-	  
-		 $this->load->library('pdf');
-		 $this->pdf->setPaper('A4', 'landscape');
-		 $this->pdf->filename = "link-kuesioner.pdf";
-		 $this->pdf->load_view('export_link', $data);
+
+		$tambah = $this->M_Universal->insert($data, "shared_link");
+
+		if ($tambah) {
+			$this->session->set_flashdata('notif_share_success', 'Berhasil Share Link!');
+			redirect('link_kuesioner/shared', 'refresh');
+		} else {
+			$this->session->set_flashdata('notif_share_gagal', 'Gagal Share Link!');
+			redirect('link_kuesioner/shared', 'refresh');
+		};
+	}
+
+	public function hapus_link()
+	{
+		$hapus 	= $this->M_Universal->delete(["id" => dekrip(uri(3))], "shared_link");
+
+		if ($hapus) {
+			$this->session->set_flashdata('hapus_share_success', 'Berhasil Hapus link!');
+			redirect('link_kuesioner/shared', 'refresh');
+		} else {
+			$this->session->set_flashdata('hapus_share_gagal', 'Berhasil Hapus link!');
+			redirect('link_kuesioner/shared', 'refresh');
+		};
 	}
 }

@@ -48,7 +48,7 @@
                                              <th class="align-middle" scope="col" style="width: 10px;">No
                                              </th>
                                              <th class="align-middle" scope="col">Nama Sistem</th>
-                                             <th class="align-middle" scope="col">Nama Berkas</th>
+                                             <th class="align-middle" scope="col">Link Berkas</th>
                                              <th class="align-middle" scope="col" style="width: 10px;">
                                                   Action</th>
                                         </tr>
@@ -67,7 +67,8 @@
                                                   <?php echo $d->nama_apl; ?>
                                              </td>
                                              <td class="align-middle">
-                                                  <?php echo $d->judul; ?>
+                                                  <a target="_blank" href="<?php echo $d->link_berkas; ?>">Lihat
+                                                       Berkas</a>
                                              </td>
                                              <td class="align-middle">
                                                   <a style="text-decoration: none;"

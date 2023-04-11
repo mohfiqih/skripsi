@@ -56,6 +56,8 @@ class Dasbor extends MY_Controller {
 
 			"data_klasifikasi"	=> $this->M_Universal->getMulti(["id_paket"], "paket_soal"),
 
+			"data_shared"		=> $this->M_Universal->getMulti(NULL, "shared_link"),
+
 			"jml_prodi"		=> $this->M_dasbor->total_prodi("", "prodi"),
 			"user"			=> $data_user,
 			"paket"			=> $data_paket

@@ -7,7 +7,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- App favicon -->
      <link rel="shortcut icon" href="<?php echo base_url('assets/backend'); ?>/images/phb.png">
-     <title>Laporan Data Berkas</title>
+     <title>Laporan Manajerial Sistem</title>
 </head>
 <style>
 table {
@@ -37,7 +37,7 @@ tr:hover {
 
 <body>
      <!-- <div class="container"> -->
-     <div class="row" style="margin-left: 30px;margin-right: 30px;margin-top: 100px;">
+     <div class="row">
           <div class="col-md-6">
                <center>
                     <p style="line-height: 70%;">Yayasan Pendidikan Harapan Bersama</p>
@@ -56,7 +56,7 @@ tr:hover {
           <br />
           <div>
                <center>
-                    <h3>Data Berkas</h3>
+                    <h3>DATA USER</h3>
                </center>
           </div>
           <div class="card-body" data-mdb-perfect-scrollbar="true" style="overflow-x: auto;">
@@ -64,44 +64,51 @@ tr:hover {
                     <thead>
                          <tr>
                               <td scope="col">No</td>
-                              <td scope="col">Nama Sistem</td>
-                              <td scope="col">Versi Sistem</td>
+                              <td scope="col">ID User</td>
+                              <td scope="col">Email</td>
+                              <td scope="col">Nama Lengkap</td>
+                              <td scope="col">Sebagai</td>
                               <td scope="col">
-                                   Penyedia
+                                   Prodi/Bidang
                               </td>
                               <td scope="col">
-                                   Tanggal Berkas
+                                   Gender
                               </td>
                               <td scope="col">
-                                   Link Berkas
+                                   Created
                               </td>
                          </tr>
                     </thead>
                     <tbody>
                          <?php
                          $no=0+1;
-					if ($data_berkas){
-					foreach ($data_berkas as $d){ 
+					if ($data_user){
+					foreach ($data_user as $d){ 
 					?>
                          <tr class="fw-normal">
                               <td>
                                    <?php echo $no++; ?>
                               </td>
                               <td>
-                                   <?php echo $d->nama_apl; ?>
+                                   <?php echo $d->username_id ?>
                               </td>
                               <td>
-                                   <?php echo $d->versi_apl; ?>
+                                   <?php echo $d->email; ?>
                               </td>
                               <td>
-                                   <?php echo $d->penyedia_apl; ?>
+                                   <?php echo $d->user_namalengkap; ?>
                               </td>
                               <td>
-                                   <?php echo $d->tgl_publish; ?>
+                                   <?php echo $d->user_level; ?>
                               </td>
                               <td>
-                                   <a target="_blank"
-                                        href="<?php echo $d->link_berkas; ?>"><?php echo $d->link_berkas; ?></a>
+                                   <?php echo $d->user_prodi; ?>
+                              </td>
+                              <td>
+                                   <?php echo $d->user_gender; ?>
+                              </td>
+                              <td>
+                                   <?php echo $d->user_created; ?>
                               </td>
                               <?php }} else { ?>
                               <td class="text-center" colspan="6">Tidak ada data</td>
@@ -111,17 +118,14 @@ tr:hover {
                </table>
           </div>
           <br />
-          <div style="float: right;">
+          <div style="margin-left: 870px;">
                <p style="line-height: 70%;">Tegal,</p>
                <p style="line-height: 70%;">Ka. Prodi</p><br /><br />
                <u style="line-height: 70%;"></u>
                <p style="line-height: 70%;">NIPY.</p>
           </div>
      </div>
-
-     <script type="text/javascript">
-     window.print
-     </script>
+     </div>
 </body>
 
 </html>

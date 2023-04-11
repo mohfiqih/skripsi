@@ -64,7 +64,7 @@ class Export extends MY_Controller {
 		$data	= array(
 			"data_manajerial"		=> $this->M_export->get_manajerial(NULL, "manajerial"),
 		);
-	  
+	
 		 $this->load->view('print/print_manajerial', $data);
 	}
 	
@@ -726,5 +726,76 @@ class Export extends MY_Controller {
 		$writer = PHPExcel_IOFactory::createwriter($object, 'Excel2007');
 		$writer->save('php://output');
 		exit;
+	}
+
+	// ----------------- Export Manajerial Data ------------------ #
+	public function export_user_pdf()
+	{
+		$data	= array(
+			"data_user"		=> $this->M_Universal->getMulti(NULL, "user"),
+		);
+	  
+		 $this->load->library('pdf');
+		 $this->pdf->setPaper('A4', 'landscape');
+		 $this->pdf->filename = "laporan-user.pdf";
+		 $this->pdf->load_view('pdf/laporan_user', $data);
+	}
+
+	public function print_user()
+	{
+		$data	= array(
+			"data_user"		=> $this->M_Universal->getMulti(NULL, "user"),
+		);
+	  
+		 $this->load->view('print/print_user', $data);
+	}
+	
+	public function export_user_excel()
+	{
+		$data['user'] = $this->M_Universal->getMulti(NULL, "user");
+		require(APPPATH. 'libraries/PHPExcel-1.8/Classes/PHPExcel.php');
+		require(APPPATH. 'libraries/PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
+		
+		 $object = new PHPExcel();
+		 $object->getProperties()->setCreator("Sistem e-Repo");
+		 $object->getProperties()->setLastModifiedBy("Sistem e-Repo");
+		 $object->getProperties()->setTitle("Data User");
+		 
+		 $object->setActiveSheetIndex(0);
+
+		 $object->getActiveSheet()->setCellValue('A1', 'No');
+		 $object->getActiveSheet()->setCellValue('B1', 'ID User');
+		 $object->getActiveSheet()->setCellValue('C1', 'Email');
+		 $object->getActiveSheet()->setCellValue('D1', 'Nama Lengkap');
+		 $object->getActiveSheet()->setCellValue('E1', 'Sebagai');
+		 $object->getActiveSheet()->setCellValue('F1', 'Prodi/Bidang');
+		 $object->getActiveSheet()->setCellValue('G1', 'Gender');
+		 $object->getActiveSheet()->setCellValue('H1', 'Created');
+
+		 $baris = 2;
+		 $no = 1;
+
+		 foreach ($data['user'] as $user) {
+			$object->getActiveSheet()->setCellValue('A'.$baris, $no++);
+			$object->getActiveSheet()->setCellValue('B'.$baris, $user->username_id);
+			$object->getActiveSheet()->setCellValue('C'.$baris, $user->email);
+			$object->getActiveSheet()->setCellValue('D'.$baris, $user->user_namalengkap);
+			$object->getActiveSheet()->setCellValue('E'.$baris, $user->user_level);
+			$object->getActiveSheet()->setCellValue('F'.$baris, $user->user_prodi);
+			$object->getActiveSheet()->setCellValue('G'.$baris, $user->user_gender);
+			$object->getActiveSheet()->setCellValue('H'.$baris, $user->user_created);
+
+			$baris++;
+		 }
+		 
+		 $filename= "Data User".'.xlsx';
+		 $object->getActiveSheet()->setTitle("Data User");
+		 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		 header('Content-Disposition: attachment;filename="'.$filename. '"');
+		 header('Cache-Control: max-age=0');
+
+		 $writer = PHPExcel_IOFactory::createwriter($object, 'Excel2007');
+		 $writer->save('php://output');
+		 exit;
 	}
 }

@@ -132,11 +132,25 @@
                                         <i class="ti-settings text-primary"></i>
                                         Edit Profil
                                    </a>
-                                   <a onclick="return confirm('Yakin hapus logout?')" class="dropdown-item"
+                                   <?php if ($this->user_level == "Super Admin" or $this->user_level == "Pengevaluasi"):?>
+                                   <a onclick="return confirm('Yakin logout?')" class="dropdown-item"
                                         href="<?php echo base_url('logout'); ?>">
                                         <i class="ti-power-off text-primary"></i>
                                         Logout
                                    </a>
+                                   <?php elseif ($this->user_level == "Mahasiswa"): ?>
+                                   <a onclick="return confirm('Yakin logout?')" class="dropdown-item"
+                                        href="<?php echo base_url('logoutUser'); ?>">
+                                        <i class="ti-power-off text-primary"></i>
+                                        Logout
+                                   </a>
+                                   <?php else: ?>
+                                   <a onclick="return confirm('Yakin logout?')" class="dropdown-item"
+                                        href="<?php echo base_url('logout'); ?>">
+                                        <i class="ti-power-off text-primary"></i>
+                                        Logout
+                                   </a>
+                                   <?php endif; ?>
                               </div>
                          </li>
                     </ul>
@@ -187,6 +201,9 @@
                                         </li>
                                         <li class="nav-item"> <a class="nav-link"
                                                   href="<?php echo base_url('link_kuesioner') ?>">Link Kuesioner</a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link"
+                                                  href="<?php echo base_url('link_kuesioner/shared') ?>">Share Link</a>
                                         </li>
                                    </ul>
                               </div>
@@ -381,7 +398,9 @@
                                                   href="<?php echo base_url('link_kuesioner') ?>">Link
                                                   Kuesioner</a>
                                         </li>
-
+                                        <li class="nav-item"> <a class="nav-link"
+                                                  href="<?php echo base_url('link_kuesioner/shared') ?>">Share Link</a>
+                                        </li>
                                    </ul>
                               </div>
                          </li>
