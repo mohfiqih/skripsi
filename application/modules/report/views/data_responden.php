@@ -255,7 +255,7 @@
                                                             <span class="badge bg-danger text-white">
                                                                  Tidak Setuju
                                                             </span>
-                                                            <?php } else if ($nilai <= 59.9 && $nilai >= 1) { ?>
+                                                            <?php } else if ($nilai <= 39.9 && $nilai >= 1) { ?>
                                                             <span class="badge bg-danger text-white">
                                                                  Sangat Tidak Setuju
                                                             </span>

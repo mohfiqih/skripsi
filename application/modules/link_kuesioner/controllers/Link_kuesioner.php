@@ -75,4 +75,18 @@ class Link_kuesioner extends MY_Controller {
 			redirect('link_kuesioner/shared', 'refresh');
 		};
 	}
+
+	public function testing()
+	{
+		$data_user	= $this->M_Universal->getOne(["user_id" => $this->user_id], "user");
+		$data = array(
+			"judul"		=> "Halaman Kuesioner",
+			"halaman"		=> "link_testing",
+			"view"		=> "link_testing",
+			"data_paket"	=> $this->M_Universal->getMulti(NULL, "paket_soal"),
+			"user"		=> $data_user,
+		);
+
+		$this->load->view('template', $data);
+	}
 }

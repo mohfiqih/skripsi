@@ -42,14 +42,14 @@
 </head>
 
 <body>
-     <div class="content" style="margin-left: 20px;margin-right: 15px;">
+     <div class="content" style="margin-top: 100px;">
           <div class="container">
                <div class="row">
                     <div class="col-md-6">
                          <img src="<?php echo base_url('assets/auth/images/login_new.png') ?>" alt="Image"
-                              class="img-fluid" style="width: 500px;margin-top: 50px;">
+                              class="img-fluid" style="width: 500px;">
                     </div>
-                    <div class="col-md-6 contents" style="margin-top: 50px;">
+                    <div class="col-md-6 contents">
                          <div class="row justify-content-center">
                               <div class="col-md-8">
                                    <div class="mb-4">

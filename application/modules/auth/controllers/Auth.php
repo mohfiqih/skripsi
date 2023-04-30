@@ -127,7 +127,7 @@ class Auth extends MY_Controller
 	     
 	      'smtp_port' => 465,
 	      'auth_username' => 'mfiqiherinsyah90@gmail.com',  //gmail id
-	      'auth_password' => 'agbpxdfoibccylit',   //gmail password
+	      'auth_password' => 'prbnhzbgkrnvdxjh',   //gmail password
 	      
 	      'mailtype' => 'html',
 	      'charset' => 'iso-8859-1',

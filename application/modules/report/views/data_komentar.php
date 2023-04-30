@@ -51,9 +51,9 @@
                                              <th class="align-middle" scope="col">Jawaban</th>
                                              <th class="align-middle" scope="col">Label
                                              </th>
-                                             <!-- <th class="align-middle" scope="col" style="width: 5px;">
+                                             <th class="align-middle" scope="col" style="width: 5px;">
                                                   Action
-                                             </th> -->
+                                             </th>
                                         </tr>
                                    </thead>
                                    <tbody>
@@ -85,13 +85,13 @@
                                                   </span>
                                                   <?php } ?>
                                              </td>
-                                             <!-- <td class="align-middle">
+                                             <td>
                                                   <a style="margin-left: 10px;text-decoration: none;"
-                                                       href="<?php echo url(1) .'/jawaban_id/'. enkrip($d->id_paket); ?>"
-                                                       data-mdb-toggle="tooltip" class="fas fa-eye text-success me-3"
-                                                       title="Soal">
-                                                  </a>
-                                             </td> -->
+                                                       href="<?php echo url(1) . '/hapus_komentar/' . enkrip($d->id); ?>"
+                                                       data-mdb-toggle="tooltip" title="Remove"
+                                                       onclick="return confirm('Yakin hapus data?')"><i
+                                                            class="fas fa-trash-alt text-danger"></i></a>
+                                             </td>
                                         </tr>
                                         <?php }} else { ?>
                                         <td class="text-center" colspan="4">Tidak ada data</td>

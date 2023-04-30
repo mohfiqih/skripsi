@@ -74,140 +74,135 @@
                                     <td class="text-center" colspan="6">Tidak ada data</td>
                                     <?php } ?>
                                     <?php echo form_open(uri(2) == "edit" ? url(1, "update") : url(1, "tambah_soal/") . uri(3)); ?>
-                                    <form action="<?php echo uri(2) == "tambah_soal" ? url(1, "edit_soal") : url(1, "tambah_soal"); ?>"
-                                         method="POST">
-                                         <div>
-                                              <?php
-                                        $no = 0 + 1;
-                                        if ($data_soal) {
-                                        foreach ($data_soal as $d) {
-                                        ?>
-                                              <input style="width: 375px;" name="id_identitas"
-                                                   value="<?php echo $user->user_id; ?>" hidden>
-                                              <input style="width: 375px;" name="nama_lengkap"
-                                                   value="<?php echo $user->user_namalengkap; ?>" hidden>
-                                              <input style="width: 375px;" name="prodi"
-                                                   value="<?php echo $user->user_prodi; ?>" hidden>
-                                              <input style="width: 375px;" name="sebagai"
-                                                   value="<?php echo $user->user_level; ?>" hidden>
-                                              <input style="width: 375px;" name="gender"
-                                                   value="<?php echo $user->user_gender; ?>" hidden>
-                                              <input style="width: 375px;" name="id_paket_jawaban"
-                                                   value="<?php echo $d->id_paket; ?>" hidden>
-                                              <input style="width: 375px;" name="id_soal_kuesioner"
-                                                   value="<?php echo $d->id_soal; ?>" hidden>
-                                              <input style="width: 375px;" name="type_soal"
-                                                   value="<?php echo $d->type_soal; ?>" hidden>
-                                              <br />
-                                              <div class="form-items mb-2">
-                                                   <td class="title">
-                                                        <p style="color: black;"><?php echo $no++; ?>.
-                                                             <?php echo $d->soal; ?></p>
-                                                   </td>
-                                              </div>
-                                              <table>
-                                                   <tbody>
-                                                        <tr>
-                                                             <td class="align-middle"
-                                                                  style="width: 70px; text-align: center;">
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <center>
-                                                                            <input class="radio5 the_input_element"
-                                                                                 name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                                 id="concern"
-                                                                                 value="<?php echo $d->sangat_tidak_setuju; ?>"
-                                                                                 style="display: block !important; color: rgb(50, 55, 60);"
-                                                                                 autocomplete="off" type="radio"
-                                                                                 required />
-                                                                       </center>
-                                                                  </div>
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <h5 style="margin-top: 5px;color: black;">1
-                                                                       </h5>
-                                                                  </div>
-                                                             </td>
-
-                                                             <td class="align-middle"
-                                                                  style="width: 70px; text-align: center;">
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <center>
-                                                                            <input class="radio the_input_element"
-                                                                                 name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                                 id="radio4"
-                                                                                 value="<?php echo $d->tidak_setuju; ?>"
-                                                                                 style="display: block !important; color: rgb(50, 55, 60);"
-                                                                                 autocomplete="off" type="radio"
-                                                                                 required />
-                                                                       </center>
-                                                                  </div>
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <h5 style="margin-top: 5px;color: black;">2</h5>
-                                                                  </div>
-                                                             </td>
-
-                                                             <td class="align-middle"
-                                                                  style="width: 70px; text-align: center;">
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <center>
-                                                                            <input class="radio the_input_element"
-                                                                                 name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                                 id="radio2" for="radio2"
-                                                                                 value="<?php echo $d->setuju; ?>"
-                                                                                 style="display: block !important; color: rgb(50, 55, 60);"
-                                                                                 autocomplete="off" type="radio"
-                                                                                 required />
-                                                                       </center>
-                                                                  </div>
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <h5 style="margin-top: 5px;color: black;">3</h5>
-                                                                  </div>
-                                                             </td>
-
-                                                             <td class="align-middle"
-                                                                  style="width: 70px; text-align: center;">
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <center>
-                                                                            <input class="radio the_input_element"
-                                                                                 name="<?php echo "jawaban" . $d->id_soal; ?>"
-                                                                                 value="<?php echo $d->sangat_setuju; ?>"
-                                                                                 style="display: block !important; color: rgb(50, 55, 60);"
-                                                                                 autocomplete="off" type="radio"
-                                                                                 required />
-                                                                       </center>
-                                                                  </div>
-                                                                  <div
-                                                                       class="clearfix prettyradio labelright  blue has-pretty-child">
-                                                                       <h5 style="margin-top: 5px;color: black;">4</h5>
-                                                                  </div>
-                                                             </td>
-                                                        </tr>
-                                                   </tbody>
-                                              </table>
-                                              <?php }
-                                             } else { ?>
-                                              <div class="logo">
-                                                   <h5><a><span>Tidak Ada Pertanyaan Kuesioner</span></a></h5>
-                                              </div>
-                                              <?php } ?>
-
-                                         </div>
+                                    <!-- <form action="<?php echo uri(2) == "tambah_soal" ? url(1, "edit_soal") : url(1, "tambah_soal"); ?>"
+                                         method="POST"> -->
+                                    <div>
+                                         <?php
+                                             $no = 0 + 1;
+                                             if ($data_soal) {
+                                             foreach ($data_soal as $d) {
+                                             ?>
+                                         <input style="width: 375px;" name="id_identitas"
+                                              value="<?php echo $user->user_id; ?>" hidden>
+                                         <input style="width: 375px;" name="nama_lengkap"
+                                              value="<?php echo $user->user_namalengkap; ?>" hidden>
+                                         <input style="width: 375px;" name="prodi"
+                                              value="<?php echo $user->user_prodi; ?>" hidden>
+                                         <input style="width: 375px;" name="sebagai"
+                                              value="<?php echo $user->user_level; ?>" hidden>
+                                         <input style="width: 375px;" name="gender"
+                                              value="<?php echo $user->user_gender; ?>" hidden>
+                                         <input style="width: 375px;" name="id_paket_jawaban"
+                                              value="<?php echo $d->id_paket; ?>" hidden>
+                                         <input style="width: 375px;" name="id_soal_kuesioner"
+                                              value="<?php echo $d->id_soal; ?>" hidden>
+                                         <input style="width: 375px;" name="type_soal"
+                                              value="<?php echo $d->type_soal; ?>" hidden>
                                          <br />
-
-                                         <div class="header-button">
-                                              <button type="submit" style="height: 43px;width: 100px;"
-                                                   class="btn btn-success text-white"
-                                                   style="background-color: #4747A1;">
-                                                   Next
-
+                                         <div class="form-items mb-2">
+                                              <td class="title">
+                                                   <p style="color: black;"><?php echo $no++; ?>.
+                                                        <?php echo $d->soal; ?></p>
+                                              </td>
                                          </div>
-                                         <?php echo form_close(); ?>
+                                         <table>
+                                              <tbody>
+                                                   <tr>
+                                                        <td class="align-middle"
+                                                             style="width: 70px; text-align: center;">
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <center>
+                                                                       <input class="radio5 the_input_element"
+                                                                            name="<?php echo "jawaban" . $d->id_soal; ?>"
+                                                                            id="concern"
+                                                                            value="<?php echo $d->sangat_tidak_setuju; ?>"
+                                                                            style="display: block !important; color: rgb(50, 55, 60);"
+                                                                            autocomplete="off" type="radio" required />
+                                                                  </center>
+                                                             </div>
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <h5 style="margin-top: 5px;color: black;">1
+                                                                  </h5>
+                                                             </div>
+                                                        </td>
+
+                                                        <td class="align-middle"
+                                                             style="width: 70px; text-align: center;">
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <center>
+                                                                       <input class="radio the_input_element"
+                                                                            name="<?php echo "jawaban" . $d->id_soal; ?>"
+                                                                            id="radio4"
+                                                                            value="<?php echo $d->tidak_setuju; ?>"
+                                                                            style="display: block !important; color: rgb(50, 55, 60);"
+                                                                            autocomplete="off" type="radio" required />
+                                                                  </center>
+                                                             </div>
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <h5 style="margin-top: 5px;color: black;">2</h5>
+                                                             </div>
+                                                        </td>
+
+                                                        <td class="align-middle"
+                                                             style="width: 70px; text-align: center;">
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <center>
+                                                                       <input class="radio the_input_element"
+                                                                            name="<?php echo "jawaban" . $d->id_soal; ?>"
+                                                                            id="radio2" for="radio2"
+                                                                            value="<?php echo $d->setuju; ?>"
+                                                                            style="display: block !important; color: rgb(50, 55, 60);"
+                                                                            autocomplete="off" type="radio" required />
+                                                                  </center>
+                                                             </div>
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <h5 style="margin-top: 5px;color: black;">3</h5>
+                                                             </div>
+                                                        </td>
+
+                                                        <td class="align-middle"
+                                                             style="width: 70px; text-align: center;">
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <center>
+                                                                       <input class="radio the_input_element"
+                                                                            name="<?php echo "jawaban" . $d->id_soal; ?>"
+                                                                            value="<?php echo $d->sangat_setuju; ?>"
+                                                                            style="display: block !important; color: rgb(50, 55, 60);"
+                                                                            autocomplete="off" type="radio" required />
+                                                                  </center>
+                                                             </div>
+                                                             <div
+                                                                  class="clearfix prettyradio labelright  blue has-pretty-child">
+                                                                  <h5 style="margin-top: 5px;color: black;">4</h5>
+                                                             </div>
+                                                        </td>
+                                                   </tr>
+                                              </tbody>
+                                         </table>
+                                         <?php }
+                                             } else { ?>
+                                         <div class="logo">
+                                              <h5><a><span>Tidak Ada Pertanyaan Kuesioner</span></a></h5>
+                                         </div>
+                                         <?php } ?>
+
+                                    </div>
+                                    <br />
+
+                                    <div class="header-button">
+                                         <button type="submit" style="height: 43px;width: 100px;"
+                                              class="btn btn-success text-white" style="background-color: #4747A1;">
+                                              Next
+
+                                    </div>
+                                    <?php echo form_close(); ?>
                                </div>
                           </div>
                      </div>

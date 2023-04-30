@@ -76,9 +76,11 @@ class Report extends MY_Controller
 		$hapus = $this->M_Universal->delete(["id_identitas" => dekrip(uri(3))], "kuesioner");
 
 		if ($hapus) {
-			notifikasi_redirect("success", "Hapus data berhasil", redirect('report'));
+			$this->session->set_flashdata('notif_berhasil_hapus_responden', 'Data responden berhasil dihapus!');
+			redirect('report', 'refresh');
 		} else {
-			notifikasi_redirect("error", "Hapus data gagal", redirect('report'));
+			$this->session->set_flashdata('notif_gagal_hapus_responden', 'Data responden gagal dihapus!');
+			redirect('report', 'refresh');
 		};
 	}
 
@@ -138,11 +140,24 @@ class Report extends MY_Controller
 			"judul"			=> "Hasil Kuesioner",
 			"halaman"			=> "data_komentar",
 			"view"			=> "data_komentar",
-			// "data_klasifikasi"	=> $this->M_Universal->getMulti(NULL, "klasifikasi"),
 			"data_klasifikasi"	=>  $this->report->get_klasifikasi(["klasifikasi.id_paket_jawaban" => dekrip(uri(3))]),
 			"user"			=> $data_user
 		);
 		$this->load->view('template', $data);
+	}
+
+	public function hapus_komentar()
+	{
+		$hapus = $this->M_Universal->delete(["id" => dekrip(uri(3))], "klasifikasi");
+
+		if ($hapus) {
+			$this->session->set_flashdata('notif_berhasil_hapus', 'Data komentar berhasil dihapus!');
+			redirect('report/komentar', 'refresh');
+			// notifikasi_redirect("success", "Hapus data berhasil", redirect('report/komentar'));
+		} else {
+			$this->session->set_flashdata('notif_gagal_hapus', 'Data komentar gagal dihapus!');
+			redirect('report/komentar', 'refresh');
+		};
 	}
 
 	# ------------------------ EXPORT ---------------------------- #

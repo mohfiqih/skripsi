@@ -203,6 +203,10 @@
                                                   href="<?php echo base_url('link_kuesioner') ?>">Link Kuesioner</a>
                                         </li>
                                         <li class="nav-item"> <a class="nav-link"
+                                                  href="<?php echo base_url('link_kuesioner/testing') ?>">Link
+                                                  Testing</a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link"
                                                   href="<?php echo base_url('link_kuesioner/shared') ?>">Share Link</a>
                                         </li>
                                    </ul>
@@ -232,6 +236,12 @@
                                    <span class="menu-title">Chart</span>
                               </a>
                          </li>
+                         <!-- <li class="nav-item">
+                              <a class="nav-link" href="<?php echo base_url('testing'); ?>">
+                                   <i class="fa-solid fa-pen-nib menu-icon"></i>
+                                   <span class="menu-title">Testing</span>
+                              </a>
+                         </li> -->
                          <li class="nav-item">
                               <a class="nav-link" data-toggle="collapse" href="#export" aria-expanded="false"
                                    aria-controls="export">
@@ -252,6 +262,7 @@
                                    </ul>
                               </div>
                          </li>
+
                          <li class="nav-item" style="margin-left: 17px;margin-top: 20px;">
                               <span class="menu-title" style="color: grey;">Master Data</span>
                          </li>
@@ -1063,16 +1074,18 @@
 
 
      <!-- AJAX JQUERY API CLASSIFICATION -->
-     <script type="text/javascript">
+     <!-- <script type="text/javascript">
      $(function() {
           $('button').click(function() {
-               var jawaban = $('#inputJawaban').val();
-               var paket = $('#inputPaket').val();
+
                var identitas = $('#inputIdentitas').val();
                var nama = $('#inputNama').val();
                var prodi = $('#inputProdi').val();
                var sebagai = $('#inputSebagai').val();
                var gender = $('#inputGender').val();
+
+               var jawaban = $('#inputJawaban').val();
+               var paket = $('#inputPaket').val();
 
                $.ajax({
                     url: 'http://127.0.0.1:5000/testApi',
@@ -1087,7 +1100,7 @@
                });
           });
      });
-     </script>
+     </script> -->
 
 </body>
 

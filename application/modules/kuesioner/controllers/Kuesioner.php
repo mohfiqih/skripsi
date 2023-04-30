@@ -50,8 +50,7 @@ class Kuesioner extends MY_Controller
 				"datecreated"			=> $this->input->post("datecreated"),
 			);
 		}
-		// var_dump($data);
-
+		
 		$tambah = $this->db->insert_batch('kuesioner', $data);
 
 		if ($tambah) {

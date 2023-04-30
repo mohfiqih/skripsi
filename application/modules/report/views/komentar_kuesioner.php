@@ -1,6 +1,26 @@
 <head>
      <title>Hasil Kuesioner | Sistem e-Repo</title>
 </head>
+<!-- Berhasil Hapus -->
+<?php if ($this->session->flashdata('notif_berhasil_hapus')){ ?>
+<div class="alert alert-success alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_berhasil_hapus'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+<!-- Gagal Hapus -->
+<?php if ($this->session->flashdata('notif_gagal_hapus')){ ?>
+<div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert" aria-label="Close" role="alert">
+     <span class="btn-label"></span><?php echo $this->session->flashdata('notif_gagal_hapus'); ?>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+<?php } ?>
+
+
 <div>
      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
           aria-label="breadcrumb">
@@ -66,6 +86,8 @@
                                                   $Baik = $this->report->label_baik($total_id, "klasifikasi");
                                                   $Kurang = $this->report->label_kurang($total_id, "klasifikasi");
 
+                                                  // $kosong = 0;
+
                                              if ($Baik > $Kurang) { ?>
                                                   <span class="badge bg-success text-white">
                                                        Baik
@@ -76,7 +98,7 @@
                                                   </span>
                                                   <?php } else if ($Baik==$Kurang) { ?>
                                                   <span class="badge bg-warning text-white">
-                                                       Kosong
+                                                       Data Sama
                                                   </span>
                                                   <?php } ?>
                                              </td>

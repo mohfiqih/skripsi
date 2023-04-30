@@ -288,38 +288,7 @@
 
                                                                       </select>
                                                                  </div>
-                                                                 <div class="form-floating mb-3">
-                                                                      <label for="example-select-floating">Pilih
-                                                                           Gender</label><br />
-                                                                      <select class="form-control" name="user_gender"
-                                                                           aria-label="Floating label select example"
-                                                                           required>
-                                                                           <option value="">Pilih Gender</option>
-                                                                           <option value="L"
-                                                                                <?php if (uri(2) == 'edit') echo $edit->user_gender == "L" ? "selected" : ""; ?>>
-                                                                                Laki-Laki</option>
-                                                                           <option value="P"
-                                                                                <?php if (uri(2) == 'edit') echo $edit->user_gender == "P" ? "selected" : ""; ?>>
-                                                                                Perempuan
-                                                                           </option>
-                                                                      </select>
-                                                                 </div>
-                                                                 <div class="form-floating mb-3">
-                                                                      <label for="example-select-floating">Pilih
-                                                                           Status</label><br />
-                                                                      <select class="form-control" name="user_status"
-                                                                           aria-label="Floating label select example"
-                                                                           required>
-                                                                           <option value="">Pilih Status</option>
-                                                                           <option value="Aktif"
-                                                                                <?php if (uri(2) == 'edit') echo $edit->user_status == "1" ? "selected" : ""; ?>>
-                                                                                Aktif</option>
-                                                                           <option value="Nonaktif"
-                                                                                <?php if (uri(2) == 'edit') echo $edit->user_status == "0" ? "selected" : ""; ?>>
-                                                                                Nonaktif
-                                                                           </option>
-                                                                      </select>
-                                                                 </div>
+                                                                 
                                                             </div>
 
                                                        </div><br />
