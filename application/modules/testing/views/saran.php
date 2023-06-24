@@ -41,7 +41,28 @@
                           </div>
                           <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 wow fadeInRight">
                                <div class="contetn" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;">
-
+                                    <!-- Berhasil Tambah -->
+                                    <?php if ($this->session->flashdata('notif_berhasil_soal')){ ?>
+                                    <div class="alert alert-success alert-dismissible fade show" data-dismiss="alert"
+                                         aria-label="Close" role="alert">
+                                         <span
+                                              class="btn-label"></span><?php echo $this->session->flashdata('notif_berhasil_soal'); ?>
+                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                         </button>
+                                    </div>
+                                    <?php } ?>
+                                    <!-- Gagal Tambah -->
+                                    <?php if ($this->session->flashdata('notif_gagal_soal')){ ?>
+                                    <div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert"
+                                         aria-label="Close" role="alert">
+                                         <span
+                                              class="btn-label"></span><?php echo $this->session->flashdata('notif_gagal_soal'); ?>
+                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                         </button>
+                                    </div>
+                                    <?php } ?>
                                     <div class="d-flex">
                                          <h4 class="font-weight-bold">Saran Pengembangan
                                          </h4>

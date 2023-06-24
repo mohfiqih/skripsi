@@ -54,9 +54,12 @@ class Kuesioner extends MY_Controller
 		$tambah = $this->db->insert_batch('kuesioner', $data);
 
 		if ($tambah) {
-			notifikasi_redirect("success", "Data berhasil", redirect(base_url('kuesioner/saran/' . uri(3))));
+			$this->session->set_flashdata('notif_berhasil_soal', 'Berhasil mengirim pilihan kuesioner!');
+			redirect('kuesioner/saran/' . uri(3), 'refresh');
+			
 		} else {
-			notifikasi_redirect("error", "Data sudah ada", redirect('kuesioner/skala/' . uri(3)));
+			$this->session->set_flashdata('notif_gagal_soal', 'Gagal mengirim jawaban!');
+			redirect('kuesioner/saran/' . uri(3), 'refresh');
 		};
 	}
 
@@ -82,6 +85,7 @@ class Kuesioner extends MY_Controller
 			"judul"		=> "Halaman Kuesioner",
 			"halaman"		=> "form",
 			"view"		=> "form",
+			"data_soal"	=> $this->M_Universal->get_soal_kuesioner(["daftar_soal.paket_id" => dekrip(uri(3))]),
 			"data_paket"	=> $this->M_Universal->getMulti(["id_paket" => dekrip(uri(3))], "paket_soal"),
 			"user"		=> $data_user,
 		);

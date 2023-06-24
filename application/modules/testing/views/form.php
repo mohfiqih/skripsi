@@ -29,6 +29,7 @@
  <body>
 
       <header id="header-wrap">
+
            <div id="hero-area" class="hero-area-bg">
                 <div class="container">
                      <div class="row">
@@ -38,6 +39,21 @@
                                     <img style="margin-top: 20px;" class="img-fluid"
                                          src="<?php echo base_url(''); ?>assets/kuesioner/img/21430.jpg" alt="">
                                </div>
+                               <!-- <div class="intro-img" style="margin-right: 20px;">
+                                    <?php
+                                   date_default_timezone_set("Asia/jakarta");
+                                   ?>
+                                    <h5 class="btn btn-sm btn-light bg-white"><i class="fa-solid fa-clock"></i>
+                                         <span id="jam"><button class="btn btn-sm btn-light bg-white" type="button">
+                                         </span>
+                                    </h5>
+                                    /
+                                    <h5 class="btn btn-sm btn-light bg-white"><i class="fa-solid fa-calendar"></i>
+                                         <span id="tanggal"><button class="btn btn-sm btn-light bg-white" type="button">
+                                         </span>
+                                    </h5>
+                                    </button>
+                               </div> -->
                           </div>
                           <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                                <div class="contents" style="margin-left: 20px;margin-right: 20px;margin-top: 30px;">
@@ -481,6 +497,34 @@
       <script src="<?php echo base_url(''); ?>assets/kuesioner/js/form-validator.min.js"></script>
       <script src="<?php echo base_url(''); ?>assets/kuesioner/js/contact-form-script.min.js"></script>
 
+      <script>
+      var dt = new Date();
+      document.getElementById("tanggal").innerHTML = dt.toLocaleDateString();
+      </script>
+
+      <script type="text/javascript">
+      window.onload = function() {
+           jam();
+      }
+
+      function jam() {
+           var e = document.getElementById('jam'),
+                d = new Date(),
+                h, m, s;
+           h = d.getHours();
+           m = set(d.getMinutes());
+           s = set(d.getSeconds());
+
+           e.innerHTML = h + ':' + m + ':' + s;
+
+           setTimeout('jam()', 1000);
+      }
+
+      function set(e) {
+           e = e < 10 ? '0' + e : e;
+           return e;
+      }
+      </script>
       <!-- AJAX JQUERY API CLASSIFICATION -->
       <!-- <script type="text/javascript">
       $(function() {

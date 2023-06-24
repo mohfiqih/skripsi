@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\PHPMailerAutoload;
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+// use PHPMailer\PHPMailer\PHPMailerAutoload;
 
 // require 'vendor/phpmailler/src/Exception.php';
 // require 'vendor/phpmailler/src/PHPMailer.php';
@@ -17,11 +17,7 @@ class Auth extends MY_Controller
     function __construct()
     {
         parent::__construct();
-	   $this->load->library('form_validation');
 	   $this->load->model('M_auth');
-	   $this->load->library('session');
-        $this->load->helper('form');
-	   $this->load->helper('email');
     }
 
     public function index()
@@ -119,27 +115,77 @@ class Auth extends MY_Controller
 
 	public function sendEmail($email_send,$subject,$message)
     {
+	// include "classes/class.phpmailer.php";
+	// require(APPPATH. 'libraries/Email/PHPMailer/class.phpmailer.php');
+
+	// $developmentMode = true;
+	// $mail = new PHPMailer($developmentMode);
+	
+	// // require(APPPATH. 'libraries/Email/PHPMailer/class.phpmailer.php');
+	// // $mail = new PHPMailer;
+
+	// $mail->IsSMTP();
+
+	// $mail->SMTPSecure = 'ssl';
+
+	// $mail->Host = "localhost"; //hostname masing-masing provider email
+	// $mail->SMTPDebug = 2;
+	// $mail->Port = 465;
+	// $mail->SMTPAuth = true;
+
+	// $mail->Timeout = 60; // timeout pengiriman (dalam detik)
+	// $mail->SMTPKeepAlive = true; 
+
+	// $mail->Username = "mfiqiherinsyah90@e-repository.my.id"; //user email
+	// $mail->Password = "mohfiqiherinsyah160600"; //password email
+	// $mail->SetFrom("mfiqiherinsyah90@e-repository.my.id","Reset Password"); //set email pengirim
+	// $mail->Subject($email_send); //subyek email
+	// $mail->AddAddress($email_send); //tujuan email
+	// // $mail->MsgHTML("Pengiriman Email Dari Website");
+
+	// if($mail->Send()) echo "Message has been sent";
+	// else echo "Failed to sending message";
 
     	/*This email configuration for sending email by Google Email(Gmail Acccount) from localhost */
-	    $config = Array(
-	      'protocol' => 'smtp',
-	      'smtp_server' => 'smtp.gmail.com',
-	     
-	      'smtp_port' => 465,
-	      'auth_username' => 'mfiqiherinsyah90@gmail.com',  //gmail id
-	      'auth_password' => 'prbnhzbgkrnvdxjh',   //gmail password
-	      
-	      'mailtype' => 'html',
-	      'charset' => 'iso-8859-1',
-	      'wordwrap' => TRUE
-	    	);
+		    $config = Array(
+		      'protocol' => 'smtp',
+		      'smtp_server' => 'smtp.gmail.com',
+			
+		      'smtp_port' => 465,
+		      'auth_username' => 'mfiqiherinsyah90@gmail.com',  //gmail id
+		      'auth_password' => 'tjtgpeymuxkbbewc',   //gmail password
+			
+		      'mailtype' => 'html',
+		      'charset' => 'iso-8859-1',
+		      'wordwrap' => TRUE
+		    	);
 
-          $this->load->library('email', $config);
-          $this->email->set_newline("\r\n");
-          $this->email->from('smtp_user');
-          $this->email->to($email_send);
-          $this->email->subject($subject);
-          $this->email->message($message);
+		     $this->load->library('email', $config);
+		     $this->email->set_newline("\r\n");
+		     $this->email->from('smtp_user');
+		     $this->email->to($email_send);
+		     $this->email->subject($subject);
+		     $this->email->message($message);
+
+		// $this->load->library('email');
+          // $config = array();
+          // $this->load->initialize($config);
+          // $config['useragent'] = 'Codeigniter';
+          // $config['protocol'] = "smtp";
+          // $config['mailtype'] = "html";
+          // $config['smtp_host'] = "ssl://smtp.googlemail.com";
+          // $config['smtp_port'] = "465";
+          // $config['smtp_timeout'] = "5";
+          // $config['smtp_user'] = "mfiqiherinsyah90@gmail.com";
+          // $config['smtp_pass'] = "ngxpfkruwxpuptdz";
+          // $config['crlf'] = "\r\n";
+          // $config['newline'] = "\r\n";
+          // $config['wordwrap'] = TRUE;
+          
+          // $this->email->from($config['smtp_user']);
+          // $this->email->to($email_send);
+          // $this->email->subject($subject);
+          // $this->email->message($message);
           
           if($this->email->send())
          {

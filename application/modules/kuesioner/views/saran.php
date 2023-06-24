@@ -33,38 +33,52 @@
                 <div class="container">
                      <div class="row">
                           <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                               <div class="team-item wow fadeInRight">
-                                    <div class="team-img">
-                                         <img class="img-fluid"
-                                              src="<?php echo base_url().'assets/images/'.$user->user_foto;?>" alt="">
-                                    </div>
-                                    <div class="contetn">
-                                         <div class="info-text">
-                                              <p class="mb-3" style="color: grey;">Data Responden :</p>
-                                              <h3><a href="#"><?php echo $user->user_namalengkap; ?></a></h3>
-                                              <p>ID : <?php echo $user->user_id; ?></p>
-                                              <p>Sebagai : <?php echo $user->user_level; ?></p>
-                                              <p>Prodi : <?php echo $user->user_prodi; ?></p>
-                                              <p>Gender : <?php echo $user->user_gender; ?></p>
-                                         </div>
-                                    </div>
+                               <div class="intro-img wow fadeInRight" style="margin-right: 20px;">
+                                    <br />
+                                    <img style="margin-top: 20px;" class="img-fluid"
+                                         src="<?php echo base_url(''); ?>assets/kuesioner/img/21430.jpg" alt="">
                                </div>
                           </div>
                           <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 wow fadeInRight">
                                <div class="contetn" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;">
 
+                                    <!-- Berhasil Tambah -->
+                                    <?php if ($this->session->flashdata('notif_berhasil_soal')){ ?>
+                                    <div class="alert alert-success alert-dismissible fade show" data-dismiss="alert"
+                                         aria-label="Close" role="alert">
+                                         <span
+                                              class="btn-label"></span><?php echo $this->session->flashdata('notif_berhasil_soal'); ?>
+                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                         </button>
+                                    </div>
+                                    <?php } ?>
+                                    <!-- Gagal Tambah -->
+                                    <?php if ($this->session->flashdata('notif_gagal_soal')){ ?>
+                                    <div class="alert alert-danger alert-dismissible fade show" data-dismiss="alert"
+                                         aria-label="Close" role="alert">
+                                         <span
+                                              class="btn-label"></span><?php echo $this->session->flashdata('notif_gagal_soal'); ?>
+                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                         </button>
+                                    </div>
+                                    <?php } ?>
+
+
                                     <div class="d-flex">
                                          <h4 class="font-weight-bold">Saran Pengembangan
                                          </h4>
                                     </div>
-                                    <p style="color: gray;text-align: justify;">Berikan ulasan anda dibawah
+                                    <p style="color: gray;text-align: justify;">Mohon bantuan berikan ulasan anda
+                                         dibawah
                                          ini! isi
                                          ulasan
                                          dengan jujur
                                          selama
                                          anda menggunakannya, jika ada trouble pada sistem tuliskan pada kolom
                                          dibawah
-                                         ini.</p><br />
+                                         ini. Terimakasih 👌🫡</p><br />
                                     <form role="form">
                                          <?php
                                         $no = 0 + 1;
@@ -89,9 +103,10 @@
                                                    id="inputJawaban" name="jawaban" placeholder="Ketik Jawaban Anda"
                                                    rows="15" required></textarea>
                                          </div>
-                                         <button id="submitBtn" type="submit" class="btn btn-success">Kirim
-                                              Jawaban <span class="btn-label"> <i
-                                                        class="fa fa-back"></i></span></button>
+                                         <button id="submitBtn" type="submit"
+                                              style="border-radius: 10px;background-color: #4747A1;"
+                                              class="btn btn-block">Kirim
+                                              Jawaban <span class="btn-label"></button>
                                          <?php }
                                         } else { ?>
                                          <div class="logo">
@@ -150,11 +165,14 @@
                 var gender = $('#inputGender').val();
 
                 $.ajax({
-                     url: 'http://127.0.0.1:5000/postData',
+                     url: 'https://api.e-repository.my.id/',
                      data: $('form').serialize(),
                      type: 'POST',
-                     success: function(response) {
-                          console.log(response);
+                     success: function(data) {
+                          //  '<a href="https://localhost/web_skripsi/testing/terimakasih"></a>'
+                          //  console.log(response);
+                          //  window.location =
+                          //       'https://localhost/web_skripsi/testing/terimakasih';
                      },
                      error: function(error) {
                           console.log(error);

@@ -120,7 +120,7 @@ class Testing extends MY_Controller
 		$tambah = $this->db->insert_batch('kuesioner', $data);
 
 		if ($tambah) {
-			$this->session->set_flashdata('notif_berhasil_soal', 'Berhasil mengirim jawaban!');
+			$this->session->set_flashdata('notif_berhasil_soal', 'Berhasil mengirim pilihan kuesioner!');
 			redirect('testing/saran/' . uri(3) . '?id_identitas='.$id_identitas . '?nama_lengkap='.$nama_lengkap . '?prodi='.$prodi . '?sebagai='.$sebagai . '?gender='.$gender, 'refresh');
 			
 		} else {

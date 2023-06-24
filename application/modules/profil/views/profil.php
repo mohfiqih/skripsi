@@ -103,14 +103,6 @@
                                    <label class="form-label">Current Password</label>
                                    <input type="password" class="form-control" name="password_sekarang">
                               </div>
-                              <!-- <div class="d-flex mb-2 align-items-center">
-                                   <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption"
-                                             for="showpw">Show</span>
-                                        <input style="margin-left: 5px;" type="checkbox" class="form-check-input"
-                                             id="showpw" onclick="myFunction()" />
-                                        <div class="control__indicator"></div>
-                                   </label>
-                              </div> -->
                               <div class="mb-2">
                                    <label class="form-label">New Password</label>
                                    <input type="password" class="form-control" name="password_baru_1">
